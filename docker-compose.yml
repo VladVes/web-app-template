@@ -7,4 +7,4 @@ services:
       - 8080:8080
     volumes:
       - ./server/src:/server/src
-    command: npm start
+      - ./server/package.json:/server/package.json
