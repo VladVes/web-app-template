@@ -1,0 +1,10 @@
+version: '2'
+services:
+  server:
+    build: ./server
+    container_name: aspiritywebtemplate_server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./server/src:/server/src
+    command: npm start

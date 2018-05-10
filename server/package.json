@@ -1,7 +1,7 @@
 {
-  "name": "aspirity-template-server",
+  "name": "aspiritywebtemplate-server",
   "version": "0.1.0",
-  "description": "Aspirity JS Template Server",
+  "description": "Aspirity Web Template Server",
   "license": "ISC",
   "author": "Aspirity LTD",
   "scripts": {
