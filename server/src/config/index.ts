@@ -15,6 +15,12 @@ const config = convict({
       default: 'http://localhost:8080',
       env: 'APP_URL',
     },
+    port: {
+      doc: 'Base server port',
+      format: 'port',
+      default: 8080,
+      env: 'APP_PORT',
+    },
   },
 });
 

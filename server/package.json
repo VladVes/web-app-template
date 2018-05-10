@@ -4,10 +4,21 @@
   "description": "Aspirity JS Template Server",
   "license": "ISC",
   "author": "Aspirity LTD",
+  "scripts": {
+    "start": "nodemon --exec ts-node --project ./src/tsconfig.json ./src/server.ts"
+  },
   "dependencies": {
-    "convict": "^4.2.0"
+    "body-parser": "^1.18.2",
+    "convict": "^4.2.0",
+    "express": "^4.16.3"
   },
   "devDependencies": {
-    "@types/node": "^10.0.6"
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.11.1",
+    "@types/node": "^10.0.6",
+    "nodemon": "^1.17.4",
+    "ts-node": "^6.0.3",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
   }
 }
