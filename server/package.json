@@ -1,0 +1,13 @@
+{
+  "name": "aspirity-template-server",
+  "version": "0.1.0",
+  "description": "Aspirity JS Template Server",
+  "license": "ISC",
+  "author": "Aspirity LTD",
+  "dependencies": {
+    "convict": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.0.6"
+  }
+}
