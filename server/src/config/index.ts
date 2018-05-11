@@ -22,6 +22,12 @@ const config = convict({
       env: 'APP_PORT',
     },
   },
+  version: {
+    doc: 'Current version',
+    format: String,
+    default: 'v1',
+    env: 'APP_VERSION',
+  },
 });
 
 const env = config.get('env');
