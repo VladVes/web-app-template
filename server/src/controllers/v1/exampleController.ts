@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { exampleService } from '../../services';
+import logger from '../../logger';
 
 class ExampleController {
   public router: Router;
@@ -15,10 +16,14 @@ class ExampleController {
   }
 
   private get(req: Request, res: Response, next: NextFunction): Response {
+    logger.info('exampleController index route entered');
+
     return res.json({ result: 'exampleController' });
   }
 
   private getSum(req: Request, res: Response, next: NextFunction): Response {
+    logger.info('exampleController /sum route entered');
+
     const first = 3;
     const second = 5;
 
