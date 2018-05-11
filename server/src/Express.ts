@@ -4,7 +4,6 @@ import requestsLogger from './requestsLogger';
 import * as v1Controllers from './controllers/v1';
 import versionController from './controllers/versionController';
 
-
 class Express {
   public app: express.Application;
 
