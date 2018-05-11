@@ -1,10 +1,10 @@
-import * as express from 'express';
+import { Handler, ErrorRequestHandler } from 'express';
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import 'winston-daily-rotate-file';
 
 class RequestsLogger {
-  public all(): express.Handler {
+  public all(): Handler {
     return expressWinston.logger({
       transports: [
         new winston.transports.DailyRotateFile({
@@ -16,7 +16,7 @@ class RequestsLogger {
     });
   }
 
-  public errors(): express.ErrorRequestHandler {
+  public errors(): ErrorRequestHandler {
     return expressWinston.errorLogger({
       transports: [
         new winston.transports.DailyRotateFile({
