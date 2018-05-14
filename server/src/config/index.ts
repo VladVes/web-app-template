@@ -32,8 +32,20 @@ const config = convict({
     uri: {
       doc: 'Mongodb connection URI',
       format: String,
-      default: 'mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/blockchain?authSource=admin',
+      default: 'mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/aspiritytemplate?authSource=admin',
       env: 'MONGO_URI',
+    },
+  },
+  jwt: {
+    secret: {
+      doc: 'JWT secret',
+      format: String,
+      default: 'koorlyk',
+    },
+    expiresIn: {
+      doc: 'Expressed in seconds or a string describing a time span zeit/ms',
+      format: String || Number,
+      default: '2 days',
     },
   },
 });

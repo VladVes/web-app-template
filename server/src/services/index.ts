@@ -1,3 +1,4 @@
 import exampleService from './exampleService';
+import authService from './authService';
 
-export { exampleService };
+export { exampleService, authService };
