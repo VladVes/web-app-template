@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
 import Routes from './Routes';
 
 class App extends Component {
@@ -12,4 +11,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App)
+export default App;
