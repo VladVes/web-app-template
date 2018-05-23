@@ -2,15 +2,16 @@ import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 // import PrivateRoute from './PrivateRoute';
 
-const mock = () => (<div/>);
+const mock = () => (<div>MOCKED</div>);
 
 const Routes = () => {
   return (
-    <main>
+    <div>
       <Switch>
-        <Redirect exact from='/' to={mock} />
+        <Route path='/' component={mock} />
+        <Route path='/mock' component={mock} />
       </Switch>
-    </main>
+    </div>
   );
 };
 
