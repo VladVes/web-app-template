@@ -40,7 +40,7 @@ const config = convict({
     secret: {
       doc: 'JWT secret',
       format: String,
-      default: 'koorlyk',
+      default: '255G7pgj9eAAjiK',
     },
     expiresIn: {
       doc: 'Expressed in seconds or a string describing a time span zeit/ms',
