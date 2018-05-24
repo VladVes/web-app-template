@@ -3,6 +3,8 @@
 [Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
 
 ###Development
+* Install docker with[instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)
+* *docker-compose up*
 ####Server
-* *yarn install* (just one time, for linter success)
+* *cd server && yarn install* (just one time, for linter success)
 * *docker-compose up server*
