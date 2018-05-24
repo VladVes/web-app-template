@@ -1,6 +1,7 @@
-import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
+import exampleReducer from '../../ExampleContrainer/redux/reducers';
 
-export default combineReducers({
-  form: reduxFormReducer
-});
+export default {
+  form: reduxFormReducer,
+  example: exampleReducer
+};
