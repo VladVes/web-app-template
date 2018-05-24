@@ -1,9 +1,9 @@
 import devStore from './configureStore.dev';
 import prodStore from './configureStore.prod';
 
-export default () => {
+export default (params) => {
   if (process.env.NODE_ENV === 'dev') {
-    return devStore();
+    return devStore(params);
   }
-  return prodStore();
+  return prodStore(params);
 };
