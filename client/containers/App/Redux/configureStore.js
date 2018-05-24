@@ -2,7 +2,7 @@
 // import prodStore from './configureStore.prod';
 
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk-fsa';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 export default () => {
@@ -16,8 +16,7 @@ export default () => {
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       const nextRootReducer = require('./reducers');
-      const finalReducer = { ...nextRootReducer, router: rootReducer };
-      store.replaceReducer(combineReducers(finalReducer));
+      store.replaceReducer(nextRootReducer);
     });
   }
 

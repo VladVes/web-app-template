@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 export default class BtcToUsd extends Component {
   static propTypes = {
-    price: PropTypes.any
+    price: PropTypes.any,
+    handleRefresh: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -12,7 +13,12 @@ export default class BtcToUsd extends Component {
 
   render() {
     return (
-      <span>BTC to USD: {this.props.price}$</span>
+      <div>
+        <span>BTC to USD: {this.props.price}$</span>
+        <button onClick={this.props.handleRefresh}>
+          asasas
+        </button>
+      </div>
     );
   }
 }

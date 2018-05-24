@@ -22,22 +22,16 @@ class ExampleComponent extends Component {
   render() {
     return (
       <div>
-        <BtcToUsd price={this.props.price || 0} />
+        <BtcToUsd price={this.props.price || 0} handleRefresh={this.props.fetchBitcoinPrice}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    price: state.example.price
-  };
-};
+const mapStateToProps = (state) => ({
+  price: state.example.price
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchBitcoinPrice: () => dispatch(fetchBitcoinPrice())
-  };
-};
+const mapDispatchToProps = { fetchBitcoinPrice };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);
