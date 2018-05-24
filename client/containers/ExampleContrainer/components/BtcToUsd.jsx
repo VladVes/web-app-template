@@ -16,7 +16,7 @@ export default class BtcToUsd extends Component {
       <div>
         <span>BTC to USD: {this.props.price}$</span>
         <button onClick={this.props.handleRefresh}>
-          asasas
+          fetch
         </button>
       </div>
     );
