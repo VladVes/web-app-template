@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppMain from './App';
-// import DevTools from '../../DevTools'; todo
+import DevTools from './DevTools';
 
 const propTypes = {
   children: PropTypes.node
@@ -13,7 +13,7 @@ class App extends Component {
       <AppMain>
         <div>
           {this.props.children}
-          {/* <DevTools />*/}
+          <DevTools />
         </div>
       </AppMain>
     );
