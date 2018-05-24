@@ -8,7 +8,7 @@ const Routes = () => {
   return (
     <div>
       <Switch>
-        <Route path='/' component={ExampleComponent} />
+        <Route exact path='/' component={ExampleComponent} />
         <Route path='/1' component={ExampleComponent} />
         <PrivateRoute path='/private' component={ExampleComponent} />
       </Switch>

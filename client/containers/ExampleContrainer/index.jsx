@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class ExampleComponent extends Component {
   render() {
-    return (<div>HELLO WORLD</div>);
+    return (<Link to='/1'><div>HELLO WORLD</div></Link>);
   }
 }
