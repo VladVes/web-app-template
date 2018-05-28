@@ -5,7 +5,8 @@
   "license": "ISC",
   "author": "Aspirity LTD",
   "scripts": {
-    "server": "nodemon --exec ts-node --project ./src/tsconfig.json ./src/server.ts",
+    "server": "nodemon --exec ts-node ./src/server.ts",
+    "server:debug": "nodemon --exec node --inspect=5858 -r ts-node/register ./src/server.ts",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "start": "concurrently 'yarn run server' 'yarn run dependencies'"
   },
