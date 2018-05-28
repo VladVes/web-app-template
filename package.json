@@ -1,0 +1,27 @@
+{
+  "name": "aspiritywebtemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register ./server/tests/**/*.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Sergey_Okishev@bitbucket.org/aspirity/aspiritywebtemplate.git"
+  },
+  "author": "Aspirity",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/aspirity/aspiritywebtemplate#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "husky": "^0.14.3",
+    "mocha": "^5.2.0"
+  }
+}

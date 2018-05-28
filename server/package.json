@@ -11,12 +11,6 @@
     "start": "concurrently 'yarn run server' 'yarn run dependencies'",
     "test": "mocha -r ts-node/register ./tests/**/*.ts"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test",
-      "pre-push": "yarn test"
-    }
-  },
   "dependencies": {
     "bcryptjs-then": "^1.0.1",
     "body-parser": "^1.18.2",
