@@ -12,3 +12,11 @@
 
 
 ###Configuration
+Default database connection uri:
+*mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/aspiritytemplate?authSource=admin*
+
+where
+  * username: admin
+  * password: p1230h6t34qd4i7ex
+  * host: aspiritywebtemplate_mongodb (it is container name for docker development flow)
+  * port: 27017
