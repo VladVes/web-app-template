@@ -1,5 +1,5 @@
+import { Typegoose, prop } from 'typegoose';
 import * as mongoose from 'mongoose';
-import { prop, Typegoose } from 'typegoose';
 
 export class User extends Typegoose {
   public _id: mongoose.Types.ObjectId;

@@ -32,6 +32,12 @@
     "@types/events" "*"
     "@types/node" "*"
 
+"@types/express-validator@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/express-validator/-/express-validator-3.0.0.tgz#e6f3cab842e5ae376a1cfa11295202ec380b68d1"
+  dependencies:
+    express-validator "*"
+
 "@types/express-winston@^2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@types/express-winston/-/express-winston-2.4.3.tgz#2b1821811fdcc3ace5dcc3e28da992d31a991879"
@@ -716,6 +722,13 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+express-validator@*, express-validator@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-5.2.0.tgz#28f068fc676022acfe182c97fd9e780f9ffb26f6"
+  dependencies:
+    lodash "^4.17.10"
+    validator "^10.1.0"
+
 express-winston@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/express-winston/-/express-winston-2.5.1.tgz#0263581b4441a06493ba31882e3c5250791522f0"
@@ -1333,7 +1346,7 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
 
-lodash@4.17.10, lodash@^4.14.0, lodash@^4.5.1, lodash@~4.17.5:
+lodash@4.17.10, lodash@^4.14.0, lodash@^4.17.10, lodash@^4.5.1, lodash@~4.17.5:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
@@ -2424,6 +2437,10 @@ utils-merge@1.0.1:
 validator@7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-7.2.0.tgz#a63dcbaba51d4350bf8df20988e0d5a54d711791"
+
+validator@^10.1.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.2.0.tgz#61d6b10c3d5c9f368c75c2ce8ca2b792522eaafa"
 
 varify@0.2.0:
   version "0.2.0"

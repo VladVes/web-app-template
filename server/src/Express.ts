@@ -4,6 +4,7 @@ import requestsLogger from './requestsLogger';
 import * as v1Controllers from './controllers/v1';
 import versionController from './controllers/versionController';
 import passport from './middlewares/passport';
+import customValidators from './middlewares/customValidators';
 
 class Express {
   public app: express.Application;
@@ -18,6 +19,7 @@ class Express {
   private initPreRoutesMiddlewares(): void {
     this.app.use(bodyParser.json());
     this.app.use(requestsLogger.all());
+    this.app.use(customValidators());
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   }

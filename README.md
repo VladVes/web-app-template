@@ -9,3 +9,6 @@
 * *cd server && yarn install* (just one time, for linter success)
 * *docker-compose up server*
 * To add new dependency install it locally (*yarn add ...*), and it'll be installed in docker container automatically
+
+
+###Configuration

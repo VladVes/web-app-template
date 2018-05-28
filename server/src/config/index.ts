@@ -45,7 +45,7 @@ const config = convict({
     expiresIn: {
       doc: 'Expressed in seconds or a string describing a time span zeit/ms',
       format: String || Number,
-      default: '2 days',
+      default: '7 days',
     },
   },
 });

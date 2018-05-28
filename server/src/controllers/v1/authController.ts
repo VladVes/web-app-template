@@ -1,9 +1,11 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import passport from '../../middlewares/passport';
 import * as bcrypt from 'bcryptjs-then';
 import * as VError from 'verror';
+import passport from '../../middlewares/passport';
 import UserModel, { User } from '../../models/UserModel';
 import { authService } from '../../services';
+import validate from '../../middlewares/validate';
+import { signUpSchema, signInSchema } from '../../validationSchemas/auth';
 
 class AuthController {
   public router: Router;
@@ -14,8 +16,8 @@ class AuthController {
   }
 
   private init(): void {
-    this.router.post('/signin', this.signIn);
-    this.router.post('/signup', this.signUp);
+    this.router.post('/signin', validate(signInSchema), this.signIn);
+    this.router.post('/signup', validate(signUpSchema), this.signUp);
   }
 
   private async signIn(req: Request, res: Response, next: NextFunction): Promise<void> {
