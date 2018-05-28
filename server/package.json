@@ -9,11 +9,13 @@
     "server:debug": "nodemon --exec node --inspect=5858 -r ts-node/register ./src/server.ts",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "start": "concurrently 'yarn run server' 'yarn run dependencies'",
-    "test": "mocha -r ts-node/register ./tests/**/*.ts"
+    "test": "mocha -R nyan -r ts-node/register ./tests/**/*.ts"
   },
   "dependencies": {
+    "@types/chai-http": "^3.0.4",
     "bcryptjs-then": "^1.0.1",
     "body-parser": "^1.18.2",
+    "chai-http": "^4.0.0",
     "convict": "^4.2.0",
     "express": "^4.16.3",
     "express-winston": "^2.5.1",
