@@ -1,7 +1,9 @@
 server/node_modules
-client/node_modules
-
+server/package-lock.json
 server/build
+
+client/node_modules
+client/package-lock.json
 
 .idea
 *.log
