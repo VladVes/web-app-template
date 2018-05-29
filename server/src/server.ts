@@ -8,3 +8,6 @@ const db = new MongoDB();
 db.connect(app);
 
 app.listen(config.get('http.port') || 8080);
+
+// for tests
+export default app;
