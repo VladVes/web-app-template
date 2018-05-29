@@ -2,6 +2,12 @@ import { Handler } from 'express';
 import * as expressValidator from 'express-validator';
 import UserModel from '../models/UserModel';
 
+const isNotEmpty = (value: any[]): boolean => {
+  if (!value) { return false; }
+
+  return Boolean(value.length);
+};
+
 const isContains = (item: any, targetArray: any[]): boolean => {
   if (!item || !targetArray) { return false; }
 
@@ -26,6 +32,7 @@ const isUserNotExistsByEmail = async (email: string): Promise<void> => {
 export default (): Handler => (
   expressValidator({
     customValidators: {
+      isNotEmpty,
       isContains,
       isCustomEmail,
       isPassword,

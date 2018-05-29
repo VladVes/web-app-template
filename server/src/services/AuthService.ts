@@ -3,7 +3,7 @@ import { User } from '../models/UserModel';
 import config from '../config';
 
 class AuthService {
-  public generateToken(user: User): string {
+  public static generateToken(user: User): string {
     const payload = { userId: user._id };
     const options = {
       expiresIn: config.get('jwt.expiresIn'),
@@ -13,4 +13,4 @@ class AuthService {
   }
 }
 
-export default new AuthService();
+export default AuthService;

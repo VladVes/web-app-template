@@ -13,7 +13,7 @@ class JWTAuth extends Passport {
     this.initPassport();
   }
 
-  private initPassport() {
+  private initPassport(): void {
     this.serializeUser((user: User, done: (err: any, id: mongoose.Types.ObjectId) => void): void => {
       return done(null, user._id);
     });
@@ -38,13 +38,13 @@ class JWTAuth extends Passport {
         const user = await UserModel.findOne({ email }).lean();
 
         if (!user) {
-          return done(null, null, { message: 'Неправильный e-mail или пароль' });
+          return done(null, null);
         }
 
         const passwordCompareResult = await bcrypt.compare(password, user.password);
 
         if (!passwordCompareResult) {
-          return done(null, null, { message: 'Неправильный e-mail или пароль' });
+          return done(null, null);
         }
 
         delete user.password;
@@ -53,9 +53,9 @@ class JWTAuth extends Passport {
       },
     ));
 
-    const jwtStrategyOpts = {
-      jwtFromRequest: null as (req: Request) => string,
-      secretOrKey: null as string,
+    const jwtStrategyOpts: passportJWT.StrategyOptions = {
+      jwtFromRequest: null,
+      secretOrKey: null,
     };
 
     jwtStrategyOpts.jwtFromRequest = (req: Request): string => {
@@ -91,4 +91,4 @@ class JWTAuth extends Passport {
   }
 }
 
-export default new JWTAuth();
+export default JWTAuth;

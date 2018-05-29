@@ -29,4 +29,4 @@ class RequestsLogger {
   }
 }
 
-export default new RequestsLogger();
+export default RequestsLogger;

@@ -1,17 +1,14 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { exampleService } from '../../services';
-import logger from '../../logger';
-import passport from '../../middlewares/passport';
+import { ExampleService } from '../../services';
+import Logger from '../../Logger';
+import Passport from '../../middlewares/Passport';
+import BaseController from '../BaseController';
 
-class ExampleController {
-  public router: Router;
+const logger = new Logger();
+const passport = new Passport();
 
-  constructor() {
-    this.router = Router();
-    this.init();
-  }
-
-  private init(): void {
+class ExampleController extends BaseController {
+  public init(): void {
     this.router.get('/', this.get);
     this.router.get('/sum', passport.authenticate('jwt', { session: false }), this.getSum);
   }
@@ -28,9 +25,9 @@ class ExampleController {
     const first = 3;
     const second = 5;
 
-    const sum = exampleService.add(3, 5);
+    const sum = ExampleService.add(first, second);
     return res.json({ sum });
   }
 }
 
-export default new ExampleController().router;
+export default ExampleController;

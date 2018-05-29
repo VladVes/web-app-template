@@ -1,14 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import config from '../config';
+import BaseController from './BaseController';
 
-class VersionController {
-  public router: Router;
-
-  constructor() {
-    this.router = Router();
-    this.init();
-  }
-
+class VersionController extends BaseController {
   public init(): void {
     this.router.get('/', this.get);
   }
@@ -18,4 +12,4 @@ class VersionController {
   }
 }
 
-export default new VersionController().router;
+export default VersionController;

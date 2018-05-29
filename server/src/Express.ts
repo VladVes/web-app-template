@@ -1,10 +1,12 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import requestsLogger from './requestsLogger';
-import * as v1Controllers from './controllers/v1';
-import versionController from './controllers/versionController';
-import passport from './middlewares/passport';
+import RequestsLogger from './RequestsLogger';
+import Passport from './middlewares/Passport';
 import customValidators from './middlewares/customValidators';
+import MainController from './controllers/MainController';
+
+const passport = new Passport();
+const requestsLogger = new RequestsLogger();
 
 class Express {
   public app: express.Application;
@@ -25,9 +27,9 @@ class Express {
   }
 
   private initRoutes(): void {
-    this.app.use('/api/version', versionController);
-    this.app.use('/api/v1/auth', v1Controllers.authController);
-    this.app.use('/api/v1/example', v1Controllers.exampleController);
+    const mainController = new MainController();
+    mainController.init();
+    this.app.use('/api', mainController.getRouter());
   }
 
   private initPostRoutesMiddlewares() {
