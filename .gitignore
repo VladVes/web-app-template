@@ -5,5 +5,7 @@ server/build
 client/node_modules
 client/package-lock.json
 
+server/build
+
 .idea
 *.log

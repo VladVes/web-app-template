@@ -1,0 +1,20 @@
+version: '2'
+services:
+  server:
+    build: ./server
+    container_name: aspiritywebtemplate_server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./server/src:/server/src
+      - ./server/logs:/server/logs
+      - ./server/package.json:/server/package.json
+      - ./server/tsconfig.json:/server/tsconfig.json
+  mongodb:
+    build: ./mongodb
+    container_name: aspiritywebtemplate_mongodb
+    ports:
+      - 27020:27017
+    environment:
+      MONGODB_PASS: "p1230h6t34qd4i7ex"
+    command: ["/bin/run.sh"]

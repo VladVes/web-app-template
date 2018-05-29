@@ -1,0 +1,23 @@
+{
+  "name": "aspiritywebtemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn --cwd ./server test",
+    "start": "docker-compose up"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Sergey_Okishev@bitbucket.org/aspirity/aspiritywebtemplate.git"
+  },
+  "author": "Aspirity",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/aspirity/aspiritywebtemplate#readme"
+}
