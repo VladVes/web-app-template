@@ -36,7 +36,7 @@ class AuthController extends BaseController {
   }
 
   private signInError(err: Error, req: Request, res: Response, next: NextFunction): Response {
-    return res.status(401).send('Неправильный e-mail или пароль');
+    return res.status(401).send(err);
   }
 
   private async signUp(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
