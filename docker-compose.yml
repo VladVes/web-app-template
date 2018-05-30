@@ -14,7 +14,7 @@ services:
     build: ./mongodb
     container_name: aspiritywebtemplate_mongodb
     ports:
-      - 27020:27017
+      - 27017:27017
     environment:
       MONGODB_PASS: "p1230h6t34qd4i7ex"
     command: ["/bin/run.sh"]

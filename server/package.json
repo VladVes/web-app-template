@@ -9,7 +9,8 @@
     "server:debug": "nodemon --exec node --inspect=5858 -r ts-node/register ./src/server.ts",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "start": "concurrently 'yarn run server' 'yarn run dependencies'",
-    "test": "mocha -R nyan -r ts-node/register ./tests/**/*.ts"
+    "test:all": "mocha -R nyan -r ts-node/register ./tests/**/*.ts",
+    "test": "mocha -R nyan -r ts-node/register ./tests/unit/**/*.ts"
   },
   "dependencies": {
     "@types/chai-http": "^3.0.4",

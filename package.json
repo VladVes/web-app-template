@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install:client": "yarn --cwd ./client install",
+    "install:server": "yarn --cwd ./server install",
+    "install:all": "yarn run install:client && yarn run install:server",
     "test": "yarn --cwd ./server test",
+    "test:all": "yarn --cwd ./server test:all",
     "start": "docker-compose up"
   },
   "husky": {
