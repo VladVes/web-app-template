@@ -39,6 +39,11 @@ module.exports = {
   devServer: {
     contentBase: './public',
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    host: '0.0.0.0',
+    port: 3000,
+    proxy: {
+      '/api':  'http://aspiritywebtemplate_server:8080'
+    },
   }
 };
