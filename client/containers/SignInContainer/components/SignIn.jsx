@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
-import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
 
-class SignUp extends Component {
+class SignIn extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
@@ -13,7 +13,7 @@ class SignUp extends Component {
     const { handleSubmit, onSubmit } = this.props;
 
     return (
-      <SignUpForm
+      <SignInForm
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
       />
@@ -22,5 +22,5 @@ class SignUp extends Component {
 }
 
 export default reduxForm({
-  form: 'signUp'
-})(SignUp);
+  form: 'signIn'
+})(SignIn);

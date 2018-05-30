@@ -1,5 +1,5 @@
 import axios, { defaultParams } from './axios';
 
-export default (url, body, params = { ...defaultParams, method: 'post' }) => {
-  return axios(url, body, params);
+export default (url, body, params = { ...defaultParams }) => {
+  return axios.post(url, body, params);
 };

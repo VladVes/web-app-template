@@ -2,7 +2,7 @@ version: '2'
 services:
   client:
     build: ./client
-    container_name: conferencebot_client
+    container_name: aspiritywebtemplate_client
     ports:
       - 3000:3000
     volumes:

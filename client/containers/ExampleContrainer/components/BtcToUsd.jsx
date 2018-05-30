@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default class BtcToUsd extends Component {
@@ -18,6 +19,10 @@ export default class BtcToUsd extends Component {
         <button onClick={this.props.handleRefresh}>
           fetch
         </button>
+        <div>
+          <Link to='/signup'>Sign Up</Link>
+          <Link to='/signin' className='ml-3'>Sign In</Link>
+        </div>
       </div>
     );
   }

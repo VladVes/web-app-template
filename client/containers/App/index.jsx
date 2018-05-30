@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css';
+
 import React from 'react';
 import App from './components/App';
 import AppDev from './components/App.dev';
