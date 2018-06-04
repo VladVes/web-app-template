@@ -10,19 +10,19 @@ const fakeUrl = 'mongodb://admin:password@localhost:27777/aspiritytemplate?authS
 chai.use(require('chai-http'));
 
 describe('Database test', () => {
-  // it('Connection to db with wrong url should throw error', async () => {
-  //   const fakeDb = new MongoDB(fakeUrl);
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       await fakeDb.connect();
-  //       reject('should be error');
-  //     } catch (e) {
-  //       resolve('error occured');
-  //     } finally {
-  //       await fakeDb.disconnect();
-  //     }
-  //   })
-  // }); // todo: works, but test refuses to stop
+  it('Connection to db with wrong url should throw error', async () => {
+    const fakeDb = new MongoDB(fakeUrl);
+    return new Promise(async (resolve, reject) => {
+      try {
+        await fakeDb.connect();
+        reject('should be error');
+      } catch (e) {
+        resolve('error occured');
+      } finally {
+        await fakeDb.disconnect();
+      }
+    })
+  });
 
   it('Connect to db should work', async () => {
     return new Promise(async (resolve, reject) => {

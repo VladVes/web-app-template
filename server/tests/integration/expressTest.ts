@@ -16,7 +16,7 @@ describe('Express test', () => {
     return new Promise((resolve) => resolve()); // we can`t use done callback with async :(
   });
 
-  // region BAD TESTS never do so!
+  // region BAD TESTS never do like this! To see correct example - go to './unit' folder
 
   it('/GET example should return result "exampleController"', async () => {
     const expectedResult = 'exampleController';
