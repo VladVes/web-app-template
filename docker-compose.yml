@@ -16,6 +16,9 @@ services:
     container_name: aspiritywebtemplate_server
     ports:
       - 8080:8080
+      - 5858:5858
+    environment:
+      NODE_ENV: dev
     volumes:
       - ./server/src:/server/src
       - ./server/logs:/server/logs
@@ -25,7 +28,7 @@ services:
     build: ./mongodb
     container_name: aspiritywebtemplate_mongodb
     ports:
-      - 27020:27017
+      - 27017:27017
     environment:
       MONGODB_PASS: "p1230h6t34qd4i7ex"
     command: ["/bin/run.sh"]

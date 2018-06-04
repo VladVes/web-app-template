@@ -3,6 +3,7 @@
     "module": "commonjs",
     "removeComments": true,
     "sourceMap": true,
+    "noEmitOnError": true,
     "target": "es6",
     "lib": ["ES2017"],
     "outDir": "./build",

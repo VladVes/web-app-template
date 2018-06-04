@@ -13,13 +13,13 @@ class ExampleController extends BaseController {
     this.router.get('/sum', passport.authenticate('jwt', { session: false }), this.getSum);
   }
 
-  private get(req: Request, res: Response, next: NextFunction): Response {
+  public get(req: Request, res: Response, next: NextFunction): Response {
     logger.info('exampleController index route entered');
 
     return res.json({ result: 'exampleController' });
   }
 
-  private getSum(req: Request, res: Response, next: NextFunction): Response {
+  public getSum(req: Request, res: Response, next: NextFunction): Response {
     logger.info('exampleController /sum route entered');
 
     const first = 3;
