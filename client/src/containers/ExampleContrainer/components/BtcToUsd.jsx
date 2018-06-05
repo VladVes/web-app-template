@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default class BtcToUsd extends Component {
   static propTypes = {
-    price: PropTypes.any,
+    price: PropTypes.string,
     handleRefresh: PropTypes.func.isRequired
   };
 

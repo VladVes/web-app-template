@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 class ExampleComponent extends Component {
   static propTypes = {
-    price: PropTypes.any,
+    price: PropTypes.string,
     fetchBitcoinPrice: PropTypes.func
   };
 
