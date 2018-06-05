@@ -6,9 +6,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./client/components:/client/components
-      - ./client/containers:/client/containers
-      - ./client/utils:/client/utils
+      - ./client/src:/client/src
       - ./client/public:/client/public
       - ./client/package.json:/client/package.json
   server:
