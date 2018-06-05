@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Field from '../../../../components/redux-form-components/CustomField';
+import Field from '../../../../../components/redux-form-components/CustomField';
 import {
   Form,
   Input,
