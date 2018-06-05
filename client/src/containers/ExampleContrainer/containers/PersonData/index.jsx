@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
-import PersonDataForm from './PersonDataForm';
+import PersonDataForm from './components/PersonDataForm';
 
 class PersonData extends Component {
   static propTypes = {
@@ -22,5 +22,5 @@ class PersonData extends Component {
 }
 
 export default reduxForm({
-  form: 'personData'
+  form: 'personDataForm'
 })(PersonData);

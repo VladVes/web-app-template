@@ -9,7 +9,7 @@ export default class BtcToUsd extends Component {
   };
 
   static defaultProps = {
-    price: 0
+    price: '0'
   };
 
   render() {

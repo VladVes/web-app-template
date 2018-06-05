@@ -1,17 +1,19 @@
 import { handleActions } from 'redux-actions';
+import { combineReducers } from 'redux';
 import {
   fetchBitcoinPriceRequest,
   fetchBitcoinPriceSuccess,
   fetchBitcoinPriceFailure
 } from './actions';
+import linksReducer from '../containers/Links/redux/reducer';
 
 const defaultState = {
-  price: 0,
+  price: '0',
   error: null,
   isFetching: false
 };
 
-export default handleActions(
+const bitcoinReducer = handleActions(
   {
     [fetchBitcoinPriceRequest](state) {
       return {
@@ -37,3 +39,8 @@ export default handleActions(
   },
   defaultState
 );
+
+export default combineReducers({
+  bitcoin: bitcoinReducer,
+  links: linksReducer
+});

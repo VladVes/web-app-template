@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import BtcToUsd from './components/BtcToUsd';
-import Links from './components/Links';
-import PersonData from './components/PersonData';
+import Links from './containers/Links/';
+import PersonData from './containers/PersonData';
 import { fetchBitcoinPrice } from './redux/actions';
-import PropTypes from 'prop-types';
 
 class ExampleComponent extends Component {
   static propTypes = {
     price: PropTypes.string,
-    fetchBitcoinPrice: PropTypes.func
+    fetchBitcoinPrice: PropTypes.func,
+    isLinksFetching: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
@@ -22,8 +23,6 @@ class ExampleComponent extends Component {
     this.props.fetchBitcoinPrice();
   }
 
-  handleLinksFormSubmit = formValues => console.log(formValues);
-
   handlePersonDataFormSubmit = formValues => console.log(formValues);
 
   render() {
@@ -33,7 +32,7 @@ class ExampleComponent extends Component {
           <BtcToUsd price={this.props.price || 0} handleRefresh={this.props.fetchBitcoinPrice}/>
         </Col>
         <Col xs={4}>
-          <Links onSubmit={this.handleLinksFormSubmit}/>
+          <Links isFetching={this.props.isLinksFetching}/>
         </Col>
         <Col xs={4}>
           <PersonData onSubmit={this.handlePersonDataFormSubmit}/>
@@ -44,9 +43,12 @@ class ExampleComponent extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  price: state.example.price
+  price: state.example.bitcoin.price,
+  isLinksFetching: state.example.links.isFetching
 });
 
-const mapDispatchToProps = { fetchBitcoinPrice };
+const mapDispatchToProps = {
+  fetchBitcoinPrice
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);
