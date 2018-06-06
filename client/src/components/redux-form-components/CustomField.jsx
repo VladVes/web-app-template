@@ -45,6 +45,7 @@ class CustomField extends Component {
           invalid={Boolean(touched && error)}
           value={value}
           onChange={onChange}
+          id={id}
           {...other}
         />
         {touched && error && this.renderError(error)}
