@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Field from '../../../../../components/redux-form-components/CustomField';
 import {
   Form,
-  Input,
-  Button
+  Input
 } from 'reactstrap';
+import Field from '../../../../../components/redux-form-components/CustomField';
+import { PrimaryButton, CancelButton } from '../../../../../components/styledComponents/Button';
 
-class LinksForm extends Component {
+class LinksForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   };
 
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, reset } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -35,13 +36,18 @@ class LinksForm extends Component {
           placeholder='Link2'
           label='Link2'
         />
-        <Button
+        <PrimaryButton
           type='submit'
-          color='primary'
           className='mr-3'
         >
           Submit
-        </Button>
+        </PrimaryButton>
+        <CancelButton
+          type='button'
+          onClick={reset}
+        >
+          Cancel
+        </CancelButton>
       </Form>
     );
   }

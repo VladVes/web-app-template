@@ -20,6 +20,7 @@ const validate = values => {
 class Links extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({
       link1: PropTypes.string.isRequired,
@@ -28,12 +29,13 @@ class Links extends Component {
   };
 
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, reset } = this.props;
 
     return (
       <LinksForm
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
+        reset={reset}
       />
     );
   }

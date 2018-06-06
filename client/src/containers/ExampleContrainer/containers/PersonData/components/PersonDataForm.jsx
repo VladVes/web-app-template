@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   Input,
-  Form,
-  Button
+  Form
 } from 'reactstrap';
 import Field from '../../../../../components/redux-form-components/CustomField';
+import Button from '../../../../../components/styledComponents/Button';
 
-class PersonDataForm extends Component {
+class PersonDataForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
@@ -36,8 +36,8 @@ class PersonDataForm extends Component {
           label='Surname'
         />
         <Button
+          fullWidth
           type='submit'
-          color='primary'
           className='mr-3'
         >
           Submit
