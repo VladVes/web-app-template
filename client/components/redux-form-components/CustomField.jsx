@@ -40,7 +40,9 @@ class CustomField extends Component {
     return (
       <FormGroup>
         {this.renderLabel(id, label)}
-        <ChildComponent value={value} onChange={onChange} {...other}/>
+        <ChildComponent value={value} onChange={onChange} id={id}
+          {...other}
+        />
         {touched && error && this.renderError(error)}
       </FormGroup>
     );
