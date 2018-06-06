@@ -22,5 +22,5 @@ class SignIn extends Component {
 }
 
 export default reduxForm({
-  form: 'signIn'
+  form: 'signInForm'
 })(SignIn);

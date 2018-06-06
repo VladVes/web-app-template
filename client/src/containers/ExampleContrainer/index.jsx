@@ -6,12 +6,15 @@ import BtcToUsd from './components/BtcToUsd';
 import Links from './containers/Links/';
 import PersonData from './containers/PersonData';
 import { fetchBitcoinPrice } from './redux/actions';
+import withSpinner from '../../components/hocs/withSpinner';
+
+const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 
 class ExampleComponent extends Component {
   static propTypes = {
     price: PropTypes.string,
     fetchBitcoinPrice: PropTypes.func,
-    isLinksFetching: PropTypes.bool.isRequired
+    isBTCtoUSDFetching: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
@@ -29,10 +32,14 @@ class ExampleComponent extends Component {
     return (
       <Row>
         <Col xs={4}>
-          <BtcToUsd price={this.props.price || 0} handleRefresh={this.props.fetchBitcoinPrice}/>
+          <BtcToUsdWithSpinner
+            price={this.props.price}
+            handleRefresh={this.props.fetchBitcoinPrice}
+            isFetching={this.props.isBTCtoUSDFetching}
+          />
         </Col>
         <Col xs={4}>
-          <Links isFetching={this.props.isLinksFetching}/>
+          <Links/>
         </Col>
         <Col xs={4}>
           <PersonData onSubmit={this.handlePersonDataFormSubmit}/>
@@ -44,7 +51,7 @@ class ExampleComponent extends Component {
 
 const mapStateToProps = (state) => ({
   price: state.example.bitcoin.price,
-  isLinksFetching: state.example.links.isFetching
+  isBTCtoUSDFetching: state.example.bitcoin.isFetching
 });
 
 const mapDispatchToProps = {
