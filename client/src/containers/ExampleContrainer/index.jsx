@@ -48,17 +48,17 @@ class ExampleComponent extends Component {
   render() {
     return (
       <Row>
-        <Col xs={4}>
+        <Col xs={12} sm={4} className='d-flex justify-content-center'>
           <BtcToUsdWithSpinner
             price={this.props.price}
             handleRefresh={this.props.fetchBitcoinPrice}
             isFetching={this.props.isBTCtoUSDFetching}
           />
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={4} className='d-flex justify-content-center my-5 my-sm-0'>
           <Links/>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={4} className='d-flex justify-content-center'>
           <PersonData onSubmit={this.handlePersonDataFormSubmit}/>
         </Col>
       </Row>
