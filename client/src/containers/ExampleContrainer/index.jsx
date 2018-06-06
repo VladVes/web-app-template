@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
+import { SubmissionError } from 'redux-form';
 import BtcToUsd from './components/BtcToUsd';
 import Links from './containers/Links/';
 import PersonData from './containers/PersonData';
@@ -26,7 +27,23 @@ class ExampleComponent extends Component {
     this.props.fetchBitcoinPrice();
   }
 
-  handlePersonDataFormSubmit = formValues => console.log(formValues);
+  handlePersonDataFormSubmit = formValues => {
+    const error = {};
+
+    if (!formValues.name) {
+      error.name = 'Name required';
+    }
+
+    if (!formValues.surname) {
+      error.surname = 'Surname required';
+    }
+
+    if (Object.keys(error).length) {
+      throw new SubmissionError(error);
+    }
+
+    console.log(formValues);
+  };
 
   render() {
     return (

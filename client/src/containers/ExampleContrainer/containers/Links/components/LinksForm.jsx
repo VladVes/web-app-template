@@ -18,6 +18,7 @@ class LinksForm extends Component {
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
+        <strong>Form with sync validation</strong>
         <Field
           id='link1'
           name='link1'

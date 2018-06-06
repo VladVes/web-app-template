@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import {
   FormGroup,
-  Label
+  Label,
+  FormFeedback
 } from 'reactstrap';
 
 class CustomField extends Component {
   static propTypes = {
-    component: PropTypes.func.required,
-    id: PropTypes.any.required,
-    name: PropTypes.string.required,
-    label: PropTypes.string.required,
+    component: PropTypes.func.isRequired,
+    id: PropTypes.any.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     errorComponent: PropTypes.func,
     labelComponent: PropTypes.func
   };
@@ -20,7 +21,7 @@ class CustomField extends Component {
     if (this.props.errorComponent) return this.props.errorComponent;
 
     return (
-      <div><strong>{error}</strong></div>
+      <FormFeedback>{error}</FormFeedback>
     );
   };
 
@@ -40,7 +41,12 @@ class CustomField extends Component {
     return (
       <FormGroup>
         {this.renderLabel(id, label)}
-        <ChildComponent value={value} onChange={onChange} {...other}/>
+        <ChildComponent
+          invalid={Boolean(touched && error)}
+          value={value}
+          onChange={onChange}
+          {...other}
+        />
         {touched && error && this.renderError(error)}
       </FormGroup>
     );

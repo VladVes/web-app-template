@@ -3,6 +3,20 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import LinksForm from './LinksForm';
 
+const validate = values => {
+  const errors = {};
+
+  if (!values.link1) {
+    errors.link1 = 'Required field';
+  }
+
+  if (!values.link2) {
+    errors.link2 = 'Required field';
+  }
+
+  return errors;
+};
+
 class Links extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
@@ -26,5 +40,7 @@ class Links extends Component {
 }
 
 export default reduxForm({
-  form: 'linksForm'
+  form: 'linksForm',
+  validate,
+  touchOnChange: true
 })(Links);

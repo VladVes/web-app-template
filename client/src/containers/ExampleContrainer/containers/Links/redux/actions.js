@@ -15,7 +15,7 @@ export const fetchLinks = () => async dispatch => {
       };
 
       dispatch(fetchLinksSuccess(links));
-    }, 3000);
+    }, 1500);
   } catch (error) {
     dispatch(fetchLinksFailure(error));
   }

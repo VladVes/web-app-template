@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 import {
-  Form,
-  FormGroup,
   Input,
-  Label,
+  Form,
   Button
 } from 'reactstrap';
+import Field from '../../../../../components/redux-form-components/CustomField';
 
 class PersonDataForm extends Component {
   static propTypes = {
@@ -15,36 +13,17 @@ class PersonDataForm extends Component {
     onSubmit: PropTypes.func.isRequired
   };
 
-  renderInput = ({
-    input,
-    id,
-    name,
-    placeholder,
-    label,
-    type
-  }) => (
-    <FormGroup>
-      <Label for={id}>{label}</Label>
-      <Input
-        {...input}
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-      />
-    </FormGroup>
-  );
-
   render() {
     const { handleSubmit, onSubmit } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
+        <strong>Form with submit validation</strong>
         <Field
           id='name'
           name='name'
           type='text'
-          component={this.renderInput}
+          component={Input}
           placeholder='Name'
           label='Name'
         />
@@ -52,7 +31,7 @@ class PersonDataForm extends Component {
           id='surname'
           name='surname'
           type='text'
-          component={this.renderInput}
+          component={Input}
           placeholder='Surname'
           label='Surname'
         />
