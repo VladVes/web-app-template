@@ -29,3 +29,6 @@ where
   * password: p1230h6t34qd4i7ex
   * host: aspiritywebtemplate_mongodb (it is container name for docker development flow)
   * port: 27017
+  
+### Known issues
+1. Cannod find module ‘whatevermodule’ in docker logs output. Solution: u forgot to run yarn dependencies, other way - stop docker-compose, yarn install, docker-compose up
