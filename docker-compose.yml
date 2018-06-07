@@ -9,6 +9,7 @@ services:
       - ./client/src:/client/src
       - ./client/public:/client/public
       - ./client/package.json:/client/package.json
+    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
   server:
     build: ./server
     container_name: aspiritywebtemplate_server
@@ -22,6 +23,7 @@ services:
       - ./server/logs:/server/logs
       - ./server/package.json:/server/package.json
       - ./server/tsconfig.json:/server/tsconfig.json
+    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
   mongodb:
     build: ./mongodb
     container_name: aspiritywebtemplate_mongodb
