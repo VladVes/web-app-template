@@ -5,7 +5,7 @@ import authApi from './api/authApi';
 // todo: should we use it as api.auth.signIn or export authApi and use authApi.signIn?
 const api = {
   example: exampleApi,
-  auth: authApi
+  auth: authApi,
 };
 
 export default api;

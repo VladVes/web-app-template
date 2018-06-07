@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 
 class PrivateRoute extends Component {
   static propTypes = {
-    path: PropTypes.string,
-    component: PropTypes.any,
-    isLogged: PropTypes.bool
+    path: PropTypes.string.isRequired,
+    component: PropTypes.func.isRequired,
+    isLogged: PropTypes.bool.isRequired,
   };
 
   render() {
     if (this.props.isLogged) {
-      return <Route path={this.props.path} component={this.props.component}/>;
+      return <Route path={this.props.path} component={this.props.component} />;
     }
-    return <Redirect from={this.props.path} to={'/'} />;
+    return <Redirect from={this.props.path} to="/" />;
   }
 }
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import LinksForm from './LinksForm';
 
-const validate = values => {
+const validate = (values) => {
   const errors = {};
 
   if (!values.link1) {
@@ -22,10 +22,10 @@ class Links extends Component {
     handleSubmit: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    initialValues: PropTypes.shape({
-      link1: PropTypes.string.isRequired,
-      link2: PropTypes.string.isRequired
-    }).isRequired
+    // initialValues: PropTypes.shape({
+    //   link1: PropTypes.string.isRequired,
+    //   link2: PropTypes.string.isRequired,
+    // }).isRequired,
   };
 
   render() {
@@ -44,5 +44,5 @@ class Links extends Component {
 export default reduxForm({
   form: 'linksForm',
   validate,
-  touchOnChange: true
+  touchOnChange: true,
 })(Links);

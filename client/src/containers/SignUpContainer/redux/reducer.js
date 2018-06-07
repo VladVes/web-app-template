@@ -2,12 +2,12 @@ import { handleActions } from 'redux-actions';
 import {
   fetchSignUpRequest,
   fetchSignUpSuccess,
-  fetchSignUpFailure
+  fetchSignUpFailure,
 } from './actions';
 
 const defaultState = {
   error: null,
-  isFetching: false
+  isFetching: false,
 };
 
 export default handleActions(
@@ -15,23 +15,23 @@ export default handleActions(
     [fetchSignUpRequest](state) {
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     },
     [fetchSignUpSuccess](state) {
       return {
         ...state,
         isFetching: false,
-        error: null
+        error: null,
       };
     },
     [fetchSignUpFailure](state, { payload }) {
       return {
         ...state,
         isFetching: false,
-        error: payload
+        error: payload,
       };
-    }
+    },
   },
-  defaultState
+  defaultState,
 );

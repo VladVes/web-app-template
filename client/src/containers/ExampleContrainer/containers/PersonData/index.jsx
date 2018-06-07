@@ -6,7 +6,7 @@ import PersonDataForm from './components/PersonDataForm';
 class PersonData extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
   };
 
   render() {
@@ -22,5 +22,5 @@ class PersonData extends Component {
 }
 
 export default reduxForm({
-  form: 'personDataForm'
+  form: 'personDataForm',
 })(PersonData);

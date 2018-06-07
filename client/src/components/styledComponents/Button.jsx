@@ -11,7 +11,7 @@ const PrimaryButton = styled('button')`
   border-radius: 4px;
   padding: 7px 12px;
   transition: 0.3s;
-  width: ${props => props.fullWidth ? '100%' : 'initial'};
+  width: ${props => (props.fullWidth ? '100%' : 'initial')};
   
   &:not([disabled]) {
     cursor: pointer;
@@ -41,5 +41,5 @@ export default PrimaryButton;
 
 export {
   PrimaryButton,
-  CancelButton
+  CancelButton,
 };

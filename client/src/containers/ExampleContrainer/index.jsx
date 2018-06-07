@@ -15,19 +15,19 @@ class ExampleComponent extends Component {
   static propTypes = {
     price: PropTypes.string,
     fetchBitcoinPrice: PropTypes.func,
-    isBTCtoUSDFetching: PropTypes.bool.isRequired
+    isBTCtoUSDFetching: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
     price: 0,
-    fetchBitcoinPrice: () => {}
+    fetchBitcoinPrice: () => {},
   };
 
   componentDidMount() {
     this.props.fetchBitcoinPrice();
   }
 
-  handlePersonDataFormSubmit = formValues => {
+  handlePersonDataFormSubmit = (formValues) => {
     const error = {};
 
     if (!formValues.name) {
@@ -48,31 +48,31 @@ class ExampleComponent extends Component {
   render() {
     return (
       <Row>
-        <Col xs={12} sm={4} className='d-flex justify-content-center'>
+        <Col xs={12} sm={4} className="d-flex justify-content-center">
           <BtcToUsdWithSpinner
             price={this.props.price}
             handleRefresh={this.props.fetchBitcoinPrice}
             isFetching={this.props.isBTCtoUSDFetching}
           />
         </Col>
-        <Col xs={12} sm={4} className='d-flex justify-content-center my-5 my-sm-0'>
-          <Links/>
+        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
+          <Links />
         </Col>
-        <Col xs={12} sm={4} className='d-flex justify-content-center'>
-          <PersonData onSubmit={this.handlePersonDataFormSubmit}/>
+        <Col xs={12} sm={4} className="d-flex justify-content-center">
+          <PersonData onSubmit={this.handlePersonDataFormSubmit} />
         </Col>
       </Row>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   price: state.example.bitcoin.price,
-  isBTCtoUSDFetching: state.example.bitcoin.isFetching
+  isBTCtoUSDFetching: state.example.bitcoin.isFetching,
 });
 
 const mapDispatchToProps = {
-  fetchBitcoinPrice
+  fetchBitcoinPrice,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);

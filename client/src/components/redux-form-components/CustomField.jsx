@@ -4,37 +4,43 @@ import { Field } from 'redux-form';
 import {
   FormGroup,
   Label,
-  FormFeedback
+  FormFeedback,
 } from 'reactstrap';
+
+const defaultErrorRender = ({ error }) => (<FormFeedback>{error}</FormFeedback>);
+defaultErrorRender.propTypes = {
+  error: PropTypes.string.isRequired,
+};
+
+const defaultLabelComponent = ({ id, label }) => (<Label for={id}>{label}</Label>);
+defaultLabelComponent.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 class CustomField extends Component {
   static propTypes = {
     component: PropTypes.func.isRequired,
-    id: PropTypes.any.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     errorComponent: PropTypes.func,
-    labelComponent: PropTypes.func
+    labelComponent: PropTypes.func,
   };
 
-  renderError = (error) => {
-    if (this.props.errorComponent) return this.props.errorComponent;
-
-    return (
-      <FormFeedback>{error}</FormFeedback>
-    );
+  static defaultProps = {
+    errorComponent: defaultErrorRender,
+    labelComponent: defaultLabelComponent,
   };
 
-  renderLabel = (id, label) => {
-    if (this.props.labelComponent) return this.props.labelComponent;
+  renderError = error => this.props.errorComponent({ error });
 
-    return (
-      <Label for={id}>{label}</Label>
-    );
-  };
+  renderLabel = (id, label) => this.props.labelComponent({ id, label });
 
   renderComponent = ChildComponent => (childProps) => {
-    const { input, meta, id, label, ...other } = childProps;
+    const {
+      input, meta, id, label, ...other
+    } = childProps;
     const { value, onChange } = input;
     const { touched, error } = meta;
 
@@ -54,10 +60,13 @@ class CustomField extends Component {
   };
 
   render() {
-    const { component: ChildComponent, ...other } = this.props;
+    // noinspection JSUnusedLocalSymbols
+    const {
+      component: ChildComponent, labelComponent, errorComponent, ...other
+    } = this.props;
 
     return (
-      <Field component={this.renderComponent(ChildComponent)} {...other}/>
+      <Field component={this.renderComponent(ChildComponent)} {...other} />
     );
   }
 }

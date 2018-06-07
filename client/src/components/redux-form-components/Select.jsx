@@ -4,10 +4,15 @@ import Select from 'react-select';
 
 export default class ReduxformSelect extends Component {
   static propTypes = { // todo: in terms of example - complete shaping
-    input: PropTypes.shape({ onChange: PropTypes.func }),
+    input: PropTypes.shape({ onChange: PropTypes.func }).isRequired,
     children: PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
     options: PropTypes.object, // todo: shape from Select options
-    className: PropTypes.string
+  };
+
+  static defaultProps = {
+    children: null,
+    options: null,
   };
 
   handleInputChange = ({ value }) => {
@@ -15,10 +20,12 @@ export default class ReduxformSelect extends Component {
   };
 
   render() {
-    const { children, input, options, className } = this.props;
+    const {
+      children, input, options,
+    } = this.props;
 
     return (
-      <label className={className}>
+      <label htmlFor="Select">
         {children}
         <Select
           clearable={false}

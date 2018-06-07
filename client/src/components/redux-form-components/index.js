@@ -3,5 +3,5 @@ import Select from './Select';
 
 export {
   CustomField,
-  Select
-}
+  Select,
+};

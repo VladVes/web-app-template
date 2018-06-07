@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   Input,
-  Form
+  Form,
 } from 'reactstrap';
 import Field from '../../../../../components/redux-form-components/CustomField';
 import Button from '../../../../../components/styledComponents/Button';
@@ -10,7 +10,7 @@ import Button from '../../../../../components/styledComponents/Button';
 class PersonDataForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
   };
 
   render() {
@@ -20,25 +20,25 @@ class PersonDataForm extends PureComponent {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <strong>Form with submit validation</strong>
         <Field
-          id='name'
-          name='name'
-          type='text'
+          id="name"
+          name="name"
+          type="text"
           component={Input}
-          placeholder='Name'
-          label='Name'
+          placeholder="Name"
+          label="Name"
         />
         <Field
-          id='surname'
-          name='surname'
-          type='text'
+          id="surname"
+          name="surname"
+          type="text"
           component={Input}
-          placeholder='Surname'
-          label='Surname'
+          placeholder="Surname"
+          label="Surname"
         />
         <Button
           fullWidth
-          type='submit'
-          className='mr-3'
+          type="submit"
+          className="mr-3"
         >
           Submit
         </Button>

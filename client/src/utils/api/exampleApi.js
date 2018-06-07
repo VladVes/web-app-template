@@ -3,5 +3,5 @@ import { axios, get, post } from './base/index';
 
 export default {
   get: async () => {},
-  getSum: async () => {}
+  getSum: async () => {},
 };
