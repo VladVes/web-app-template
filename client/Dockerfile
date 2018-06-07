@@ -6,5 +6,3 @@ WORKDIR /client
 COPY . .
 
 RUN yarn install
-
-CMD yarn start:debug
