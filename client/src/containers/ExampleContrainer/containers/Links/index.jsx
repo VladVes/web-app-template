@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Links from './components/Links';
 import { fetchLinks } from './redux/actions';
-import withSpinner from '../../../../components/hocs/withSpinner';
+import withSpinner from '../../../../shared/hocs/withSpinner';
 
 const LinksWithSpinner = withSpinner(Links);
 

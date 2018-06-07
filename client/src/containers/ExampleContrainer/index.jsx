@@ -7,7 +7,7 @@ import BtcToUsd from './components/BtcToUsd';
 import Links from './containers/Links/';
 import PersonData from './containers/PersonData';
 import { fetchBitcoinPrice } from './redux/actions';
-import withSpinner from '../../components/hocs/withSpinner';
+import withSpinner from '../../shared/hocs/withSpinner';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 
