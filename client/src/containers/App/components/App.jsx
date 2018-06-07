@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { routerMiddleware } from 'react-router-redux';
 import { hot } from 'react-hot-loader';
-import createHistory from 'history/createBrowserHistory';
 import { Container } from 'reactstrap';
 import configureStore from '../Redux/configureStore';
 import Routes from './Routes';
 
-const history = createHistory();
 const store = configureStore([ routerMiddleware(history) ]);
 
 class App extends Component {
@@ -16,11 +14,11 @@ class App extends Component {
     return (
       <div className='App'>
         <Provider store={store}>
-          <Router history={history}>
+          <BrowserRouter>
             <Container className='mt-3'>
               <Routes />
             </Container>
-          </Router>
+          </BrowserRouter>
         </Provider>
       </div>
     );
