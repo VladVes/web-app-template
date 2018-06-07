@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 export default class BtcToUsd extends Component {
   static propTypes = {
     price: PropTypes.string,
-    handleRefresh: PropTypes.func.isRequired
+    handleRefresh: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    price: '0'
+    price: '0',
   };
 
   render() {
@@ -20,8 +20,8 @@ export default class BtcToUsd extends Component {
           fetch
         </button>
         <div>
-          <Link to='/signup'>Sign Up</Link>
-          <Link to='/signin' className='ml-3'>Sign In</Link>
+          <Link to="/signup">Sign Up</Link>
+          <Link to="/signin" className="ml-3">Sign In</Link>
         </div>
       </div>
     );

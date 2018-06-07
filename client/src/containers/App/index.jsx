@@ -6,8 +6,6 @@ import AppDev from './components/App.dev';
 
 const isDev = process.env.NODE_ENV === 'dev';
 
-const Main = () => {
-  return isDev ? (<App/>) : (<AppDev/>);
-};
+const Main = () => (isDev ? (<App />) : (<AppDev />));
 
 export default Main;

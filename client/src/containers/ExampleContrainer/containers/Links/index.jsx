@@ -11,10 +11,10 @@ class LinksContainer extends Component {
   static propTypes = {
     links: PropTypes.shape({
       link1: PropTypes.string.isRequired,
-      link2: PropTypes.string.isRequired
+      link2: PropTypes.string.isRequired,
     }).isRequired,
     fetchLinks: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired
+    isFetching: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
@@ -34,9 +34,9 @@ class LinksContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   links: state.example.links.values,
-  isFetching: state.example.links.isFetching
+  isFetching: state.example.links.isFetching,
 });
 
 const mapDispatchToProps = { fetchLinks };

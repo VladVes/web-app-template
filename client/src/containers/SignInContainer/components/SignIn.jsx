@@ -6,7 +6,7 @@ import SignInForm from './SignInForm';
 class SignIn extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
   };
 
   render() {
@@ -22,5 +22,5 @@ class SignIn extends Component {
 }
 
 export default reduxForm({
-  form: 'signInForm'
+  form: 'signInForm',
 })(SignIn);

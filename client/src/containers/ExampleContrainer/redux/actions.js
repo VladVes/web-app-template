@@ -7,7 +7,7 @@ export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUES
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');
 export const fetchBitcoinPriceFailure = createAction('FETCH_BITCOIN_PRICE_FAILURE');
 
-export const fetchBitcoinPrice = () => async dispatch => {
+export const fetchBitcoinPrice = () => async (dispatch) => {
   try {
     dispatch(fetchBitcoinPriceRequest());
 

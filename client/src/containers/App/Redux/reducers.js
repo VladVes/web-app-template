@@ -7,5 +7,5 @@ export default {
   form: reduxFormReducer,
   example: exampleReducer,
   signUp: signUpReducer,
-  signIn: signInReducer
+  signIn: signInReducer,
 };

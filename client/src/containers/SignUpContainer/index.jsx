@@ -7,14 +7,14 @@ import { fetchSignUp } from './redux/actions';
 
 class SignUpContainer extends Component {
   static propTypes = {
-    fetchSignUp: Proptypes.func.isRequired
+    fetchSignUp: Proptypes.func.isRequired,
   };
 
   handleSignUpFormSubmit = formValues => this.props.fetchSignUp(formValues);
 
   render() {
     return (
-      <Row className='justify-content-center'>
+      <Row className="justify-content-center">
         <Col xs={4}>
           <SignUp
             onSubmit={this.handleSignUpFormSubmit}

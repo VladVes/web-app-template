@@ -3,16 +3,16 @@ import { handleActions } from 'redux-actions';
 import {
   fetchLinksRequest,
   fetchLinksSuccess,
-  fetchLinksFailure
+  fetchLinksFailure,
 } from './actions';
 
 const defaultState = {
   values: {
     link1: '',
-    link2: ''
+    link2: '',
   },
   error: null,
-  isFetching: false
+  isFetching: false,
 };
 
 export default handleActions(
@@ -20,7 +20,7 @@ export default handleActions(
     [fetchLinksRequest](state) {
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     },
     [fetchLinksSuccess](state, { payload }) {
@@ -28,16 +28,16 @@ export default handleActions(
         ...state,
         values: payload,
         isFetching: false,
-        error: null
+        error: null,
       };
     },
     [fetchLinksFailure](state, { payload }) {
       return {
         ...state,
         isFetching: false,
-        error: payload
+        error: payload,
       };
-    }
+    },
   },
-  defaultState
+  defaultState,
 );

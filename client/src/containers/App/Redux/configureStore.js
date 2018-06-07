@@ -8,13 +8,12 @@ import rootReducer from './reducers';
 export default () => {
   const store = createStore(
     combineReducers(rootReducer),
-    compose(
-      applyMiddleware(thunk)
-    )
+    compose(applyMiddleware(thunk)),
   );
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
+      // eslint-disable-next-line global-require
       const nextRootReducer = require('./reducers');
 
       store.replaceReducer(nextRootReducer);

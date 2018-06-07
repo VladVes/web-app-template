@@ -6,13 +6,13 @@ import {
   FormGroup,
   Input,
   Label,
-  Button
+  Button,
 } from 'reactstrap';
 
 class SignUpForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
   };
 
   renderInput = ({
@@ -21,7 +21,7 @@ class SignUpForm extends Component {
     name,
     placeholder,
     label,
-    type
+    type,
   }) => (
     <FormGroup>
       <Label for={id}>{label}</Label>
@@ -41,25 +41,25 @@ class SignUpForm extends Component {
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Field
-          id='email'
-          name='email'
-          type='email'
+          id="email"
+          name="email"
+          type="email"
           component={this.renderInput}
-          placeholder='E-mail'
-          label='E-mail'
+          placeholder="E-mail"
+          label="E-mail"
         />
         <Field
-          id='password'
-          name='password'
-          type='password'
+          id="password"
+          name="password"
+          type="password"
           component={this.renderInput}
-          placeholder='Password'
-          label='Password'
+          placeholder="Password"
+          label="Password"
         />
         <Button
-          type='submit'
-          color='primary'
-          className='mr-3'
+          type="submit"
+          color="primary"
+          className="mr-3"
         >
           Sign up
         </Button>

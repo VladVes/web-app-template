@@ -3,14 +3,14 @@ import { combineReducers } from 'redux';
 import {
   fetchBitcoinPriceRequest,
   fetchBitcoinPriceSuccess,
-  fetchBitcoinPriceFailure
+  fetchBitcoinPriceFailure,
 } from './actions';
 import linksReducer from '../containers/Links/redux/reducer';
 
 const defaultState = {
   price: '0',
   error: null,
-  isFetching: false
+  isFetching: false,
 };
 
 const bitcoinReducer = handleActions(
@@ -18,7 +18,7 @@ const bitcoinReducer = handleActions(
     [fetchBitcoinPriceRequest](state) {
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     },
     [fetchBitcoinPriceSuccess](state, { payload }) {
@@ -26,21 +26,21 @@ const bitcoinReducer = handleActions(
         ...state,
         price: payload,
         isFetching: false,
-        error: null
+        error: null,
       };
     },
     [fetchBitcoinPriceFailure](state, { payload }) {
       return {
         ...state,
         isFetching: false,
-        error: payload
+        error: payload,
       };
-    }
+    },
   },
-  defaultState
+  defaultState,
 );
 
 export default combineReducers({
   bitcoin: bitcoinReducer,
-  links: linksReducer
+  links: linksReducer,
 });

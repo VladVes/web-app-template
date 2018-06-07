@@ -5,5 +5,5 @@ import post from './post';
 export {
   axios,
   get,
-  post
+  post,
 };
