@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 
-const Footer = styled('footer')`
+const Footer = styled.footer`
   position: absolute;
   bottom: 0;
   width: 100%;

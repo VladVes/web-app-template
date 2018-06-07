@@ -4,7 +4,7 @@ import { darken } from 'polished';
 const primaryButtonColor = '#5FA1DB';
 const cancelButtonColor = '#F3F3F3';
 
-const PrimaryButton = styled('button')`
+const PrimaryButton = styled.button`
   background-color: ${primaryButtonColor};
   border: none;
   color: white;
