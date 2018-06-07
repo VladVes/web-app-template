@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "webpack-dev-server --mode development --config ./config/webpack.config.js",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
-    "watch": "concurrently 'yarn start:dev' 'yarn run dependencies'"
+    "start:debug": "concurrently 'yarn start:dev' 'yarn run dependencies'",
+    "start": "webpack-dev-server --config ./config/webpack.config.js"
   },
   "repository": {
     "type": "git",

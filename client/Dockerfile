@@ -7,4 +7,4 @@ COPY . .
 
 RUN yarn install
 
-CMD yarn watch
+CMD yarn start:debug
