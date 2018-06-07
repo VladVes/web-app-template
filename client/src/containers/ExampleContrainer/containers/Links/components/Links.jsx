@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import LinksForm from './LinksForm';
@@ -17,29 +17,19 @@ const validate = (values) => {
   return errors;
 };
 
-class Links extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    // initialValues: PropTypes.shape({
-    //   link1: PropTypes.string.isRequired,
-    //   link2: PropTypes.string.isRequired,
-    // }).isRequired,
-  };
+const Links = ({ handleSubmit, onSubmit, reset }) => (
+  <LinksForm
+    handleSubmit={handleSubmit}
+    onSubmit={onSubmit}
+    reset={reset}
+  />
+);
 
-  render() {
-    const { handleSubmit, onSubmit, reset } = this.props;
-
-    return (
-      <LinksForm
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-        reset={reset}
-      />
-    );
-  }
-}
+Links.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default reduxForm({
   form: 'linksForm',

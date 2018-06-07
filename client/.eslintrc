@@ -14,8 +14,12 @@
   },
 
   "rules": {
-    "react/prefer-stateless-function": 0,
-    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to", "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "max-len": ["error", {"code": 120, "ignoreRegExpLiterals": true, "tabWidth": 2}],
     "no-console": [1]
   }
 }
