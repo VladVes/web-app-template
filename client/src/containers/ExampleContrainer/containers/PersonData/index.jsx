@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import PersonDataForm from './components/PersonDataForm';
 
-class PersonData extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-  };
+const PersonData = ({ handleSubmit, onSubmit }) => (
+  <PersonDataForm
+    handleSubmit={handleSubmit}
+    onSubmit={onSubmit}
+  />
+);
 
-  render() {
-    const { handleSubmit, onSubmit } = this.props;
-
-    return (
-      <PersonDataForm
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-      />
-    );
-  }
-}
+PersonData.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default reduxForm({
   form: 'personDataForm',

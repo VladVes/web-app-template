@@ -13,14 +13,9 @@ const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 
 class ExampleComponent extends Component {
   static propTypes = {
-    price: PropTypes.string,
-    fetchBitcoinPrice: PropTypes.func,
+    price: PropTypes.string.isRequired,
+    fetchBitcoinPrice: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
-  };
-
-  static defaultProps = {
-    price: 0,
-    fetchBitcoinPrice: () => {},
   };
 
   componentDidMount() {
@@ -46,13 +41,15 @@ class ExampleComponent extends Component {
   };
 
   render() {
+    const { price, isBTCtoUSDFetching } = this.props;
+
     return (
       <Row>
         <Col xs={12} sm={4} className="d-flex justify-content-center">
           <BtcToUsdWithSpinner
-            price={this.props.price}
+            price={price}
             handleRefresh={this.props.fetchBitcoinPrice}
-            isFetching={this.props.isBTCtoUSDFetching}
+            isFetching={isBTCtoUSDFetching}
           />
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
