@@ -10,7 +10,7 @@ const passport = new Passport();
 class ExampleController extends BaseController {
   public init(): void {
     this.router.get('/', this.get);
-    this.router.get('/sum', passport.authenticate('jwt', { session: false }), this.getSum);
+    this.router.get('/sum', this.getSum);
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {

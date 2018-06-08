@@ -6,7 +6,11 @@ import { SubmissionError } from 'redux-form';
 import BtcToUsd from './components/BtcToUsd';
 import Links from './containers/Links/';
 import PersonData from './containers/PersonData';
-import { fetchBitcoinPrice } from './redux/actions';
+import {
+  fetchBitcoinPrice,
+  fetchTest,
+  fetchSum,
+} from './redux/actions';
 import withSpinner from '../../shared/hocs/withSpinner';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
@@ -14,12 +18,18 @@ const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 class ExampleComponent extends Component {
   static propTypes = {
     price: PropTypes.string.isRequired,
+    sum: PropTypes.number.isRequired,
+    testText: PropTypes.string.isRequired,
     fetchBitcoinPrice: PropTypes.func.isRequired,
+    fetchSum: PropTypes.func.isRequired,
+    fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
     this.props.fetchBitcoinPrice();
+    this.props.fetchTest();
+    this.props.fetchSum();
   }
 
   handlePersonDataFormSubmit = (formValues) => {
@@ -41,16 +51,23 @@ class ExampleComponent extends Component {
   };
 
   render() {
-    const { price, isBTCtoUSDFetching } = this.props;
+    const {
+      price,
+      isBTCtoUSDFetching,
+      testText,
+      sum,
+    } = this.props;
 
     return (
       <Row>
-        <Col xs={12} sm={4} className="d-flex justify-content-center">
+        <Col xs={12} sm={4} className="d-flex align-items-center flex-column ">
           <BtcToUsdWithSpinner
             price={price}
             handleRefresh={this.props.fetchBitcoinPrice}
             isFetching={isBTCtoUSDFetching}
           />
+          <div className="mb-3">Text from server: {testText}</div>
+          <div className="mb-3">Sum from server: {sum}</div>
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
@@ -65,11 +82,15 @@ class ExampleComponent extends Component {
 
 const mapStateToProps = state => ({
   price: state.example.bitcoin.price,
+  testText: state.example.test.text,
+  sum: state.example.sum.value,
   isBTCtoUSDFetching: state.example.bitcoin.isFetching,
 });
 
 const mapDispatchToProps = {
   fetchBitcoinPrice,
+  fetchTest,
+  fetchSum,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);

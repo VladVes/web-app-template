@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
-import { axios, get, post } from './base/index';
+import { get } from './base';
+import { apiUrl } from './base/axios';
 
 export default {
-  get: async () => {},
-  getSum: async () => {},
+  get: () => get(`${apiUrl}/example`),
+  getSum: () => get(`${apiUrl}/example/sum`),
 };
