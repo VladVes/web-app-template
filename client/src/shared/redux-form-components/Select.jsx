@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 export default class ReduxformSelect extends Component {
-  static propTypes = { // todo: in terms of example - complete shaping
+  static propTypes = {
     input: PropTypes.shape({ onChange: PropTypes.func }).isRequired,
     children: PropTypes.func,
     // eslint-disable-next-line react/forbid-prop-types
-    options: PropTypes.object, // todo: shape from Select options
+    options: PropTypes.object,
   };
 
   static defaultProps = {

@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-export const apiUrl = '/api/v1'; // todo: should constants end with '/' or not
+export const apiUrl = '/api/v1';
 
-// todo: add /api/version to axios defualt to use endpoints only?
 export const defaultParams = {
   headers: { Authorization: localStorage.getItem('token') },
 };
 
-export default axios; // todo: configurable
+export default axios;
