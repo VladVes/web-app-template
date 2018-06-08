@@ -4,7 +4,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { fetchCurrentUser } from '../../SignInContainer/redux/actions';
+import { fetchCurrentUser } from './actions';
 
 export default () => {
   const store = createStore(
