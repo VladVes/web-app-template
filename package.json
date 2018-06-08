@@ -1,0 +1,27 @@
+{
+  "name": "aspiritywebtemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:client": "yarn --cwd ./client install",
+    "install:server": "yarn --cwd ./server install",
+    "install:all": "yarn run install:client && yarn run install:server",
+    "test": "yarn --cwd ./server test --exit",
+    "test:all": "yarn --cwd ./server test:all --exit",
+    "start": "docker-compose up"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Sergey_Okishev@bitbucket.org/aspirity/aspiritywebtemplate.git"
+  },
+  "author": "Aspirity",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/aspirity/aspiritywebtemplate#readme"
+}
