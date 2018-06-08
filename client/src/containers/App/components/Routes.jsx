@@ -10,7 +10,7 @@ const Routes = () => (
   <Switch>
     <Route exact path="/" component={ExampleContainer} />
     <Route path="/1" component={ExampleContainer} />
-    <PrivateRoute path="/private" component={ExampleContainer} isLogged={false} />
+    <PrivateRoute path="/private" component={ExampleContainer} />
     <Route path="/signup" component={SignUpContainer} />
     <Route path="/signin" component={SignInContainer} />
   </Switch>
