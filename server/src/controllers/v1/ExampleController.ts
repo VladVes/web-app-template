@@ -1,11 +1,10 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { ExampleService } from '../../services';
 import Logger from '../../Logger';
-import Passport from '../../middlewares/Passport';
+import passport from '../../middlewares/Passport';
 import BaseController from '../BaseController';
 
 const logger = new Logger();
-const passport = new Passport();
 
 class ExampleController extends BaseController {
   public init(): void {

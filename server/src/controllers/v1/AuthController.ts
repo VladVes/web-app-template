@@ -1,14 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import * as bcrypt from 'bcryptjs-then';
 import * as VError from 'verror';
-import Passport from '../../middlewares/Passport';
+import passport from '../../middlewares/Passport';
 import UserModel, { User } from '../../models/UserModel';
 import { AuthService } from '../../services';
 import validate from '../../middlewares/validate';
 import { signUpSchema, signInSchema } from '../../validationSchemas/auth';
 import BaseController from '../BaseController';
-
-const passport = new Passport();
 
 class AuthController extends BaseController {
   public init(): void {

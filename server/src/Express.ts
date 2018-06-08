@@ -1,11 +1,10 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import RequestsLogger from './RequestsLogger';
-import Passport from './middlewares/Passport';
+import passport from './middlewares/Passport';
 import customValidators from './middlewares/customValidators';
 import MainController from './controllers/MainController';
 
-const passport = new Passport();
 const requestsLogger = new RequestsLogger();
 
 class Express {
