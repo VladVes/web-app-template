@@ -1,5 +1,7 @@
-import { applyMiddleware } from 'redux';
 import prodStore from './configureStore.prod';
 import DevTools from '../components/DevTools';
 
-export default params => prodStore([...params, applyMiddleware(DevTools.instrument)]);
+export default (combinedReducer, middlewares) => prodStore(
+  combinedReducer,
+  [...middlewares, DevTools.instrument()],
+);

@@ -1,11 +1,6 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import reducers from './reducers';
+import { createStore, compose } from 'redux';
 
-export default middlewares => createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunk),
-    ...middlewares,
-  ),
+export default (combinedReducer, middlewares) => createStore(
+  combinedReducer,
+  compose.apply(this, middlewares),
 );

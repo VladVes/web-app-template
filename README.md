@@ -39,3 +39,4 @@ Solution: u ran "docker-compose up" instead of "yarn start". Run "yarn install:a
     * Db name
     * Db password
     * Url`s in configs, docker files
+3. Set git origin with [git remote set-url origin "your_project_repository"](https://help.github.com/articles/changing-a-remote-s-url/)
