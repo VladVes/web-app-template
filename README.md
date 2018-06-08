@@ -8,7 +8,7 @@
 * Setup debugger: [Instructions](https://confluence.aspirity.com/display/DI/Debugging)
 * cd project root (~/.../AspirityWebTemplate)
 * yarn install:all - installs packages both for server and client
-* yarn start - would run docker-compose up
+* yarn start - would run docker-compose and dependencies watcher
 #### Server
 * To add new dependency install it locally (*yarn add ...*), and it'll be installed in docker container automatically
 
@@ -31,4 +31,11 @@ where
   * port: 27017
   
 ### Known issues
-1. Cannod find module ‘whatevermodule’ in docker logs output. Solution: u forgot to run yarn dependencies, other way - stop docker-compose, yarn install, docker-compose up
+1. "Cannot find module ‘whatevermodule’..." in docker logs output. 
+Solution: u ran "docker-compose up" instead of "yarn start". Run "yarn install:all" or run depndencies watcher from project folder (ex. cd client, yarn dependencies)
+### Starting new project with template
+1. Rename containers in docker-compose file
+2. Update database info
+    * Db name
+    * Db password
+    * Url`s in configs, docker files
