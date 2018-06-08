@@ -86,4 +86,4 @@ class JWTAuth extends Passport {
   }
 }
 
-export default JWTAuth;
+export default new JWTAuth();

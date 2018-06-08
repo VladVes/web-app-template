@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BtcToUsd = props => (
-  <div>
-    <span>BTC to USD: {props.price}$</span>
+  <div className="mb-3">
+    <span className="mr-3">BTC to USD: {props.price}$</span>
     <button onClick={props.handleRefresh}>
-      fetch
+      Refetch
     </button>
   </div>
 );

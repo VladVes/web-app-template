@@ -1,3 +1,3 @@
 import axios, { defaultParams } from './axios';
 
-export default (url, query, params = { ...defaultParams, method: 'get' }) => axios({ url, query, params });
+export default (url, params = { ...defaultParams }) => axios.get(url, params);
