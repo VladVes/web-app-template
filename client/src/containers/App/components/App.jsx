@@ -7,7 +7,6 @@ import configureStore from '../Redux/configureStore';
 import Routes from './Routes';
 import Main from './Main';
 
-
 import '../styled/GlobalStyles';
 
 const store = configureStore();
@@ -17,10 +16,8 @@ const App = ({ children }) => (
     <Provider store={store}>
       <BrowserRouter>
         <Main>
-          <div>
-            <Routes />
-            {children}
-          </div>
+          <Routes />
+          {children}
         </Main>
       </BrowserRouter>
     </Provider>
