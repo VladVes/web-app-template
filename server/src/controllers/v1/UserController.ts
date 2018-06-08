@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import Passport from '../../middlewares/Passport';
+import passport from '../../middlewares/Passport';
 import BaseController from '../BaseController';
-
-const passport = new Passport();
 
 class UserController extends BaseController {
   public init(): void {
