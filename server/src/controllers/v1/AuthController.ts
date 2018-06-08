@@ -1,14 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import * as bcrypt from 'bcryptjs-then';
 import * as VError from 'verror';
-import Passport from '../../middlewares/Passport';
+import passport from '../../middlewares/Passport';
 import UserModel, { User } from '../../models/UserModel';
 import { AuthService } from '../../services';
 import validate from '../../middlewares/validate';
 import { signUpSchema, signInSchema } from '../../validationSchemas/auth';
 import BaseController from '../BaseController';
-
-const passport = new Passport();
 
 class AuthController extends BaseController {
   public init(): void {
@@ -22,7 +20,7 @@ class AuthController extends BaseController {
     this.router.post('/signup', validate(signUpSchema), this.signUp);
   }
 
-  private signIn(req: Request, res: Response, next: NextFunction): Response | void {
+  public signIn(req: Request, res: Response, next: NextFunction): Response | void {
     try {
       const user = req.user as User;
       const token = AuthService.generateToken(user);
@@ -35,11 +33,11 @@ class AuthController extends BaseController {
     }
   }
 
-  private signInError(err: Error, req: Request, res: Response, next: NextFunction): Response {
+  public signInError(err: Error, req: Request, res: Response, next: NextFunction): Response {
     return res.status(401).send(err);
   }
 
-  private async signUp(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  public async signUp(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       const user = req.body;
       const userDoc = {
