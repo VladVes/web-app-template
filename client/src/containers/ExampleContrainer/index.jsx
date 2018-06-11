@@ -11,6 +11,7 @@ import {
   fetchTest,
   fetchSum,
 } from './redux/actions';
+import { showModal } from '../../shared/modal/redux/actions';
 import withSpinner from '../../shared/hocs/withSpinner';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
@@ -24,6 +25,7 @@ class ExampleComponent extends Component {
     fetchSum: PropTypes.func.isRequired,
     fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
+    showModal: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -50,6 +52,10 @@ class ExampleComponent extends Component {
     console.log(formValues);
   };
 
+  showExampleModal = () => {
+    this.props.showModal('ExampleModal');
+  };
+
   render() {
     const {
       price,
@@ -68,6 +74,7 @@ class ExampleComponent extends Component {
           />
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
+          <button onClick={this.showExampleModal}>SHOW EXAMPLE MODAL</button>
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
@@ -91,6 +98,7 @@ const mapDispatchToProps = {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
+  showModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);
