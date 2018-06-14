@@ -1,8 +1,5 @@
 import { createAction } from 'redux-actions';
-import axios from 'axios';
 import api from '../../../utils/ApiClient';
-
-const bitcoinPriceUrl = 'https://api.coinmarketcap.com/v1/ticker/bitcoin/';
 
 export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUEST');
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');
@@ -12,8 +9,8 @@ export const fetchBitcoinPrice = () => async (dispatch) => {
   try {
     dispatch(fetchBitcoinPriceRequest());
 
-    const response = await axios.get(bitcoinPriceUrl);
-    const price = response.data[0].price_usd;
+    const response = await api.example.getBitcoinPrice();
+    const { price } = response.data;
 
     dispatch(fetchBitcoinPriceSuccess(price));
   } catch (error) {
