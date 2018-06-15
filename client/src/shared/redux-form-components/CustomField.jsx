@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import {
@@ -18,7 +18,7 @@ defaultLabelComponent.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-class CustomField extends Component {
+class CustomField extends PureComponent {
   static propTypes = {
     component: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
