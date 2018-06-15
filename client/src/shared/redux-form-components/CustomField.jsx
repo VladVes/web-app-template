@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import {
@@ -18,7 +18,7 @@ defaultLabelComponent.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-class CustomField extends PureComponent {
+class CustomField extends Component {
   static propTypes = {
     component: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -37,9 +37,9 @@ class CustomField extends PureComponent {
 
   renderLabel = (id, label) => this.props.labelComponent({ id, label });
 
-  renderComponent = ChildComponent => (childProps) => {
+  renderComponent = (childProps) => {
     const {
-      input, meta, id, label, ...other
+      child: ChildComponent, input, meta, id, label, ...other
     } = childProps;
     const { value, onChange } = input;
     const { touched, error } = meta;
@@ -66,7 +66,7 @@ class CustomField extends PureComponent {
     } = this.props;
 
     return (
-      <Field component={this.renderComponent(ChildComponent)} {...other} />
+      <Field component={this.renderComponent} child={ChildComponent} {...other} />
     );
   }
 }
