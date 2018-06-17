@@ -48,6 +48,11 @@ const config = convict({
       default: '7 days',
     },
   },
+  bitcoinUrl: {
+    doc: 'External api url for fetching bitcoin price',
+    format: String,
+    default: 'https://api.coinmarketcap.com/v1/ticker/bitcoin/',
+  },
 });
 
 const env = config.get('env');
