@@ -11,6 +11,8 @@ import { hideModal } from '../../../../../shared/modal/redux/actions';
 class CustomExampleModal extends Component {
   static propTypes = {
     hideModal: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
   };
 
   closeModal = (e) => {
@@ -19,12 +21,15 @@ class CustomExampleModal extends Component {
   };
 
   render() {
+    const { title, content } = this.props;
+
     return (
       <StyledModalContent>
         <StyledClose onClick={this.closeModal}>
           <CloseIcon />
         </StyledClose>
-        MODAL CONTENT
+        title: {title}
+        content: {content}
       </StyledModalContent>);
   }
 }

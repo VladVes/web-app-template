@@ -4,12 +4,13 @@ export const showModalRequest = createAction('OPEN_MODAL');
 export const hideModalRequest = createAction('HIDE_MODAL');
 export const modalError = createAction('MODAL_ERROR');
 
-export const showModal = (type, props) => async (dispatch) => {
+export const showModal = (type, modalProps, wrapperProps) => async (dispatch) => {
   try {
     const modal = {
       type,
       show: true,
-      modalProps: props,
+      modalProps,
+      wrapperProps,
       loading: false,
       error: null,
     };
