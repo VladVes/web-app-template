@@ -52,8 +52,9 @@ class ExampleComponent extends Component {
     console.log(formValues);
   };
 
-  showExampleModal = () => {
-    this.props.showModal('ExampleModal');
+  showExampleModal = (e) => {
+    const modalName = e.target.name;
+    this.props.showModal(modalName);
   };
 
   render() {
@@ -74,7 +75,8 @@ class ExampleComponent extends Component {
           />
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
-          <button onClick={this.showExampleModal}>SHOW EXAMPLE MODAL</button>
+          <button name="SimpleExampleModal" onClick={this.showExampleModal}>SHOW SIMPLE MODAL</button>
+          <button name="CustomExampleModal" onClick={this.showExampleModal}>SHOW CUSTOM MODAL</button>
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />

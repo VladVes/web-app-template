@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Modal from 'react-modal';
+import CustomModal from './styled';
 import { hideModal } from './redux/actions';
 import withSpinner from '../hocs/withSpinner';
 
-import ExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal';
+import SimpleExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/SimpleModal';
+import CustomExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/CustomModal';
 
 const modals = {
-  ExampleModal,
+  SimpleExampleModal,
+  CustomExampleModal,
 };
 
 class MainModal extends Component {
@@ -17,6 +19,7 @@ class MainModal extends Component {
       type: PropTypes.string, // name of modal from modals array
       show: PropTypes.bool,
       modalProps: PropTypes.object,
+      wrapperProps: PropTypes.shape({ modalStyleName: PropTypes.string, overlayStyleName: PropTypes.string }),
       loading: PropTypes.bool,
       error: PropTypes.shape({ message: PropTypes.string, data: PropTypes.any }),
     }).isRequired,
@@ -37,20 +40,21 @@ class MainModal extends Component {
 
   render() {
     const {
-      show, modalProps, type, loading, error,
+      show, modalProps, wrapperProps, type, loading, error,
     } = this.props.modal;
 
     if (!show) return null;
 
     const ModalContent = this.getModalContent(type, error);
-    // todo: loader HOC
+
     return (
-      <Modal
+      <CustomModal
         isOpen={show}
         onRequestClose={this.handleCloseModal}
+        {...wrapperProps}
       >
         <ModalContent {...modalProps} isFetching={loading} />
-      </Modal>
+      </CustomModal>
     );
   }
 }
