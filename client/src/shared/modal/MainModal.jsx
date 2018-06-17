@@ -8,6 +8,8 @@ import withSpinner from '../hocs/withSpinner';
 import SimpleExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/SimpleModal';
 import CustomExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/CustomModal';
 
+// Array contains all custom modals from app
+// To successfully open modal, type prop in "showModal" action should match name from this array
 const modals = {
   SimpleExampleModal,
   CustomExampleModal,

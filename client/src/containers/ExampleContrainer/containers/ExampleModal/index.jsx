@@ -40,5 +40,4 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = { showModal };
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleModal);

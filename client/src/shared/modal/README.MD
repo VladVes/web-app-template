@@ -1,6 +1,6 @@
 ## MODALS USAGE GUIDE
-
-Main modals wrapper and core acitons located in _client/src/shared/modal_
+Main modals wrapper and core actions located in _client/src/shared/modal_
+To add new modal: import your modal in MainModal and add to "modals" array (similar worflow as for reducers)
 For modal rendering we are using react-modal with custom wrapper.
 To open/hide modal use actions from shared/modal/redux
 For internal modal logic - use own actions (see examples for more info) and pass props in showModal action
