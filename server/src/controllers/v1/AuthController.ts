@@ -27,7 +27,7 @@ class AuthController extends BaseController {
 
       res.cookie('jwt', token, { httpOnly: true });
 
-      return res.json({ message: 'Success', id: req.user._id, token });
+      return res.json({ token, message: 'Success', id: req.user._id });
     } catch (err) {
       return next(err instanceof Error ? err : new VError(err));
     }

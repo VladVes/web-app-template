@@ -53,6 +53,18 @@ const config = convict({
     format: String,
     default: 'https://api.coinmarketcap.com/v1/ticker/bitcoin/',
   },
+  captcha: {
+    url: {
+      doc: 'Google url for captcha verification',
+      format: String,
+      default: 'https://www.google.com/recaptcha/api/siteverify',
+    },
+    secret: {
+      doc: 'Google recaptcha secret key',
+      format: String,
+      default: '6LfOZF8UAAAAAJ_I2pg4nIuxnuN2ySz4E8wUvz8X',
+    }
+  },
 });
 
 const env = config.get('env');
