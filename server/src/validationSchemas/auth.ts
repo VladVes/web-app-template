@@ -12,6 +12,12 @@ export const signUpSchema = (req: Request): ValidationSchema => ({
     isLength: { options: [{ min: 6 }], errorMessage: 'Min length is 6 symbols' },
     isNotEmpty: { errorMessage: 'Password is required' },
   },
+  captcha: {
+    isCaptchaVerified: {
+      errorMessage: 'Captcha is not verified',
+      options: [req.connection.remoteAddress],
+    },
+  },
 });
 
 export const signInSchema = (req: Request): ValidationSchema => ({
