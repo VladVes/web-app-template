@@ -1,6 +1,4 @@
-const path = require('path');
-
-module.exports = {
+{
   "extends": "airbnb",
   "parser": "babel-eslint",
 
@@ -30,9 +28,8 @@ module.exports = {
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": path.resolve(__dirname, "./config/webpack.config.js")
+        "config": "./config/webpack.config.js"
       }
     }
   }
-};
-
+}
