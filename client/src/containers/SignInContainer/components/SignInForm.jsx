@@ -5,7 +5,7 @@ import {
   Input,
   Button,
 } from 'reactstrap';
-import Field from '../../../shared/redux-form-components/CustomField';
+import Field from 'Shared/redux-form-components/CustomField';
 
 const SignInForm = ({ handleSubmit, onSubmit }) => (
   <Form onSubmit={handleSubmit(onSubmit)}>

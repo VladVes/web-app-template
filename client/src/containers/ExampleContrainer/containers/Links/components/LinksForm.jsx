@@ -4,8 +4,8 @@ import {
   Form,
   Input,
 } from 'reactstrap';
-import Field from '../../../../../shared/redux-form-components/CustomField';
-import { PrimaryButton, CancelButton } from '../../../../../shared/styledComponents/Button';
+import Field from 'Shared/redux-form-components/CustomField';
+import { PrimaryButton, CancelButton } from 'Shared/styledComponents/Button';
 
 class LinksForm extends PureComponent {
   static propTypes = {

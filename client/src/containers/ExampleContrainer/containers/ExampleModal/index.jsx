@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { showModal } from 'Shared/modal/redux/actions';
 import { customModalStyle, customOverlayStyle } from './styled/overridedStylesExample';
-import { showModal } from '../../../../shared/modal/redux/actions';
 
 class ExampleModal extends Component {
   static propTypes = {
