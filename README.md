@@ -2,7 +2,7 @@
 
 [Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
 
-###Development
+### Development
 * Install docker with [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)
 * Setup development environment: [WebStorm instructions](https://confluence.aspirity.com/display/DI/Preparation+for+work)
 * Setup debugger: [Instructions](https://confluence.aspirity.com/display/DI/Debugging)
@@ -33,6 +33,8 @@ where
 ### Known issues
 1. "Cannot find module ‘whatevermodule’..." in docker logs output. 
 Solution: u ran "docker-compose up" instead of "yarn start". Run "yarn install:all" or run depndencies watcher from project folder (ex. cd client, yarn dependencies)
+2. Proxy error, backend requests fails from front-end
+Solution: change container name from webpack to "localhost" if running client from "yarn start:dev"
 ### Starting new project with template
 1. Rename containers in docker-compose file
 2. Update database info

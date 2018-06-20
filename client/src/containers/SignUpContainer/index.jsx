@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import SignUp from './components/SignUp';
@@ -7,7 +7,7 @@ import { fetchSignUp } from './redux/actions';
 
 class SignUpContainer extends Component {
   static propTypes = {
-    fetchSignUp: Proptypes.func.isRequired,
+    fetchSignUp: PropTypes.func.isRequired,
   };
 
   handleSignUpFormSubmit = formValues => this.props.fetchSignUp(formValues);

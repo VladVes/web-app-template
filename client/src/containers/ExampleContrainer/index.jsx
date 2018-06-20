@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import { SubmissionError } from 'redux-form';
-import BtcToUsd from './components/BtcToUsd';
 import Links from './containers/Links/';
 import PersonData from './containers/PersonData';
+import ExampleModal from './containers/ExampleModal';
+import BtcToUsd from './components/BtcToUsd';
 import {
   fetchBitcoinPrice,
   fetchTest,
@@ -68,6 +69,7 @@ class ExampleComponent extends Component {
           />
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
+          <ExampleModal />
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />

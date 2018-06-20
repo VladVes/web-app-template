@@ -37,9 +37,9 @@ class CustomField extends Component {
 
   renderLabel = (id, label) => this.props.labelComponent({ id, label });
 
-  renderComponent = ChildComponent => (childProps) => {
+  renderComponent = (childProps) => {
     const {
-      input, meta, id, label, ...other
+      child: ChildComponent, input, meta, id, label, ...other
     } = childProps;
     const { value, onChange } = input;
     const { touched, error } = meta;
@@ -66,7 +66,7 @@ class CustomField extends Component {
     } = this.props;
 
     return (
-      <Field component={this.renderComponent(ChildComponent)} {...other} />
+      <Field component={this.renderComponent} child={ChildComponent} {...other} />
     );
   }
 }

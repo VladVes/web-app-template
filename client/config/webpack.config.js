@@ -40,7 +40,7 @@ module.exports = {
     host: '0.0.0.0',
     port: 3000,
     proxy: {
-      '/api': 'http://aspiritywebtemplate_server:8080',
+      '/api': 'http://aspiritywebtemplate_serve:8080',
     },
   },
 };

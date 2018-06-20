@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader';
 import configureStore from '../Redux/configureStore';
 import Routes from './Routes';
 import Main from './Main';
+import MainModal from '../../../shared/modal/MainModal';
 
 import '../styled/GlobalStyles';
 
@@ -17,6 +18,7 @@ const App = ({ children }) => (
       <BrowserRouter>
         <Main>
           <Routes />
+          <MainModal />
           {children}
         </Main>
       </BrowserRouter>
