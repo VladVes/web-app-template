@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
+import MainModal from 'Shared/modal/MainModal';
 import configureStore from '../Redux/configureStore';
 import Routes from './Routes';
 import Main from './Main';
-import MainModal from '../../../shared/modal/MainModal';
 
 import '../styled/GlobalStyles';
 

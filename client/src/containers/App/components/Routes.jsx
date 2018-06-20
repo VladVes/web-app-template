@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import ExampleContainer from '../../ExampleContrainer/index';
-import SignUpContainer from '../../SignUpContainer/index';
-import SignInContainer from '../../SignInContainer/index';
+import ExampleContainer from 'Containers/ExampleContrainer/index';
+import SignUpContainer from 'Containers/SignUpContainer/index';
+import SignInContainer from 'Containers/SignInContainer/index';
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => (

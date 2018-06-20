@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import { SubmissionError } from 'redux-form';
-import Links from './containers/Links/';
+import withSpinner from 'Shared/hocs/withSpinner';
+import Links from './containers/Links';
 import PersonData from './containers/PersonData';
 import ExampleModal from './containers/ExampleModal';
 import BtcToUsd from './components/BtcToUsd';
@@ -12,7 +13,6 @@ import {
   fetchTest,
   fetchSum,
 } from './redux/actions';
-import withSpinner from '../../shared/hocs/withSpinner';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 

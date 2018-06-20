@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { hideModal } from 'Shared/modal/redux/actions';
 import {
   StyledModalContent,
   StyledClose,
   CloseIcon,
 } from '../styled';
-import { hideModal } from '../../../../../shared/modal/redux/actions';
 
 class SimpleExampleModal extends Component {
   static propTypes = {
