@@ -1,9 +1,13 @@
-{
+const path = require('path');
+
+module.exports = {
   "extends": "airbnb",
   "parser": "babel-eslint",
 
   "plugins": [
-    "react"
+    "react",
+    "import",
+    "eslint-plugin-import"
   ],
 
   "env": {
@@ -21,5 +25,14 @@
     }],
     "max-len": ["error", {"code": 120, "ignoreRegExpLiterals": true, "tabWidth": 2}],
     "no-console": [1]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": path.resolve(__dirname, "./config/webpack.config.js")
+      }
+    }
   }
-}
+};
+

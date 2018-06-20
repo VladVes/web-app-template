@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const path = require('path');
+const resolve = require('./webpack.config.resolve');
 
 module.exports = {
   entry: [
@@ -6,13 +8,16 @@ module.exports = {
     './src/index.jsx',
   ],
   output: {
-    path: `${__dirname}public`,
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
     filename: 'bundle.js',
   },
-  resolve: {
-    extensions: ['*', '.js', '.jsx'],
-  },
+
+  /**
+   * Determine the array of extensions that should be used to resolve modules.
+   */
+  resolve,
+
   module: {
     rules: [
       {
