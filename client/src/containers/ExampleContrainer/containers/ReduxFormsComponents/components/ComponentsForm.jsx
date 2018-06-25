@@ -39,8 +39,8 @@ class ComponentsForm extends PureComponent {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <strong>Form with submit validation</strong>
         <Field
-          id="select"
-          name="select"
+          id="Select"
+          name="Select"
           component={Select}
           options={this.state.selectOptions}
           label="Select"
@@ -84,7 +84,6 @@ class ComponentsForm extends PureComponent {
         {/* label="Verify you are not a robot" */}
         {/* /> */}
         <Button
-          fullWidth
           type="submit"
           className="mr-3"
         >

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
+import moment from 'moment';
 import ComponentsForm from './components/ComponentsForm';
 
 const PersonData = ({ handleSubmit, onSubmit }) => (
@@ -17,4 +18,9 @@ PersonData.propTypes = {
 
 export default reduxForm({
   form: 'componentsForm',
+  initialValues: {
+    DatePicker: moment(),
+    FilePicker: {},
+    Select: { value: 'DE', label: 'Delaware' },
+  },
 })(ComponentsForm);

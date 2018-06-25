@@ -2,25 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-export default class ReduxformSelect extends Component {
+const SelectProp = PropTypes.shape({ value: PropTypes.string, label: PropTypes.string });
+
+export default class ReduxFormSelect extends Component {
   static propTypes = {
-    options: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })).isRequired,
+    options: PropTypes.arrayOf(SelectProp).isRequired,
     onChange: PropTypes.func.isRequired,
-    // eslint-disable-next-line react/forbid-prop-types
-    value: PropTypes.object,
+    value: PropTypes.shape({ value: PropTypes.string, label: PropTypes.string }).isRequired,
   };
 
-  static defaultProps = {
-    value: null,
-  };
-
-  handleSelect = ({ value }) => {
+  handleSelect = (value) => {
     this.props.onChange(value);
   };
 
   render() {
     const {
-      value, options, ...other
+      options, ...other
     } = this.props;
 
     return (

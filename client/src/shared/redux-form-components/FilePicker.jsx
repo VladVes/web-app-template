@@ -11,7 +11,6 @@ import {
 
 const FileProp = PropTypes.shape({
   lastModified: PropTypes.number.isRequired,
-  lastModifiedDate: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
@@ -23,12 +22,13 @@ export default class DropZone extends PureComponent {
     maxImageSize: PropTypes.number,
     accept: PropTypes.string,
     multiple: PropTypes.bool,
-    value: PropTypes.oneOfType([FileProp, PropTypes.arrayOf(FileProp)]).isRequired,
+    value: PropTypes.oneOfType([FileProp, PropTypes.arrayOf(FileProp), PropTypes.shape({})]),
     isRemovable: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    value: null,
     maxImageSize: 5242880, // 5 Mb
     accept: 'image/jpeg, image/png, image/gif',
     multiple: true,
