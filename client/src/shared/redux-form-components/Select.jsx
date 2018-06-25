@@ -4,37 +4,31 @@ import Select from 'react-select';
 
 export default class ReduxformSelect extends Component {
   static propTypes = {
-    input: PropTypes.shape({ onChange: PropTypes.func }).isRequired,
-    children: PropTypes.func,
+    options: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })).isRequired,
+    onChange: PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    options: PropTypes.object,
+    value: PropTypes.object,
   };
 
   static defaultProps = {
-    children: null,
-    options: null,
+    value: null,
   };
 
-  handleInputChange = ({ value }) => {
-    this.props.input.onChange(value);
+  handleSelect = ({ value }) => {
+    this.props.onChange(value);
   };
 
   render() {
     const {
-      children, input, options,
+      value, options, ...other
     } = this.props;
 
     return (
-      <label htmlFor="Select">
-        {children}
-        <Select
-          clearable={false}
-          searchable={false}
-          options={options}
-          {...input}
-          onChange={this.handleInputChange}
-        />
-      </label>
+      <Select
+        {...other}
+        options={options}
+        onChange={this.handleSelect}
+      />
     );
   }
 }

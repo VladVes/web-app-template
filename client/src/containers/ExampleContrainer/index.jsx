@@ -7,6 +7,7 @@ import withSpinner from 'Shared/hocs/withSpinner';
 import Links from './containers/Links';
 import PersonData from './containers/PersonData';
 import ExampleModal from './containers/ExampleModal';
+import ComponentsForm from './containers/ReduxFormsComponents';
 import BtcToUsd from './components/BtcToUsd';
 import {
   fetchBitcoinPrice,
@@ -70,6 +71,7 @@ class ExampleComponent extends Component {
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
           <ExampleModal />
+          <ComponentsForm onSubmit={formValues => alert(JSON.stringify(formValues))} />
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
