@@ -51,6 +51,13 @@ class ComponentsForm extends PureComponent {
           component={DatePicker}
           label="DatePicker"
         />
+        <Field
+          id="FilePicker"
+          name="FilePicker"
+          component={FilePicker}
+          disabled
+          label="FilePicker"
+        />
         {/* <Field */}
         {/* id="TimePicker" */}
         {/* name="TimePicker" */}
