@@ -36,7 +36,7 @@ export default class DropZone extends PureComponent {
   };
 
   // eslint-disable-next-line no-unused-vars
-  onDrop = (filesToUpload, e) => {
+  onDrop = (filesToUpload) => {
     const { multiple } = this.props;
     this.props.onChange(multiple ? filesToUpload : filesToUpload[0]);
   };

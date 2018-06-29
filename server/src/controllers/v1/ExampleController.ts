@@ -1,5 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import * as VError from 'verror';
+import * as fs from 'fs';
+import * as path from 'path';
 import axios from 'axios';
 import { ExampleService } from '../../services';
 import Logger from '../../Logger';
@@ -13,6 +15,7 @@ class ExampleController extends BaseController {
     this.router.get('/', this.get);
     this.router.get('/sum', this.getSum);
     this.router.get('/bitcoin', this.getBitcoinPrice);
+    this.router.post('/file', this.uploadFile);
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -41,6 +44,11 @@ class ExampleController extends BaseController {
     } catch (err) {
       return next(err instanceof Error ? err : new VError(err));
     }
+  }
+
+  public async uploadFile(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
+    req.pipe(fs.createWriteStream(path.resolve(__dirname, './uploadFile.jpg')));
+    req.on('end', () => res.json({ success: 'ok' }));
   }
 }
 

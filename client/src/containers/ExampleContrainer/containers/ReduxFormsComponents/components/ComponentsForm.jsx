@@ -8,9 +8,9 @@ import {
   Select,
   DatePicker,
   TimePicker,
-  FilePicker,
   Radio,
 } from 'Shared/redux-form-components';
+import PhotoUploaderSingle from '../../../PhotoUploaderSingle';
 
 class ComponentsForm extends PureComponent {
   static propTypes = {
@@ -51,12 +51,9 @@ class ComponentsForm extends PureComponent {
           component={DatePicker}
           label="DatePicker"
         />
-        <Field
-          id="FilePicker"
-          name="FilePicker"
-          component={FilePicker}
-          disabled
-          label="FilePicker"
+        <PhotoUploaderSingle
+          id="screenshot"
+          name="screenshot"
         />
         {/* <Field */}
         {/* id="TimePicker" */}
