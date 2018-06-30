@@ -3,9 +3,6 @@
 ## Links
 * [Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
 * [pre-defined redux-form components](https://bitbucket.org/aspirity/aspiritywebtemplate/src/master/client/src/shared/redux-form-components/)
-* []()
-
-
 
 ### Development
 * Install docker with [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)

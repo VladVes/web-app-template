@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'reactstrap';
@@ -14,33 +13,20 @@ class ComponentsForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-  };
-
-  state = {
-    selectOptions: [
-      { value: 'AK', label: 'Alaska' },
-      { value: 'AS', label: 'American Samoa' },
-      { value: 'AZ', label: 'Arizona' },
-      { value: 'AR', label: 'Arkansas' },
-      { value: 'CA', label: 'California' },
-      { value: 'CO', label: 'Colorado' },
-      { value: 'CT', label: 'Connecticut' },
-      { value: 'DE', label: 'Delaware' },
-      { value: 'DC', label: 'District Of Columbia' },
-    ],
+    selectOptions: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })).isRequired,
   };
 
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, selectOptions } = this.props;
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <strong>Form with submit validation</strong>
+        <strong>Form with custom components</strong>
         <Field
           id="Select"
           name="Select"
           component={Select}
-          options={this.state.selectOptions}
+          options={selectOptions}
           label="Select"
         />
         <Field

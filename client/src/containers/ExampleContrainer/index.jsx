@@ -62,7 +62,7 @@ class ExampleComponent extends Component {
 
     return (
       <Row>
-        <Col xs={12} sm={4} className="d-flex align-items-center flex-column ">
+        <Col xs={12} sm={3} className="d-flex align-items-center flex-column ">
           <BtcToUsdWithSpinner
             price={price}
             handleRefresh={this.props.fetchBitcoinPrice}
@@ -71,13 +71,15 @@ class ExampleComponent extends Component {
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
           <ExampleModal />
-          <ComponentsForm onSubmit={formValues => alert(JSON.stringify(formValues))} />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
+        <Col xs={12} sm={3} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center">
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
           <PersonData onSubmit={this.handlePersonDataFormSubmit} />
+        </Col>
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
+          <ComponentsForm onSubmit={formValues => alert(JSON.stringify(formValues))} />
         </Col>
       </Row>
     );
