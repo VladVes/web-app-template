@@ -7,9 +7,7 @@ import {
   Captcha,
   Select,
   DatePicker,
-  TimePicker,
   FilePicker,
-  Radio,
 } from 'Shared/redux-form-components';
 
 class ComponentsForm extends PureComponent {
@@ -58,31 +56,12 @@ class ComponentsForm extends PureComponent {
           disabled
           label="FilePicker"
         />
-        {/* <Field */}
-        {/* id="TimePicker" */}
-        {/* name="TimePicker" */}
-        {/* component={TimePicker} */}
-        {/* label="TimePicker" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="FilePicker" */}
-        {/* name="FilePicker" */}
-        {/* component={FilePicker} */}
-        {/* disabled */}
-        {/* label="FilePicker" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="Radio" */}
-        {/* name="Radio" */}
-        {/* component={Radio} */}
-        {/* label="Radio" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="Captcha" */}
-        {/* name="Captcha" */}
-        {/* component={Captcha} */}
-        {/* label="Verify you are not a robot" */}
-        {/* /> */}
+        <Field
+          id="Captcha"
+          name="Captcha"
+          component={Captcha}
+          label="Verify you are not a robot"
+        />
         <Button
           type="submit"
           className="mr-3"
