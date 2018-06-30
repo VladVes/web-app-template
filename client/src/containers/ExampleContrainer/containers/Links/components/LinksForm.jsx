@@ -5,6 +5,7 @@ import {
   Input,
 } from 'reactstrap';
 import Field from 'Shared/redux-form-components/CustomField';
+import StyledField from 'Shared/redux-form-components/styled/StyledField';
 import { PrimaryButton, CancelButton } from 'Shared/styledComponents/Button';
 
 class LinksForm extends PureComponent {
@@ -20,13 +21,13 @@ class LinksForm extends PureComponent {
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
         <strong>Form with sync validation</strong>
-        <Field
+        <StyledField
           id="link1"
           name="link1"
           type="text"
           component={Input}
           placeholder="Link1"
-          label="Link1"
+          label="Link1 with custom field"
         />
         <Field
           id="link2"
