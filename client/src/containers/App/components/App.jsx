@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import { hot } from 'react-hot-loader';
 import MainModal from 'Shared/modal/MainModal';
 import configureStore from '../Redux/configureStore';
@@ -10,18 +11,19 @@ import Main from './Main';
 
 import '../styled/GlobalStyles';
 
-const store = configureStore();
+const history = createHistory();
+const store = configureStore(history);
 
 const App = ({ children }) => (
   <div className="App">
     <Provider store={store}>
-      <BrowserRouter>
+      <Router history={history}>
         <Main>
           <Routes />
           <MainModal />
           {children}
         </Main>
-      </BrowserRouter>
+      </Router>
     </Provider>
   </div>
 );
