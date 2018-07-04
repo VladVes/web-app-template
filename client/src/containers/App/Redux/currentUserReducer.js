@@ -3,6 +3,7 @@ import {
   fetchCurrentUserRequest,
   fetchCurrentUserSuccess,
   fetchCurrentUserFailure,
+  clearCurrentUserSuccess,
 } from './actions';
 
 const defaultState = {
@@ -32,6 +33,12 @@ export default handleActions(
         ...state,
         isFetching: false,
         error: payload,
+      };
+    },
+    [clearCurrentUserSuccess](state) {
+      return {
+        ...state,
+        data: null,
       };
     },
   },

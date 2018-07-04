@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { push } from 'react-router-redux';
+import { fetchCurrentUser } from 'Containers/App/Redux/actions';
 import api from '../../../utils/ApiClient';
 
 export const fetchSignInRequest = createAction('FETCH_SIGN_IN_REQUEST');
@@ -14,6 +15,7 @@ export const fetchSignIn = credentials => async (dispatch) => {
     const { token } = response.data;
 
     localStorage.setItem('token', token);
+    fetchCurrentUser();
 
     dispatch(fetchSignInSuccess());
     dispatch(push(''));

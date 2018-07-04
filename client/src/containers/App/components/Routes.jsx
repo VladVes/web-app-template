@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import ExampleContainer from 'Containers/ExampleContrainer/index';
 import SignUpContainer from 'Containers/SignUpContainer/index';
-import SignUpSuccess from 'Containers/SignUpContainer/components/SignUpSuccess';
 import SignInContainer from 'Containers/SignInContainer/index';
 import PrivateRoute from './PrivateRoute';
 

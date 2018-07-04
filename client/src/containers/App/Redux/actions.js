@@ -4,6 +4,7 @@ import api from '../../../utils/ApiClient';
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
 export const fetchCurrentUserSuccess = createAction('FETCH_CURRENT_USER_SUCCESS');
 export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE');
+export const clearCurrentUserSuccess = createAction('CLEAR_CURRENT_USER_SUCCESS');
 
 export const fetchCurrentUser = () => async (dispatch) => {
   try {
@@ -25,4 +26,9 @@ export const fetchCurrentUser = () => async (dispatch) => {
   } catch (error) {
     dispatch(fetchCurrentUserFailure(error));
   }
+};
+
+export const clearCurrentUser = () => (dispatch) => {
+  localStorage.removeItem('token');
+  dispatch(clearCurrentUserSuccess());
 };
