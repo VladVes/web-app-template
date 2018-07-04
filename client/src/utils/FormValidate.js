@@ -6,7 +6,7 @@ export function validateRequired(value) {
 }
 
 export function validateEmail(value) {
-  if (!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(value)) {
+  if (!(/^[-a-zA-Z0-9!#$%&'*+\/=?^_`{|}~\-\.]+@[a-z0-9.\-]+$/).test(value)) {
     return 'Wrong email format';
   }
   return null;
@@ -22,6 +22,13 @@ export function validateLength(value = '', min, max) {
   return null;
 }
 
+
 export function validatePassword(value) {
-  return validateLength(value, 8, 16);
+  const lengthError = validateLength(value, 6);
+  if (lengthError) return lengthError;
+
+  if (!(/(?=.*[0-9])(?=.*[а-яёa-z])(?=.*[A-ZА-ЯЁ])[0-9a-zA-Z.,';\]\[{}:"<>?!@#$%^&*()_\-+=|\/№А-Яа-яЁё]{6,}/).test(value)) {
+    return 'Password should includes min 1 upp/lowercase letter, 1 number';
+  }
+  return null;
 }
