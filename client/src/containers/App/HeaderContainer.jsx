@@ -13,19 +13,17 @@ function mapStateToProps(state) {
 }
 
 class HeaderContainer extends Component {
-  propTypes = {
+  static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     isLogged: PropTypes.bool.isRequired,
     clearCurrentUser: PropTypes.func.isRequired,
   };
 
   handleLogout = () => {
-    console.log(123);
     this.props.clearCurrentUser();
-  }
+  };
 
   render() {
-    console.log('HCON', this.props);
     return (<Header
       isFetching={this.props.isFetching}
       isLogged={this.props.isLogged}

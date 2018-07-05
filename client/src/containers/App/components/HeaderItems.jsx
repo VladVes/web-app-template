@@ -6,7 +6,7 @@ import { NavItem, NavLink as NavLink2 } from 'reactstrap';
 const HeaderItems = ({ isLogged, onLogout }) => (
   isLogged ?
     <NavItem className="mr-2">
-      <NavLink2 className="nav-link" href='#' onClick={onLogout}>Log Out</NavLink2>
+      <NavLink2 className="nav-link" href="#" onClick={onLogout}>Log Out</NavLink2>
     </NavItem>
     :
     <Fragment>
