@@ -48,9 +48,10 @@ class ExampleComponent extends Component {
     if (Object.keys(error).length) {
       throw new SubmissionError(error);
     }
-
-    console.log(formValues);
   };
+
+  // eslint-disable-next-line no-alert
+  handleSubmit = formValues => alert(JSON.stringify(formValues));
 
   render() {
     const {
@@ -79,7 +80,7 @@ class ExampleComponent extends Component {
           <PersonData onSubmit={this.handlePersonDataFormSubmit} />
         </Col>
         <Col xs={12} sm={3} className="d-flex justify-content-center">
-          <ComponentsForm onSubmit={formValues => alert(JSON.stringify(formValues))} />
+          <ComponentsForm onSubmit={this.handleSubmit} />
         </Col>
       </Row>
     );
