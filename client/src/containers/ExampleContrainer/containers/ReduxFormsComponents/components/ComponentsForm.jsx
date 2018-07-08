@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { FormProps } from 'PropTypes';
 import { Form, Button } from 'reactstrap';
 import {
   CustomField as Field,
@@ -13,7 +14,7 @@ class ComponentsForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    selectOptions: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })).isRequired,
+    selectOptions: FormProps.SelectOptions.isRequired,
   };
 
   render() {

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import Dropzone from 'react-dropzone';
 import PropTypes from 'prop-types';
+import { FormProps } from 'PropTypes';
+import Dropzone from 'react-dropzone';
 import {
   ImgWrapper,
   RemoveButton,
@@ -9,20 +10,12 @@ import {
   UploadText,
 } from './styled/FilePicker';
 
-const FileProp = PropTypes.shape({
-  lastModified: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-});
-
 export default class DropZone extends PureComponent {
   static propTypes = {
     maxImageSize: PropTypes.number,
     accept: PropTypes.string,
     multiple: PropTypes.bool,
-    value: PropTypes.oneOfType([FileProp, PropTypes.arrayOf(FileProp), PropTypes.shape({})]),
+    value: PropTypes.oneOfType([FormProps.File, PropTypes.arrayOf(FormProps.File), PropTypes.shape({})]),
     isRemovable: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
