@@ -15,14 +15,15 @@ class SignUpContainer extends Component {
   handleSignUpFormSubmit = formValues => this.props.fetchSignUp(formValues);
 
   render() {
+    const { isSigned } = this.props;
     return (
       <Row className="justify-content-center">
         <Col xs={6}>
-          {this.props.isSigned ?
+          {isSigned ?
             <SignUpSuccess checkEmail={false} />
           :
             <SignUp
-              isSigned={this.props.isSigned}
+              isSigned={isSigned}
               onSubmit={this.handleSignUpFormSubmit}
             />
           }
