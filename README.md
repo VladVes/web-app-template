@@ -1,6 +1,8 @@
-##Aspirity Web Template
+# Aspirity Web Template
 
-[Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
+## Links
+* [Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
+* [pre-defined redux-form components](https://bitbucket.org/aspirity/aspiritywebtemplate/src/master/client/src/shared/redux-form-components/)
 
 ### Development
 * Install docker with [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)
@@ -15,7 +17,7 @@
 #### Client
 * localhost:3000
 
-#### Notes about test
+#### Notes about tests
 * Unit tests running automatically with every commit/push
 * yarn test - run unit tests
 * yarn test:all - run all tests, including database (should be running in docker container to pass)
@@ -29,10 +31,10 @@ where
   * password: p1230h6t34qd4i7ex
   * host: aspiritywebtemplate_mongodb (it is container name for docker development flow)
   * port: 27017
-  
+
 ### Known issues
-1. "Cannot find module ‘whatevermodule’..." in docker logs output. 
-Solution: u ran "docker-compose up" instead of "yarn start". Run "yarn install:all" or run depndencies watcher from project folder (ex. cd client, yarn dependencies)
+1. "Cannot find module ‘whatevermodule’..." in docker logs output.
+Solution: u ran "docker-compose up" and installed new module (via yarn add, which doesn`t update data inside docker container). Run "yarn install:all" or run depndencies watcher from project folder (ex. cd client, yarn dependencies)
 2. Proxy error, backend requests fails from front-end
 Solution: change container name from webpack to "localhost" if running client from "yarn start:dev"
 ### Starting new project with template

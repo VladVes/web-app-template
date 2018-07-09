@@ -7,6 +7,7 @@ import withSpinner from 'Shared/hocs/withSpinner';
 import Links from './containers/Links';
 import PersonData from './containers/PersonData';
 import ExampleModal from './containers/ExampleModal';
+import ComponentsForm from './containers/ReduxFormsComponents';
 import BtcToUsd from './components/BtcToUsd';
 import {
   fetchBitcoinPrice,
@@ -47,9 +48,10 @@ class ExampleComponent extends Component {
     if (Object.keys(error).length) {
       throw new SubmissionError(error);
     }
-
-    console.log(formValues);
   };
+
+  // eslint-disable-next-line no-alert
+  handleSubmit = formValues => alert(JSON.stringify(formValues));
 
   render() {
     const {
@@ -61,7 +63,7 @@ class ExampleComponent extends Component {
 
     return (
       <Row>
-        <Col xs={12} sm={4} className="d-flex align-items-center flex-column ">
+        <Col xs={12} sm={3} className="d-flex align-items-center flex-column ">
           <BtcToUsdWithSpinner
             price={price}
             handleRefresh={this.props.fetchBitcoinPrice}
@@ -71,11 +73,14 @@ class ExampleComponent extends Component {
           <div className="mb-3">Sum from server: {sum}</div>
           <ExampleModal />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
+        <Col xs={12} sm={3} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center">
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
           <PersonData onSubmit={this.handlePersonDataFormSubmit} />
+        </Col>
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
+          <ComponentsForm onSubmit={this.handleSubmit} />
         </Col>
       </Row>
     );

@@ -21,7 +21,8 @@ class LinksContainer extends Component {
     this.props.fetchLinks();
   }
 
-  handleLinksFormSubmit = formValues => console.log(formValues);
+  // eslint-disable-next-line no-alert
+  handleLinksFormSubmit = formValues => alert(formValues);
 
   render() {
     return (
