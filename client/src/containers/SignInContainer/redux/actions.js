@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { push } from 'react-router-redux';
 import { fetchCurrentUser } from 'Containers/App/Redux/actions';
-import api from '../../../utils/ApiClient';
+import api from 'Utils/ApiClient';
 
 export const fetchSignInRequest = createAction('FETCH_SIGN_IN_REQUEST');
 export const fetchSignInSuccess = createAction('FETCH_SIGN_IN_SUCCESS');
