@@ -28,7 +28,7 @@ export function validatePassword(value) {
   if (lengthError) return lengthError;
 
   if (!(/(?=.*[0-9])(?=.*[а-яёa-z])(?=.*[A-ZА-ЯЁ])[0-9a-zA-Z.,';\]\[{}:"<>?!@#$%^&*()_\-+=|\/№А-Яа-яЁё]{6,}/).test(value)) {
-    return 'Password should includes min 1 upp/lowercase letter, 1 number';
+    return 'Password should include at least one upper/lowercase letter and at least one number';
   }
   return null;
 }
