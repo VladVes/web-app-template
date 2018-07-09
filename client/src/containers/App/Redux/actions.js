@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import api from '../../../utils/ApiClient';
+import api from 'Utils/ApiClient';
 
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
 export const fetchCurrentUserSuccess = createAction('FETCH_CURRENT_USER_SUCCESS');
@@ -11,11 +11,13 @@ export const fetchCurrentUser = () => async (dispatch) => {
 
     if (localStorage.getItem('token')) {
       setTimeout(async () => {
-        const response = await api.user.getCurrent();
+        api.user.getCurrent()
+          .then((response) => {
+            const user = response.data;
 
-        const user = response.data;
-
-        dispatch(fetchCurrentUserSuccess(user));
+            dispatch(fetchCurrentUserSuccess(user));
+          })
+          .catch(() => localStorage.removeItem('token'));
       }, 3000);
     } else {
       setTimeout(() => {
