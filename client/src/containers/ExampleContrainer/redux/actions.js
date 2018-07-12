@@ -52,21 +52,27 @@ export const fetchSum = () => async (dispatch) => {
   }
 };
 
-export const uploadSingleFileRequest = createAction('UPLOAD_SINGLE_FILE_REQUEST');
-export const uploadSingleFileSuccess = createAction('UPLOAD_SINGLE_FILE_SUCCESS');
-export const uploadSingleFileFailure = createAction('UPLOAD_SINGLE_FILE_FAILURE');
+export const uploadFilesRequest = createAction('UPLOAD_FILES_REQUEST');
+export const uploadFilesSuccess = createAction('UPLOAD_FILES_SUCCESS');
+export const uploadFilesFailure = createAction('UPLOAD_FILES_FAILURE');
 
-export const uploadSingleFile = file => async (dispatch) => {
+export const uploadFiles = files => async (dispatch) => {
   try {
-    dispatch(uploadSingleFileRequest());
+    dispatch(uploadFilesRequest());
 
-    const formData = new FormData();
-    formData.append('file', file);
+    if (files) {
+      const formData = new FormData();
 
-    await api.example.uploadFile(formData);
+      /* eslint-disable-next-line no-console */
+      // formData.append('files[]', files); // silly but it's not working!
 
-    dispatch(uploadSingleFileSuccess());
+      Object.values(files).forEach(file => formData.append('files[]', file));
+
+      await api.example.uploadFile(formData);
+    }
+
+    dispatch(uploadFilesSuccess());
   } catch (error) {
-    dispatch(uploadSingleFileFailure(error));
+    dispatch(uploadFilesFailure(error));
   }
 };

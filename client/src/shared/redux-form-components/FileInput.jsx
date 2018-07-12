@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
+const FileProps = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+});
+
+const adaptFileEventToValue = delegate => e => delegate(e.target.files);
+
+const formatFileNames = files => Object.values(files).map(file => file.name).join(', ');
 
 const FileInput = ({
   onChange,
@@ -20,7 +26,7 @@ const FileInput = ({
         hidden
       />
     </label>
-    {value ? value.name : 'Not selected'}
+    {value ? formatFileNames(value) : 'Not selected'}
   </div>
 );
 
@@ -29,9 +35,7 @@ FileInput.propTypes = {
   value: PropTypes.oneOfType([
     // eslint-disable-next-line no-consoles
     PropTypes.string, // redux-form bug - is not set init value or set it to null, component get ''
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
+    PropTypes.objectOf(FileProps),
   ]),
   id: PropTypes.string.isRequired,
 };

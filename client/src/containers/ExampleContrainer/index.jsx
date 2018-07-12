@@ -13,7 +13,7 @@ import {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
-  uploadSingleFile,
+  uploadFiles,
 } from './redux/actions';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
@@ -27,7 +27,7 @@ class ExampleComponent extends Component {
     fetchSum: PropTypes.func.isRequired,
     fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
-    uploadSingleFile: PropTypes.func.isRequired,
+    uploadFiles: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -57,7 +57,8 @@ class ExampleComponent extends Component {
   handleReduxFormComponentsSubmit = (formValues) => {
     console.log(formValues);
 
-    this.props.uploadSingleFile(formValues.MyFile);
+    this.props.uploadFiles(formValues.MyFile);
+    this.props.uploadFiles(formValues.MyFileList);
   };
 
   render() {
@@ -81,7 +82,7 @@ class ExampleComponent extends Component {
           <ExampleModal />
           <ComponentsForm onSubmit={this.handleReduxFormComponentsSubmit} />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">k
+        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
         </Col>
         <Col xs={12} sm={4} className="d-flex justify-content-center">
@@ -103,7 +104,7 @@ const mapDispatchToProps = {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
-  uploadSingleFile,
+  uploadFiles,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);

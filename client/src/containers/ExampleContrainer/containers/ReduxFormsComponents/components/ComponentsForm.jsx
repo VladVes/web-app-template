@@ -57,6 +57,13 @@ class ComponentsForm extends PureComponent {
           component={FileInput}
           label="Upload file"
         />
+        <Field
+          id="MyFileList"
+          name="MyFileList"
+          component={FileInput}
+          label="Upload files"
+          multiple
+        />
         {/**/}
         <Button
           type="submit"
