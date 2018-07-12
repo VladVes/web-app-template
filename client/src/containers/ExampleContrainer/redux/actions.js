@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
 import api from '../../../utils/ApiClient';
-import uploader from '../uploader';
 
 export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUEST');
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');
@@ -53,12 +52,21 @@ export const fetchSum = () => async (dispatch) => {
   }
 };
 
-export const uploadFilesRequest = createAction('UPLOAD_FILES_REQUEST');
-export const uploadFilesSuccess = createAction('UPLOAD_FILES_SUCCESS');
-export const uploadFilesFailure = createAction('UPLOAD_FILES_FAILURE');
+export const uploadSingleFileRequest = createAction('UPLOAD_SINGLE_FILE_REQUEST');
+export const uploadSingleFileSuccess = createAction('UPLOAD_SINGLE_FILE_SUCCESS');
+export const uploadSingleFileFailure = createAction('UPLOAD_SINGLE_FILE_FAILURE');
 
-export const uploadFiles = () => async (dispatch) => {
-  console.log(dispatch);
+export const uploadSingleFile = file => async (dispatch) => {
+  try {
+    dispatch(uploadSingleFileRequest());
 
-  uploader.methods.uploadStoredFiles();
+    const formData = new FormData();
+    formData.append('file', file);
+
+    await api.example.uploadFile(formData);
+
+    dispatch(uploadSingleFileSuccess());
+  } catch (error) {
+    dispatch(uploadSingleFileFailure(error));
+  }
 };

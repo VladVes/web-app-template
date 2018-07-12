@@ -9,8 +9,8 @@ import {
   DatePicker,
   TimePicker,
   Radio,
+  FileInput,
 } from 'Shared/redux-form-components';
-import PhotoUploaderSingle from '../../../PhotoUploaderSingle';
 
 class ComponentsForm extends PureComponent {
   static propTypes = {
@@ -51,35 +51,13 @@ class ComponentsForm extends PureComponent {
           component={DatePicker}
           label="DatePicker"
         />
-        <PhotoUploaderSingle
-          id="screenshot"
-          name="screenshot"
+        <Field
+          id="MyFile"
+          name="MyFile"
+          component={FileInput}
+          label="Upload file"
         />
-        {/* <Field */}
-        {/* id="TimePicker" */}
-        {/* name="TimePicker" */}
-        {/* component={TimePicker} */}
-        {/* label="TimePicker" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="FilePicker" */}
-        {/* name="FilePicker" */}
-        {/* component={FilePicker} */}
-        {/* disabled */}
-        {/* label="FilePicker" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="Radio" */}
-        {/* name="Radio" */}
-        {/* component={Radio} */}
-        {/* label="Radio" */}
-        {/* /> */}
-        {/* <Field */}
-        {/* id="Captcha" */}
-        {/* name="Captcha" */}
-        {/* component={Captcha} */}
-        {/* label="Verify you are not a robot" */}
-        {/* /> */}
+        {/**/}
         <Button
           type="submit"
           className="mr-3"

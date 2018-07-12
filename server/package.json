@@ -13,9 +13,11 @@
     "test:all": "mocha -R nyan -r ts-node/register ./tests/**/*.ts"
   },
   "dependencies": {
+    "@types/connect-busboy": "^0.0.0",
     "axios": "^0.18.0",
     "bcryptjs-then": "^1.0.1",
     "body-parser": "^1.18.2",
+    "busboy": "^0.2.14",
     "convict": "^4.2.0",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",

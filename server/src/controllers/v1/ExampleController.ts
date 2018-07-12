@@ -3,6 +3,7 @@ import * as VError from 'verror';
 import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
+import * as Busboy from 'busboy';
 import { ExampleService } from '../../services';
 import Logger from '../../Logger';
 import BaseController from '../BaseController';
@@ -47,8 +48,16 @@ class ExampleController extends BaseController {
   }
 
   public async uploadFile(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
-    req.pipe(fs.createWriteStream(path.resolve(__dirname, './uploadFile.jpg')));
-    req.on('end', () => res.json({ success: 'ok' }));
+    const busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', (fieldname, file, filename) => {
+      console.log('GET FILE');
+      const fstream = fs.createWriteStream(path.resolve(__dirname, `../../uploads/${filename}`));
+      file.pipe(fstream);
+      fstream.on('close', function () {
+        res.json({ success: 'ok' });
+      });
+    });
+    req.pipe(busboy);
   }
 }
 

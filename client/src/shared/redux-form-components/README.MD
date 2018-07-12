@@ -16,12 +16,6 @@ Main captcha implementation, comes with correct back-end validation
 
 react-datepicker component wrapped to be used withing CustomField
 
-### FilePicker
-
-FilePicker with multi file select, delete and DnD (drag-n-drop) options.
-
-Uses react-dropzone package. Comes with styled emotion
-
 ### DatePicker
 
 DatePicker from react-datepicker package. Comes with default css import and moment.js
