@@ -65,6 +65,11 @@ const config = convict({
       default: '6LfOZF8UAAAAAJ_I2pg4nIuxnuN2ySz4E8wUvz8X',
     }
   },
+  staticFolder: {
+    doc: 'static folder exposed to everyone',
+    format: String,
+    default: 'uploads',
+  }
 });
 
 const env = config.get('env');

@@ -22,5 +22,6 @@ export default reduxForm({
     DatePicker: moment(),
     FilePicker: {},
     Select: { value: 'DE', label: 'Delaware' },
+    MyFileListPreview: ['/uploads/logo_small.png', '/uploads/logo_white.png'],
   },
 })(ComponentsForm);

@@ -64,6 +64,14 @@ class ComponentsForm extends PureComponent {
           label="Upload files"
           multiple
         />
+        <Field
+          id="MyFileListPreview"
+          name="MyFileListPreview"
+          component={FileInput}
+          label="Upload files with preview"
+          multiple
+          preview
+        />
         {/**/}
         <Button
           type="submit"

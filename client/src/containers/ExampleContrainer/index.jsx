@@ -59,6 +59,7 @@ class ExampleComponent extends Component {
 
     this.props.uploadFiles(formValues.MyFile);
     this.props.uploadFiles(formValues.MyFileList);
+    this.props.uploadFiles(formValues.MyFileListPreview);
   };
 
   render() {

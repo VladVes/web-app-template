@@ -49,12 +49,13 @@ class ExampleController extends BaseController {
 
   public async uploadFile(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
     const busboy = new Busboy({ headers: req.headers });
+    const folder = config.get('staticFolder');
     // eslint-disable-next-line no-consoles
     let counter = 0;// use counter cause finish event fires when all files are catched, NOT stored to disk
 
     busboy.on('file', (fieldname, file, filename) => {
       counter ++;
-      const fstream = fs.createWriteStream(path.resolve(__dirname, `../../uploads/${filename}`));
+      const fstream = fs.createWriteStream(path.resolve(__dirname, `../../${folder}/${filename}`));
       file.pipe(fstream);
       fstream.on('close', () => {
         if (!counter--) res.json({success: 'ok'})

@@ -46,6 +46,7 @@ module.exports = {
     port: 3000,
     proxy: {
       '/api': 'http://aspiritywebtemplate_server:8080',
+      '/uploads': 'http://aspiritywebtemplate_server:8080',
     },
   },
 };
