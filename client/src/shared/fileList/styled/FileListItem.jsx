@@ -1,8 +1,11 @@
 import styled from 'react-emotion';
 
 const FileListItemWraper = styled.div`
+  display: inline-block;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
   border: 1px solid black;
-  display: inline-block; 
 `;
 
 const FileListItemImage = styled.img`

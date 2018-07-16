@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CloseButton from 'Shared/styledComponents/CloseModalButton';
 import { FileListItemWraper, FileListItemImage } from './styled/FileListItem';
 
 const FileListItem = ({ file: { url, title }, onRemove, ...props }) => (
   <FileListItemWraper key={title}>
     {onRemove &&
-      <button>×</button>
+      <CloseButton onClick={onRemove} />
     }
     <FileListItemImage alt={title} src={url} height={props.height} />
     <div>{title}</div>

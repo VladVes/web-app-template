@@ -29,11 +29,23 @@ class FileInput extends Component {
     this.updateValueFiles(newFiles);
   };
 
-  updateValueFiles(newFiles) {
-    const { onChange } = this.props;
-    let files = this.props.value || [];
+  handleRemoveItem = (i) => {
+    const { onChange, value } = this.props;
 
-    files = files.filter(file => !(file instanceof File));
+    const files = [...value];
+    files.splice(i, 1);
+
+    onChange(files);
+  };
+
+  updateValueFiles(newFiles) {
+    const { onChange, value } = this.props;
+
+    const newFileNames = newFiles.map(file => file.name);
+    console.log(newFileNames);
+
+    let files = value ? [...value] : [];
+    files = files.filter(file => !newFileNames.includes(file.name || file.split('/').pop()));
     files = files.concat(newFiles);
 
     onChange(files);
@@ -52,7 +64,7 @@ class FileInput extends Component {
 
     return (
       <div>
-        {preview && <RawFileList files={value} />}
+        {preview && <RawFileList files={value} onItemRemove={this.handleRemoveItem} />}
         <label htmlFor={id} className="btn btn-primary">
           Browses
           <input
@@ -60,6 +72,7 @@ class FileInput extends Component {
             type="file"
             id={id}
             onChange={this.handleChangeInput}
+            value=""
             hidden
           />
         </label>
