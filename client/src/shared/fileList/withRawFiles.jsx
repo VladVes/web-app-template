@@ -25,11 +25,10 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
     this.updateStateFiles(this.props);
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (this.props !== nextProps) {
-      this.updateStateFiles(nextProps);
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.updateStateFiles(this.props);
     }
-    return true;
   }
 
   updateStateFiles(props) {

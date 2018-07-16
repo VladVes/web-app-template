@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FileListItemWraper, FileListItemImage } from './styled/FileListItem';
 
-const FileListItem = ({ file: { url, title }, onRemove }) => (
-  <div key={title} style={{ border: '1px solid black', height: '100px', display: 'inline-block' }}>
+const FileListItem = ({ file: { url, title }, onRemove, ...props }) => (
+  <FileListItemWraper key={title}>
     {onRemove &&
       <button>×</button>
     }
-    <img alt={title} src={url} style={{ height: '100px' }} />
+    <FileListItemImage alt={title} src={url} height={props.height} />
     <div>{title}</div>
-  </div>
+  </FileListItemWraper>
 );
 
 FileListItem.propTypes = {
@@ -16,11 +17,14 @@ FileListItem.propTypes = {
     url: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
+  height: PropTypes.number,
   onRemove: PropTypes.func,
 };
 
+
 FileListItem.defaultProps = {
+  height: 100,
   onRemove: null,
-}
+};
 
 export default FileListItem;
