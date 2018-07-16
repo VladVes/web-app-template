@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import FileProps from 'Shared/props';
 import { RawFileList } from 'Shared/fileList';
 
+import getFileHash from 'Utils/getFileHash';
+
 class FileInput extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
@@ -43,11 +45,11 @@ class FileInput extends Component {
   updateValueFiles(newFiles) {
     const { onChange, allowDuplicates, value } = this.props;
 
-    const newFileNames = newFiles.map(file => file.name);
+    const newFileNames = newFiles.map(file => getFileHash(file));
 
     let files = value ? [...value] : [];
     if (!allowDuplicates) {
-      files = files.filter(file => !newFileNames.includes(file.name || file.split('/').pop()));
+      files = files.filter(file => !newFileNames.includes(getFileHash(file)));
     }
     files = files.concat(newFiles);
 
