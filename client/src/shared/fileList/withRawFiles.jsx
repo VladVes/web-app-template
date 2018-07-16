@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MD5 from 'md5.js';
 
 const extractUrlFromFile = file => new Promise((resolve) => {
   const reader = new FileReader();
@@ -31,25 +32,35 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
     }
   }
 
+  static getFileHash(file) {
+    let salt = file;
+    if (file instanceof File) {
+      salt = file.name + file.size + file.lastModified;
+    }
+    return new MD5().update(salt).digest('hex');
+  }
+
   updateStateFiles(props) {
     const { files: prevFiles } = this.state;
     const files = props.files.map((file, i) => {
-      if (file instanceof File) {
-        const prevFile = prevFiles.find(fileI => fileI.title === file.name);
-        if (prevFile) {
-          return prevFile;
-        }
+      const hash = this.constructor.getFileHash(file);
+      const prevFile = prevFiles.find(fileI => fileI.hash === hash);
+      if (prevFile) return prevFile;
 
+      if (file instanceof File) {
         extractUrlFromFile(file).then(url => this.updateFileUrl(url, i));
+
         return {
           url: '',
           title: file.name,
+          hash,
         };
       }
       if (typeof file === 'string') {
         return {
           url: file,
           title: file.split('/').pop(),
+          hash,
         };
       }
       return file;
@@ -60,6 +71,7 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
 
   updateFileUrl(url, i) {
     const { files } = this.state;
+
     const nextFiles = [...files];
     nextFiles[i] = { ...files[i], url };
     this.setState({ files: nextFiles });
