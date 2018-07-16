@@ -50,9 +50,10 @@ class ExampleComponent extends Component {
     if (Object.keys(error).length) {
       throw new SubmissionError(error);
     }
-
-    console.log(formValues);
   };
+
+  // eslint-disable-next-line no-alert
+  handleSubmit = formValues => alert(JSON.stringify(formValues));
 
   handleReduxFormComponentsSubmit = (formValues) => {
     console.log(formValues);
@@ -72,7 +73,7 @@ class ExampleComponent extends Component {
 
     return (
       <Row>
-        <Col xs={12} sm={4} className="d-flex align-items-center flex-column ">
+        <Col xs={12} sm={3} className="d-flex align-items-center flex-column ">
           <BtcToUsdWithSpinner
             price={price}
             handleRefresh={this.props.fetchBitcoinPrice}
@@ -83,11 +84,14 @@ class ExampleComponent extends Component {
           <ExampleModal />
           <ComponentsForm onSubmit={this.handleReduxFormComponentsSubmit} />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center my-5 my-sm-0">
+        <Col xs={12} sm={3} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />
         </Col>
-        <Col xs={12} sm={4} className="d-flex justify-content-center">
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
           <PersonData onSubmit={this.handlePersonDataFormSubmit} />
+        </Col>
+        <Col xs={12} sm={3} className="d-flex justify-content-center">
+          <ComponentsForm onSubmit={this.handleSubmit} />
         </Col>
       </Row>
     );

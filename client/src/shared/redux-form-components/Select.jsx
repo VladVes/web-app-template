@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormProps } from 'PropTypes';
 import Select from 'react-select';
-
-const SelectProp = PropTypes.shape({ value: PropTypes.string, label: PropTypes.string });
 
 export default class ReduxFormSelect extends Component {
   static propTypes = {
-    options: PropTypes.arrayOf(SelectProp).isRequired,
+    options: FormProps.SelectOptions.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.shape({ value: PropTypes.string, label: PropTypes.string }).isRequired,
+    value: FormProps.SelectValue.isRequired,
   };
 
   handleSelect = (value) => {

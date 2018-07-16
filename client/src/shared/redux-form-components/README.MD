@@ -3,10 +3,10 @@
 ## All of this components are expected to be used with CustomField
 
 ### CustomField
-Wrapped redux-form "Field" with custom behaviour, inlucding:
-Labling - label prop to add "name" for field
-Error - for validation
-Other - rest of props passed down to redux-form Field as usual.
+Wrapped redux-form "Field" with custom behaviour, including:
+* Labling - label prop to add "name" for field (supports customization)
+* Error - for validation (supports customization)+
+* Other - rest of props passed down to redux-form Field as usual.
 
 ### Captcha
 
@@ -20,17 +20,9 @@ react-datepicker component wrapped to be used withing CustomField
 
 DatePicker from react-datepicker package. Comes with default css import and moment.js
 
-### Radio
-
-// TODO
-
 ### Select
 
 Select component based on react-select v2 beta6 with searching ability.
-
-### TimePicker
-
-// TODO
 
 ### Common issues
 #### Lots of warnings about propTypes
