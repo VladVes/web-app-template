@@ -68,9 +68,10 @@ class ComponentsForm extends PureComponent {
           id="MyFileListPreview"
           name="MyFileListPreview"
           component={FileInput}
-          label="Upload files with preview"
+          label="Upload images with preview"
           multiple
           preview
+          accept="image/*"
         />
         {/**/}
         <Button
