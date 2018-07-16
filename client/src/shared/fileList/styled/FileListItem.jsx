@@ -6,10 +6,7 @@ const FileListItemWraper = styled.div`
 `;
 
 const FileListItemImage = styled.img`
-  height: ${(props) => {
-    console.log('IMG PROPS', props);
-    return props.height;
-  }};
+  height: ${props => props.height};
 `;
 
 export { FileListItemWraper, FileListItemImage };
