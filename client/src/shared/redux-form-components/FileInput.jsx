@@ -17,11 +17,13 @@ class FileInput extends Component {
     ]),
     id: PropTypes.string.isRequired,
     preview: PropTypes.bool,
+    allowDuplicates: PropTypes.bool,
   };
 
   static defaultProps = {
     value: null,
     preview: false,
+    allowDuplicates: false,
   };
 
   handleChangeInput = (e) => {
@@ -39,13 +41,14 @@ class FileInput extends Component {
   };
 
   updateValueFiles(newFiles) {
-    const { onChange, value } = this.props;
+    const { onChange, allowDuplicates, value } = this.props;
 
     const newFileNames = newFiles.map(file => file.name);
-    console.log(newFileNames);
 
     let files = value ? [...value] : [];
-    files = files.filter(file => !newFileNames.includes(file.name || file.split('/').pop()));
+    if (!allowDuplicates) {
+      files = files.filter(file => !newFileNames.includes(file.name || file.split('/').pop()));
+    }
     files = files.concat(newFiles);
 
     onChange(files);
