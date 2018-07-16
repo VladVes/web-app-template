@@ -32,8 +32,14 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
   }
 
   updateStateFiles(props) {
+    const { files: prevFiles } = this.state;
     const files = props.files.map((file, i) => {
       if (file instanceof File) {
+        const prevFile = prevFiles.find(fileI => fileI.title === file.name);
+        if (prevFile) {
+          return prevFile;
+        }
+
         extractUrlFromFile(file).then(url => this.updateFileUrl(url, i));
         return {
           url: '',
