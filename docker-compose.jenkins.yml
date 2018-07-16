@@ -1,0 +1,40 @@
+version: '2'
+services:
+  client:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/client:$BUILD_NUMBER
+    build: ./client
+    container_name: aspiritywebtemplate_client
+    ports:
+      - $PORT1:3000
+    volumes:
+      - ./client/src:/client/src
+      - ./client/public:/client/public
+      - ./client/package.json:/client/package.json
+    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
+  server:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/server:$BUILD_NUMBER
+    build: ./server
+    container_name: aspiritywebtemplate_server
+    ports:
+      - $PORT2:8080
+      - $PORT3:5858
+    environment:
+      NODE_ENV: dev
+    volumes:
+      - ./server/src:/server/src
+      - ./server/logs:/server/logs
+      - ./server/package.json:/server/package.json
+      - ./server/tsconfig.json:/server/tsconfig.json
+    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
+  mongodb:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/mongodb:$BUILD_NUMBER
+    build: ./mongodb
+    container_name: aspiritywebtemplate_mongodb
+    ports:
+      - $PORT4:27017
+    volumes:
+          - ./mongodb/db:/data/db
+          - ./mongodb/configdb:/data/configdb
+    environment:
+      MONGODB_PASS: "p1230h6t34qd4i7ex"
+    command: ["/bin/run.sh"]
