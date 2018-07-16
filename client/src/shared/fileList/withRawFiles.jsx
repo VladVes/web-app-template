@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import MD5 from 'md5.js';
 
 import getFileHash from 'Utils/getFileHash';
 
