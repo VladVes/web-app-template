@@ -16,7 +16,7 @@ class ExampleController extends BaseController {
     this.router.get('/', this.get);
     this.router.get('/sum', this.getSum);
     this.router.get('/bitcoin', this.getBitcoinPrice);
-    this.router.post('/file', this.uploadFile);
+    this.router.post('/file', this.uploadFiles);
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -47,7 +47,7 @@ class ExampleController extends BaseController {
     }
   }
 
-  public async uploadFile(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
+  public async uploadFiles(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
     const busboy = new Busboy({ headers: req.headers });
     const folder = config.get('staticFolder');
     // eslint-disable-next-line no-consoles
@@ -58,9 +58,16 @@ class ExampleController extends BaseController {
       const fstream = fs.createWriteStream(path.resolve(__dirname, `../../${folder}/${filename}`));
       file.pipe(fstream);
       fstream.on('close', () => {
-        if (!counter--) res.json({success: 'ok'})
+        counter--;
+        if (!counter) res.json({success: 'ok'})
       });
     });
+
+    busboy.on('finish', () => {
+      // when no files are send
+      if (!counter) res.json({success: 'ok'})
+    });
+
     req.pipe(busboy);
   }
 }
