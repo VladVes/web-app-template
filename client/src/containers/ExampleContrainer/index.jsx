@@ -52,12 +52,9 @@ class ExampleComponent extends Component {
     }
   };
 
-  // eslint-disable-next-line no-alert
-  handleSubmit = formValues => alert(JSON.stringify(formValues));
-
-  handleReduxFormComponentsSubmit = (formValues) => {
-    console.log(formValues);
-
+  handleSubmit = (formValues) => {
+    // eslint-disable-next-line no-alert
+    alert(JSON.stringify(formValues));
     this.props.uploadFiles(formValues.MyFile);
     this.props.uploadFiles(formValues.MyFileList);
     this.props.uploadFiles(formValues.MyFileListPreview);
@@ -82,7 +79,6 @@ class ExampleComponent extends Component {
           <div className="mb-3">Text from server: {testText}</div>
           <div className="mb-3">Sum from server: {sum}</div>
           <ExampleModal />
-          <ComponentsForm onSubmit={this.handleReduxFormComponentsSubmit} />
         </Col>
         <Col xs={12} sm={3} className="d-flex justify-content-center my-5 my-sm-0">
           <Links />

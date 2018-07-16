@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import FileProps from 'Shared/props';
+import { FormProps } from 'Shared/prop-types';
 import { RawFileList } from 'Shared/fileList';
 
 import getFileHash from 'Utils/getFileHash';
@@ -14,7 +14,7 @@ class FileInput extends Component {
       PropTypes.string, // redux-form bug - is not set init value or set it to null, component get ''
       PropTypes.arrayOf(PropTypes.oneOfType([
         PropTypes.string,
-        FileProps,
+        FormProps.File,
       ])),
     ]),
     id: PropTypes.string.isRequired,
