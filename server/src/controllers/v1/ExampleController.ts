@@ -56,8 +56,7 @@ class ExampleController extends BaseController {
 
   public async setFiles(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
     const busboy = new Busboy({ headers: req.headers });
-    const folder = config.get('staticFolder');
-    // eslint-disable-next-line no-consoles
+
     let counter = 0;// use counter cause finish event fires when all files are catched, NOT stored to disk
 
     const keep = [];
@@ -75,9 +74,9 @@ class ExampleController extends BaseController {
       }
     });
 
-    busboy.on('field', (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) => {
-      keep.push(val);
-    });
+    busboy.on('field', (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) =>
+      keep.push(val)
+    );
 
     busboy.on('finish', () => {
       // when no files are send
