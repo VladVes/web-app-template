@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import LinksForm from './LinksForm';
+import { validateRequired } from 'Utils/FormValidate';
 
 const validate = (values) => {
   const errors = {};
 
-  if (!values.link1) {
-    errors.link1 = 'Required field';
-  }
-
-  if (!values.link2) {
-    errors.link2 = 'Required field';
-  }
+  errors.link1 = validateRequired(values.link1);
+  errors.link2 = validateRequired(values.link2);
 
   return errors;
 };

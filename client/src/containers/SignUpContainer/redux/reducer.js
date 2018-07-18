@@ -8,6 +8,7 @@ import {
 const defaultState = {
   error: null,
   isFetching: false,
+  done: false,
 };
 
 export default handleActions(
@@ -16,6 +17,7 @@ export default handleActions(
       return {
         ...state,
         isFetching: true,
+        done: false,
       };
     },
     [fetchSignUpSuccess](state) {
@@ -23,6 +25,7 @@ export default handleActions(
         ...state,
         isFetching: false,
         error: null,
+        done: true,
       };
     },
     [fetchSignUpFailure](state, { payload }) {

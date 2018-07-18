@@ -9,7 +9,7 @@ import Field from 'Shared/redux-form-components/CustomField';
 import Captcha from 'Shared/redux-form-components/Captcha';
 
 const SignUpForm = ({ handleSubmit, onSubmit }) => (
-  <Form onSubmit={handleSubmit(onSubmit)}>
+  <Form onSubmit={handleSubmit(onSubmit)} noValidate>
     <Field
       id="email"
       name="email"

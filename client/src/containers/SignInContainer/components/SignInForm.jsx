@@ -8,7 +8,7 @@ import {
 import Field from 'Shared/redux-form-components/CustomField';
 
 const SignInForm = ({ handleSubmit, onSubmit }) => (
-  <Form onSubmit={handleSubmit(onSubmit)}>
+  <Form onSubmit={handleSubmit(onSubmit)} noValidate>
     <Field
       id="email"
       name="email"

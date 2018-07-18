@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import Footer from './Footer';
-import Header from './Header';
+import HeaderContainer from '../HeaderContainer';
 
 const Main = ({ children }) => (
   <main>
-    <Header />
+    <HeaderContainer />
     <Container className="mt-3">
       {children}
     </Container>
