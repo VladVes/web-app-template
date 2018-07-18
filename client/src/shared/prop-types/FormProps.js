@@ -12,8 +12,15 @@ const File = PropTypes.shape({
   type: PropTypes.string.isRequired,
 });
 
+const ServerFile = PropTypes.shape({
+  id: PropTypes.string,
+  url: PropTypes.string,
+  name: PropTypes.string,
+});
+
 export default {
   SelectValue,
   SelectOptions,
   File,
+  ServerFile,
 };

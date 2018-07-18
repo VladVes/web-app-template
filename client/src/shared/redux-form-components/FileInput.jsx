@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { FormProps } from 'Shared/prop-types';
+import { ServerFile } from 'Shared/prop-types/FormProps';
 import { RawFileList } from 'Shared/fileList';
-
-import getFileHash from 'Utils/getFileHash';
 
 class FileInput extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([
-      // eslint-disable-next-line no-consoles
-      PropTypes.string, // redux-form bug - is not set init value or set it to null, component get ''
-      PropTypes.arrayOf(PropTypes.oneOfType([
-        PropTypes.string,
-        FormProps.File,
-      ])),
-    ]),
+      PropTypes.string,
+      PropTypes.arrayOf(ServerFile),
+    ]).isRequired,
     id: PropTypes.string.isRequired,
     preview: PropTypes.bool,
-    allowduplicates: PropTypes.bool,
     invalid: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
-    value: null,
     preview: false,
-    allowduplicates: false,
   };
 
   handleChangeInput = (e) => {
@@ -34,7 +25,8 @@ class FileInput extends Component {
     this.updateValueFiles(newFiles);
   };
 
-  handleRemoveItem = (i) => {
+  handleRemoveItem = (e, i) => {
+    e.preventDefault();
     const { onChange, value } = this.props;
 
     const files = [...value];
@@ -44,14 +36,9 @@ class FileInput extends Component {
   };
 
   updateValueFiles(newFiles) {
-    const { onChange, allowduplicates, value } = this.props;
-
-    const newFileNames = newFiles.map(file => getFileHash(file));
+    const { onChange, value } = this.props;
 
     let files = value ? [...value] : [];
-    if (!allowduplicates) {
-      files = files.filter(file => !newFileNames.includes(getFileHash(file)));
-    }
     files = files.concat(newFiles);
 
     onChange(files);
@@ -65,12 +52,12 @@ class FileInput extends Component {
 
   render() {
     const {
-      value, id, preview, allowduplicates, invalid, ...otherProps
+      value, id, preview, invalid, ...otherProps
     } = this.props;
 
     return (
       <div>
-        {preview && <RawFileList files={value} onItemRemove={this.handleRemoveItem} />}
+        {preview && <RawFileList files={value || []} onItemRemove={this.handleRemoveItem} />}
         <label htmlFor={id} className="btn btn-primary">
           Browses
           <input

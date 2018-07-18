@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import getFileHash from 'Utils/getFileHash';
+import { FormProps } from 'Shared/prop-types';
 
 const extractUrlFromFile = file => new Promise((resolve) => {
   const reader = new FileReader();
@@ -13,7 +13,7 @@ const extractUrlFromFile = file => new Promise((resolve) => {
 const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
   static propTypes = {
     files: PropTypes.arrayOf(PropTypes.oneOfType([
-      PropTypes.string,
+      FormProps.ServerFile,
       PropTypes.shape({
         url: PropTypes.string,
         title: PropTypes.string,
@@ -36,27 +36,26 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
   updateStateFiles(props) {
     const { files: prevFiles } = this.state;
     const files = props.files.map((file, i) => {
-      const hash = getFileHash(file);
-      const prevFile = prevFiles.find(fileI => fileI.hash === hash);
+      const id = file.id || file.name + file.size + file.lastModified;
+      const prevFile = prevFiles.find(fileI => fileI.id === id);
       if (prevFile) return prevFile;
 
       if (file instanceof File) {
         extractUrlFromFile(file).then(url => this.updateFileUrl(url, i));
 
         return {
+          id,
           url: '',
           title: file.name,
-          hash,
+          uploaded: false,
         };
       }
-      if (typeof file === 'string') {
-        return {
-          url: file,
-          title: file.split('/').pop(),
-          hash,
-        };
-      }
-      return file;
+      return {
+        id,
+        url: `uploads/${file.id}`,
+        title: file.name,
+        uploaded: true,
+      };
     });
 
     this.setState({ files });

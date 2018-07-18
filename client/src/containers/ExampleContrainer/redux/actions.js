@@ -52,27 +52,40 @@ export const fetchSum = () => async (dispatch) => {
   }
 };
 
-export const uploadFilesRequest = createAction('UPLOAD_FILES_REQUEST');
-export const uploadFilesSuccess = createAction('UPLOAD_FILES_SUCCESS');
-export const uploadFilesFailure = createAction('UPLOAD_FILES_FAILURE');
+export const fetchFilesRequest = createAction('FETCH_FILES_REQUEST');
+export const fetchFilesSuccess = createAction('FETCH_FILES_SUCCESS');
+export const fetchFilesFailure = createAction('FETCH_FILES_FAILURE');
+
+export const fetchFiles = () => async (dispatch) => {
+  try {
+    dispatch(fetchFilesRequest());
+
+    const response = await api.example.getFiles();
+
+    dispatch(fetchFilesSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchFilesFailure(error));
+  }
+};
 
 export const uploadFiles = files => async (dispatch) => {
   try {
-    dispatch(uploadFilesRequest());
+    dispatch(fetchFilesRequest());
 
-    if (files) {
-      const formData = new FormData();
+    const formData = new FormData();
 
-      /* eslint-disable-next-line no-console */
-      // formData.append('files[]', files); // silly but it's not working!
+    Object.values(files).forEach((file) => {
+      if (file.id) {
+        formData.append('keepfiles[]', file.id);
+      } else {
+        formData.append('uploadfiles[]', file);
+      }
+    });
 
-      Object.values(files).forEach(file => formData.append('files[]', file));
+    const response = await api.example.setFiles(formData);
 
-      await api.example.uploadFile(formData);
-    }
-
-    dispatch(uploadFilesSuccess());
+    dispatch(fetchFilesSuccess(response.data));
   } catch (error) {
-    dispatch(uploadFilesFailure(error));
+    dispatch(fetchFilesFailure(error));
   }
 };

@@ -21,6 +21,7 @@ class Express {
 
   private initPreRoutesMiddlewares(): void {
     this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(requestsLogger.all());
     this.app.use(customValidators());
     this.app.use(passport.initialize());

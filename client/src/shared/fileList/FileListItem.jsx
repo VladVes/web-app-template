@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import CloseButton from 'Shared/styledComponents/CloseModalButton';
 import { FileListItemWraper, FileListItemImage } from './styled/FileListItem';
 
-const FileListItem = ({ file: { url, title }, onRemove, ...props }) => (
-  <FileListItemWraper key={title}>
+const FileListItem = ({ file: { url, title, uploaded }, onRemove, ...props }) => (
+  <FileListItemWraper key={title} uploaded={uploaded}>
     {onRemove &&
       <CloseButton onClick={onRemove} />
     }
@@ -17,6 +17,7 @@ FileListItem.propTypes = {
   file: PropTypes.shape({
     url: PropTypes.string,
     title: PropTypes.string,
+    uploaded: PropTypes.bool,
   }).isRequired,
   height: PropTypes.number,
   onRemove: PropTypes.func,

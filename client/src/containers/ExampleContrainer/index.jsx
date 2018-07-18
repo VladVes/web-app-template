@@ -13,6 +13,7 @@ import {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
+  fetchFiles,
   uploadFiles,
 } from './redux/actions';
 
@@ -25,6 +26,7 @@ class ExampleComponent extends Component {
     testText: PropTypes.string.isRequired,
     fetchBitcoinPrice: PropTypes.func.isRequired,
     fetchSum: PropTypes.func.isRequired,
+    fetchFiles: PropTypes.func.isRequired,
     fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
     uploadFiles: PropTypes.func.isRequired,
@@ -34,6 +36,7 @@ class ExampleComponent extends Component {
     this.props.fetchBitcoinPrice();
     this.props.fetchTest();
     this.props.fetchSum();
+    this.props.fetchFiles();
   }
 
   handlePersonDataFormSubmit = (formValues) => {
@@ -105,6 +108,7 @@ const mapDispatchToProps = {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
+  fetchFiles,
   uploadFiles,
 };
 

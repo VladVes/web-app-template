@@ -5,5 +5,6 @@ export default {
   get: () => get(`${apiUrl}/example`),
   getSum: () => get(`${apiUrl}/example/sum`),
   getBitcoinPrice: () => get(`${apiUrl}/example/bitcoin`),
-  uploadFile: fileStream => post(`${apiUrl}/example/file`, fileStream),
+  getFiles: () => get(`${apiUrl}/example/files`),
+  setFiles: fileStream => post(`${apiUrl}/example/files`, fileStream),
 };

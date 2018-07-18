@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import ComponentsForm from './components/ComponentsForm';
 
@@ -29,12 +30,30 @@ ReduxFormsComponents.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default reduxForm({
+const initialValues = {
+  DatePicker: moment(),
+  Select: { value: 'DE', label: 'Delaware' },
+  MyFileListPreview: [],
+};
+
+const form = reduxForm({
   form: 'componentsForm',
-  initialValues: {
-    DatePicker: moment(),
-    FilePicker: {}, // we put object here to override default empty string passage
-    Select: { value: 'DE', label: 'Delaware' },
-    MyFileListPreview: ['/uploads/logo_small.png', '/uploads/logo_white.png'],
-  },
+  initialValues,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: false,
 })(ReduxFormsComponents);
+
+const connectedForm = connect(
+  (state, ownProps) => ({
+    ...ownProps,
+    initialValues: {
+      ...initialValues,
+      ...ownProps.initialValues,
+      MyFileListPreview: state.example.files.list,
+    },
+  }),
+  {},
+)(form);
+
+
+export default connectedForm;
