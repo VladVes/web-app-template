@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FileList = ({ files, itemComponent: Item, onItemRemove }) => (
+const FileList = ({ files, itemComponent: Item, handleItemRemove }) => (
   <div>
     {files.map((file, i) =>
-      <Item key={file.id} file={file} onRemove={onItemRemove ? e => onItemRemove(e, i) : null} />)
+      <Item key={file.id} file={file} onRemove={handleItemRemove ? e => handleItemRemove(e, i) : null} />)
     }
   </div>
 );
@@ -15,11 +15,11 @@ FileList.propTypes = {
     title: PropTypes.string,
   })),
   itemComponent: PropTypes.func.isRequired,
-  onItemRemove: PropTypes.func,
+  handleItemRemove: PropTypes.func,
 };
 
 FileList.defaultProps = {
-  onItemRemove: null,
+  handleItemRemove: null,
   files: [],
 };
 

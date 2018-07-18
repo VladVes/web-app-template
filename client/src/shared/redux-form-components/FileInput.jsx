@@ -57,7 +57,7 @@ class FileInput extends Component {
 
     return (
       <div>
-        {preview && <RawFileList files={value || []} onItemRemove={this.handleRemoveItem} />}
+        {preview && <RawFileList files={value || []} handleItemRemove={this.handleRemoveItem} />}
         <label htmlFor={id} className="btn btn-primary">
           Browses
           <input
