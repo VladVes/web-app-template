@@ -33,30 +33,32 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
     }
   }
 
-  updateStateFiles(props) {
-    const { files: prevFiles } = this.state;
-    const files = props.files.map((file, i) => {
-      const id = file.id || file.name + file.size + file.lastModified;
-      const prevFile = prevFiles.find(fileI => fileI.id === id);
-      if (prevFile) return prevFile;
+  parseFile(prevFiles, file, i) {
+    const id = file.id || file.name + file.size + file.lastModified;
+    const prevFile = prevFiles.find(fileI => fileI.id === id);
+    if (prevFile) return prevFile;
 
-      if (file instanceof File) {
-        extractUrlFromFile(file).then(url => this.updateFileUrl(url, i));
+    if (file instanceof File) {
+      extractUrlFromFile(file).then(url => this.updateFileUrl(url, i));
 
-        return {
-          id,
-          url: '',
-          title: file.name,
-          uploaded: false,
-        };
-      }
       return {
         id,
-        url: `uploads/${file.id}`,
+        url: '',
         title: file.name,
-        uploaded: true,
+        uploaded: false,
       };
-    });
+    }
+    return {
+      id,
+      url: `uploads/${file.id}`,
+      title: file.name,
+      uploaded: true,
+    };
+  }
+
+  updateStateFiles(props) {
+    const { files: prevFiles } = this.state;
+    const files = props.files.map((file, i) => this.parseFile(prevFiles, file, i));
 
     this.setState({ files });
   }
