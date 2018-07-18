@@ -16,7 +16,6 @@ import {
   fetchFilesRequest,
   fetchFilesSuccess,
   fetchFilesFailure,
-
 } from './actions';
 import linksReducer from '../containers/Links/redux/reducer';
 
