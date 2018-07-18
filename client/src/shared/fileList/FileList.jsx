@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FileList = ({ files, itemComponent: Item, onItemRemove }) => (
-  /* eslint-disable react/no-array-index-key */
   <div>
-    {files.map((file, i) => <Item key={i} file={file} onRemove={onItemRemove ? e => onItemRemove(e, i) : null} />)}
+    {files.map((file, i) =>
+      <Item key={file.id} file={file} onRemove={onItemRemove ? e => onItemRemove(e, i) : null} />)
+    }
   </div>
 );
 

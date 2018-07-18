@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
-import moment from 'moment';
 import ComponentsForm from './components/ComponentsForm';
 
 const selectOptions = [
@@ -31,11 +30,6 @@ ReduxFormsComponents.propTypes = {
 
 export default reduxForm({
   form: 'componentsForm',
-  initialValues: {
-    DatePicker: moment(),
-    Select: { value: 'DE', label: 'Delaware' },
-    MyFileListPreview: [],
-  },
   enableReinitialize: true,
   keepDirtyOnReinitialize: false,
 })(ReduxFormsComponents);
