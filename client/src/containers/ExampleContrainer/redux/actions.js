@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import api from '../../../utils/ApiClient';
+import api from 'Utils/ApiClient';
 
 export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUEST');
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');

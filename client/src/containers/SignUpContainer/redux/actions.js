@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import api from '../../../utils/ApiClient';
+import api from 'Utils/ApiClient';
 
 export const fetchSignUpRequest = createAction('FETCH_SIGN_UP_REQUEST');
 export const fetchSignUpSuccess = createAction('FETCH_SIGN_UP_SUCCESS');

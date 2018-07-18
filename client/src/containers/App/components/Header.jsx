@@ -1,29 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import {
   Collapse,
   Container,
   Navbar,
   Nav,
-  NavItem,
 } from 'reactstrap';
+import withSpinner from 'Shared/hocs/withSpinner';
+import HeaderItems from './HeaderItems';
 
-const Header = () => (
+const HeaderItemsWithSpinner = withSpinner(HeaderItems);
+
+const Header = ({ isFetching, isLogged, onLogout }) => (
   <Navbar expand dark color="dark">
     <Container>
       <Collapse navbar className="w-100">
         <NavLink className="navbar-brand" to="/">Aspirity Web Template</NavLink>
         <Nav navbar className="ml-auto">
-          <NavItem className="mr-2">
-            <NavLink to="/signin" className="nav-link">Sign In</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/signup" className="nav-link">Sign Up</NavLink>
-          </NavItem>
+          <HeaderItemsWithSpinner isFetching={isFetching} isLogged={isLogged} onLogout={onLogout} />
         </Nav>
       </Collapse>
     </Container>
   </Navbar>
 );
+
+Header.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  onLogout: PropTypes.func.isRequired,
+};
 
 export default Header;
