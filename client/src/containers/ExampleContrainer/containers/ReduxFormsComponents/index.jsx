@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment/moment';
+import { FormProps } from 'Shared/prop-types';
 import ReduxFormsComponents from './ReduxFormsComponents';
 
 const ReduxForm = ({ initialValues, onSubmit }) =>
   <ReduxFormsComponents initialValues={initialValues} onSubmit={onSubmit} />;
 
 ReduxForm.propTypes = {
-  initialValues: PropTypes.shape().isRequired,
+  initialValues: PropTypes.shape({
+    MyFileListPreview: PropTypes.arrayOf(FormProps.ServerFile),
+  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
