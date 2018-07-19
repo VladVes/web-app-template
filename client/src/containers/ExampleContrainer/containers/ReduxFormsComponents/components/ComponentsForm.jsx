@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormProps } from 'PropTypes';
@@ -7,7 +8,7 @@ import {
   Captcha,
   Select,
   DatePicker,
-  FilePicker,
+  FileInput,
 } from 'Shared/redux-form-components';
 
 class ComponentsForm extends PureComponent {
@@ -37,17 +38,32 @@ class ComponentsForm extends PureComponent {
           label="DatePicker"
         />
         <Field
-          id="FilePicker"
-          name="FilePicker"
-          component={FilePicker}
-          disabled
-          label="FilePicker"
-        />
-        <Field
           id="Captcha"
           name="Captcha"
           component={Captcha}
           label="Verify you are not a robot"
+        />
+        <Field
+          id="MyFile"
+          name="MyFile"
+          component={FileInput}
+          label="Upload file"
+        />
+        <Field
+          id="MyFileList"
+          name="MyFileList"
+          component={FileInput}
+          label="Upload files"
+          multiple
+        />
+        <Field
+          id="MyFileListPreview"
+          name="MyFileListPreview"
+          component={FileInput}
+          label="Upload images with preview"
+          multiple
+          preview
+          accept="image/*"
         />
         <Button
           type="submit"

@@ -13,6 +13,8 @@ import {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
+  fetchFiles,
+  uploadFiles,
 } from './redux/actions';
 
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
@@ -24,14 +26,17 @@ class ExampleComponent extends Component {
     testText: PropTypes.string.isRequired,
     fetchBitcoinPrice: PropTypes.func.isRequired,
     fetchSum: PropTypes.func.isRequired,
+    fetchFiles: PropTypes.func.isRequired,
     fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
+    uploadFiles: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.props.fetchBitcoinPrice();
     this.props.fetchTest();
     this.props.fetchSum();
+    this.props.fetchFiles();
   }
 
   handlePersonDataFormSubmit = (formValues) => {
@@ -50,8 +55,13 @@ class ExampleComponent extends Component {
     }
   };
 
-  // eslint-disable-next-line no-alert
-  handleSubmit = formValues => alert(JSON.stringify(formValues));
+  handleSubmit = (formValues) => {
+    // eslint-disable-next-line no-alert
+    alert(JSON.stringify(formValues));
+    this.props.uploadFiles(formValues.MyFile);
+    this.props.uploadFiles(formValues.MyFileList);
+    this.props.uploadFiles(formValues.MyFileListPreview);
+  };
 
   render() {
     const {
@@ -98,6 +108,8 @@ const mapDispatchToProps = {
   fetchBitcoinPrice,
   fetchTest,
   fetchSum,
+  fetchFiles,
+  uploadFiles,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent);

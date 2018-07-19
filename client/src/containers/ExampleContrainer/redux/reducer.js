@@ -12,6 +12,10 @@ import {
   fetchSumRequest,
   fetchSumSuccess,
   fetchSumFailure,
+
+  fetchFilesRequest,
+  fetchFilesSuccess,
+  fetchFilesFailure,
 } from './actions';
 import linksReducer from '../containers/Links/redux/reducer';
 
@@ -114,9 +118,43 @@ const sumReducer = handleActions(
   sumDefaultState,
 );
 
+const filesDefaultState = {
+  list: [],
+  error: null,
+  isFetching: false,
+};
+
+const filesReducer = handleActions(
+  {
+    [fetchFilesRequest](state) {
+      return {
+        ...state,
+        isFetching: true,
+      };
+    },
+    [fetchFilesSuccess](state, { payload }) {
+      return {
+        ...state,
+        list: payload,
+        isFetching: false,
+        error: null,
+      };
+    },
+    [fetchFilesFailure](state, { payload }) {
+      return {
+        ...state,
+        isFetching: false,
+        error: payload,
+      };
+    },
+  },
+  filesDefaultState,
+);
+
 export default combineReducers({
   bitcoin: bitcoinReducer,
   links: linksReducer,
   test: testReducer,
   sum: sumReducer,
+  files: filesReducer,
 });

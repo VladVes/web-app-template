@@ -51,3 +51,41 @@ export const fetchSum = () => async (dispatch) => {
     dispatch(fetchSumFailure(error));
   }
 };
+
+export const fetchFilesRequest = createAction('FETCH_FILES_REQUEST');
+export const fetchFilesSuccess = createAction('FETCH_FILES_SUCCESS');
+export const fetchFilesFailure = createAction('FETCH_FILES_FAILURE');
+
+export const fetchFiles = () => async (dispatch) => {
+  try {
+    dispatch(fetchFilesRequest());
+
+    const response = await api.example.getFiles();
+
+    dispatch(fetchFilesSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchFilesFailure(error));
+  }
+};
+
+export const uploadFiles = files => async (dispatch) => {
+  try {
+    dispatch(fetchFilesRequest());
+
+    const formData = new FormData();
+
+    Object.values(files).forEach((file) => {
+      if (file.id) {
+        formData.append('keepfiles[]', file.id);
+      } else {
+        formData.append('uploadfiles[]', file);
+      }
+    });
+
+    const response = await api.example.setFiles(formData);
+
+    dispatch(fetchFilesSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchFilesFailure(error));
+  }
+};
