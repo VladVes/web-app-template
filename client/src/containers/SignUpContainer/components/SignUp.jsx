@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
-import SignUpForm from './SignUpForm';
 import { validateEmail, validatePassword } from 'Utils/FormValidate';
+import SignUpForm from './SignUpForm';
 
 const validate = (values) => {
   const errors = {};
