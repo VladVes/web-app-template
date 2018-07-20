@@ -4,7 +4,6 @@ import { hot } from 'react-hot-loader';
 import ExampleContainer from 'Containers/ExampleContrainer/index';
 import SignUpContainer from 'Containers/SignUpContainer/index';
 import SignInContainer from 'Containers/SignInContainer/index';
-import InfinityScrollContainer from 'Containers/InfinityScrollContainer/index';
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => (
@@ -14,7 +13,6 @@ const Routes = () => (
     <PrivateRoute path="/private" component={ExampleContainer} />
     <Route path="/signup" component={SignUpContainer} />
     <Route path="/signin" component={SignInContainer} />
-    <Route path="/scroll" component={InfinityScrollContainer} />
   </Switch>
 );
 

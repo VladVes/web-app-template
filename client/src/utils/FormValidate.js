@@ -6,7 +6,7 @@ export function validateRequired(value) {
 }
 
 export function validateEmail(value) {
-  if (!(/^[-a-zA-Z0-9!#$%&'*+\/=?^_`{|}~\-\.]+@[a-z0-9.\-]+$/).test(value)) {
+  if (!(/^[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~\-.]+@[a-z0-9.-]+$/).test(value)) {
     return 'Wrong email format';
   }
   return null;
@@ -27,7 +27,7 @@ export function validatePassword(value) {
   const lengthError = validateLength(value, 6);
   if (lengthError) return lengthError;
 
-  if (!(/(?=.*[0-9])(?=.*[а-яёa-z])(?=.*[A-ZА-ЯЁ])[0-9a-zA-Z.,';\]\[{}:"<>?!@#$%^&*()_\-+=|\/№А-Яа-яЁё]{6,}/).test(value)) {
+  if (!(/(?=.*[0-9])(?=.*[а-яёa-z])(?=.*[A-ZА-ЯЁ])[0-9a-zA-Z.,';]\[{}:"<>?!@#$%^&*()_-+=|\/№А-Яа-яЁё]{6,}/).test(value)) {
     return 'Password should include at least one upper/lowercase letter and at least one number';
   }
   return null;
