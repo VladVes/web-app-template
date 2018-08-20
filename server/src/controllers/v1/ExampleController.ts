@@ -19,6 +19,7 @@ class ExampleController extends BaseController {
     this.router.get('/bitcoin', this.getBitcoinPrice);
     this.router.post('/files', this.setFiles.bind(this));
     this.router.get('/files', this.getFiles);
+    this.router.get('/error', this.genError)
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -107,6 +108,12 @@ class ExampleController extends BaseController {
       file.pipe(fstream);
       fstream.on('close', () => resolve(fileId));
     })
+  }
+
+  public genError(req: Request, res: Response, next: NextFunction): void {
+    const error = new Error('Test Error');
+    next(error);
+    // throw error; - it works too
   }
 }
 

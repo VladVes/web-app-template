@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import { SubmissionError } from 'redux-form';
 import withSpinner from 'Shared/hocs/withSpinner';
+import api from 'Utils/ApiClient';
 import Links from './containers/Links';
 import PersonData from './containers/PersonData';
 import ExampleModal from './containers/ExampleModal';
@@ -17,6 +18,7 @@ import {
   uploadFiles,
 } from './redux/actions';
 
+const { example: { genError } } = api;
 const BtcToUsdWithSpinner = withSpinner(BtcToUsd);
 
 class ExampleComponent extends Component {
@@ -37,6 +39,7 @@ class ExampleComponent extends Component {
     this.props.fetchTest();
     this.props.fetchSum();
     this.props.fetchFiles();
+    genError();
   }
 
   handlePersonDataFormSubmit = (formValues) => {

@@ -7,4 +7,5 @@ export default {
   getBitcoinPrice: () => get(`${apiUrl}/example/bitcoin`),
   getFiles: () => get(`${apiUrl}/example/files`),
   setFiles: fileStream => post(`${apiUrl}/example/files`, fileStream),
+  genError: () => get(`${apiUrl}/example/error`),
 };
