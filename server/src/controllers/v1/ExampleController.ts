@@ -96,12 +96,6 @@ class ExampleController extends BaseController {
     return files;
   }
 
-  async filterFiles(keep) {
-    //remove from db
-    const removeResult = await FileModel.remove({ _id: {$nin: keep}});
-    //TODO: remove from uploads
-  }
-
   private uploadFile(file, filename) {
     const folder = config.get('staticFolder');
     return new Promise(async resolve => {
