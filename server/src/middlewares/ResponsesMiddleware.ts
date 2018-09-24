@@ -1,12 +1,16 @@
 import * as http from "http";
-import {ResponseMessage} from "../types/ResponseTypes";
-import {Request, Response, NextFunction, RequestHandler} from "../types/ExpressExtended";
+import {ResponseMessage} from "types/ResponseTypes";
+import {Request, Response, NextFunction, RequestHandler} from "types/ExpressExtended";
 
 export class ResponseFactory {
   private res: Response;
   constructor(res) { this.res = res; }
 
-  public notFoundResource(message, options): Response {
+  public json(body: any) : Response {
+    return this.res.json(body) as Response;
+  }
+
+  public notFoundResource(message : string): Response {
     const code = 404;
     const responseMessage = {
       message: message || http.STATUS_CODES[code],

@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'types/ExpressExtended';
 import * as VError from 'verror';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -25,7 +25,7 @@ class ExampleController extends BaseController {
   public get(req: Request, res: Response, next: NextFunction): Response {
     logger.info('exampleController index route entered');
 
-    return res.json({ result: 'exampleController' });
+    return res.responses.json({ result: 'exampleController' });
   }
 
   public getSum(req: Request, res: Response, next: NextFunction): Response {
@@ -35,7 +35,7 @@ class ExampleController extends BaseController {
     const second = 5;
 
     const sum = ExampleService.add(first, second);
-    return res.json({ sum });
+    return res.responses.json({ sum });
   }
 
   public async getBitcoinPrice(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
@@ -44,7 +44,7 @@ class ExampleController extends BaseController {
     try {
       const response = await axios.get(bitcoinUrl);
 
-      return res.json({ price: response.data[0].price_usd });
+      return res.responses.json({ price: response.data[0].price_usd });
     } catch (err) {
       return next(err instanceof Error ? err : new VError(err));
     }
@@ -74,7 +74,7 @@ class ExampleController extends BaseController {
       if (!counter) {
         console.log('keep', keep);
         const files = await this.getFiles(keep);
-        return res.json(files);
+        return res.responses.json(files);
       }
     });
 
@@ -86,7 +86,7 @@ class ExampleController extends BaseController {
       // when no files are send
       if (!counter) {
         const files = await this.getFiles(keep);
-        return res.json(files);
+        return res.responses.json(files);
       }
     });
 
@@ -105,7 +105,7 @@ class ExampleController extends BaseController {
   public async getFileList(req, res, next) : Promise<Response> {
     const files = await this.getFiles();
 
-    return res.json(files);
+    return res.responses.json(files);
   }
 
   private uploadFile(file, filename) {
