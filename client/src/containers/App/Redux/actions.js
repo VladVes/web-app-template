@@ -11,13 +11,13 @@ export const fetchCurrentUser = () => async (dispatch) => {
 
     if (localStorage.getItem('token')) {
       setTimeout(async () => {
-        api.user.getCurrent()
-          .then((response) => {
-            const user = response.data;
-
-            dispatch(fetchCurrentUserSuccess(user));
-          })
-          .catch(() => localStorage.removeItem('token'));
+        try {
+          const response = await api.user.getCurrent();
+          const user = response.data;
+          dispatch(fetchCurrentUserSuccess(user));
+        } catch (e) {
+          localStorage.removeItem('token');
+        }
       }, 3000);
     } else {
       setTimeout(() => {
