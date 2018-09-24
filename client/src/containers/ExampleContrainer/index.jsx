@@ -60,7 +60,6 @@ class ExampleComponent extends Component {
     alert(JSON.stringify(formValues));
     this.props.uploadFiles(formValues.MyFile);
     this.props.uploadFiles(formValues.MyFileList);
-    this.props.uploadFiles(formValues.MyFileListPreview);
   };
 
   render() {

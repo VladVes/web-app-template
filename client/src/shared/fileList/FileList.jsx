@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const FileList = ({ files, itemComponent: Item, handleItemRemove }) => (
   <div>
     {files.map((file, i) =>
-      <Item key={file.id} file={file} onRemove={handleItemRemove ? e => handleItemRemove(e, i) : null} />)
+      <Item key={file._id} file={file} onRemove={handleItemRemove ? e => handleItemRemove(e, i) : null} />)
     }
   </div>
 );

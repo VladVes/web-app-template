@@ -19,7 +19,7 @@ class ExampleController extends BaseController {
     this.router.get('/sum', this.getSum);
     this.router.get('/bitcoin', this.getBitcoinPrice);
     this.router.post('/files', this.setFiles.bind(this));
-    this.router.get('/files', this.getFiles);
+    this.router.get('/files', this.getFileList.bind(this));
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -67,10 +67,12 @@ class ExampleController extends BaseController {
       counter ++;
 
       const fileId = await this.uploadFile(file, filename);
+      console.log('fieldId', fileId);
       keep.push(fileId);
 
       counter--;
       if (!counter) {
+        console.log('keep', keep);
         const files = await this.getFiles(keep);
         return res.json(files);
       }
@@ -91,9 +93,19 @@ class ExampleController extends BaseController {
     req.pipe(busboy);
   }
 
-  private async getFiles(ids): Promise<Response|void> {
-    const files = await FileModel.find({ _id: { $in: ids.map(id => mongoose.Types.ObjectId(id)) } }).lean();
-    return files;
+  private async getFiles(ids: string[] = null): Promise<Response|void> {
+    if (ids && ids.length > 0) {
+      return await FileModel.find({_id: {$in: ids.map(id => mongoose.Types.ObjectId(id))}}).lean();
+  } else {
+      return await FileModel.find().lean();
+    }
+
+  }
+
+  public async getFileList(req, res, next) : Promise<Response> {
+    const files = await this.getFiles();
+
+    return res.json(files);
   }
 
   private uploadFile(file, filename) {

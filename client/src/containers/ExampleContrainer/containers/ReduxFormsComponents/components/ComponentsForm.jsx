@@ -21,11 +21,11 @@ class ComponentsForm extends PureComponent {
     selectOptions: FormProps.SelectOptions.isRequired,
   };
 
-  renderImages = ({ value: images, onChange }) => {
+  renderImages = ({ value: images }) => {
     if (!images) return null;
-    return images.map(image => (
+    return images.map((image, index) => (
       <div>
-        <Image image={image} />
+        <Image image={image} key={`image_${image._id}`} index={index} />
       </div>
     ));
   };
@@ -58,45 +58,22 @@ class ComponentsForm extends PureComponent {
         <Field
           id="MyFile"
           name="MyFile"
-          component={FileInputOutdated}
-          label="*OUT DATED* Upload file"
-        />
-        <Field
-          id="MyFileList"
-          name="MyFileList"
-          component={FileInputOutdated}
-          label="*OUT DATED* Upload files"
-          multiple
-        />
-        <Field
-          id="MyFileListPreview"
-          name="MyFileListPreview"
-          component={FileInputOutdated}
-          label="*OUT DATED* Upload images with preview"
-          multiple
-          preview
-          accept="image/*"
-        />
-        <span>--------------------------------------------------------------------------------------------------</span>
-        <Field
-          id="FileInput_Image"
-          name="FileInput_Image"
           component={FileInput}
-          label="Upload images with preview"
+          label="Upload image with preview"
           preview
           accept="image/*"
         />
-        <h2>GALLERY IMAGES</h2>
+        <h2>GALLERY</h2>
         <ImagesWrapper>
           <Field
-            id="FileInput_List"
-            name="FileInput_List"
+            id="MyFileList"
+            name="MyFileList"
             component={this.renderImages}
           />
           <ImagePlaceFieldWrap>
             <Field
-              id="FileInput_List"
-              name="FileInput_List"
+              id="MyFileList"
+              name="MyFileList"
               component={FileInput}
               multiple
               preview={false}

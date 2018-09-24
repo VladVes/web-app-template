@@ -34,8 +34,8 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
   }
 
   parseFile(prevFiles, file, i) {
-    const id = file.id || file.name + file.size + file.lastModified;
-    const prevFile = prevFiles.find(fileI => fileI.id === id);
+    const id = file._id || file.name + file.size + file.lastModified;
+    const prevFile = prevFiles.find(fileI => fileI._id === id);
     if (prevFile) return prevFile;
 
     if (file instanceof File) {
@@ -50,7 +50,7 @@ const withRawFiles = WrappedComponent => class WithRawFiles extends Component {
     }
     return {
       id,
-      url: `uploads/${file.id}`,
+      url: `uploads/${file._id}`,
       title: file.name,
       uploaded: true,
     };
