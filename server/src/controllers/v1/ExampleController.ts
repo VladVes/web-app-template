@@ -9,6 +9,7 @@ import Logger from '../../Logger';
 import BaseController from '../BaseController';
 import config from '../../config';
 import FileModel from '../../models/FileModel';
+import * as mongoose from "mongoose";
 
 const logger = new Logger();
 
@@ -49,11 +50,6 @@ class ExampleController extends BaseController {
     }
   }
 
-  public async getFiles(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
-    const files = await FileModel.find();
-    res.send(files.map(({ _id: id, name }) => ({ id, name })));
-  }
-
   public async setFiles(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
     const busboy = new Busboy({ headers: req.headers });
 
@@ -61,7 +57,13 @@ class ExampleController extends BaseController {
 
     const keep = [];
 
-    busboy.on('file', async(fieldname, file, filename) => {
+    busboy.on('file', async(fieldname, file, filename, encoding, mimetype) => {
+      const allowedMimetypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+      if (!allowedMimetypes.includes(mimetype)) {
+        return res.status(422).send('Invalid image format');
+      }
+
       counter ++;
 
       const fileId = await this.uploadFile(file, filename);
@@ -69,24 +71,29 @@ class ExampleController extends BaseController {
 
       counter--;
       if (!counter) {
-        this.filterFiles(keep);
-        this.getFiles(req, res, next);
+        const files = await this.getFiles(keep);
+        return res.json(files);
       }
     });
 
     busboy.on('field', (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) =>
-      keep.push(val)
+      keep.push(val),
     );
 
-    busboy.on('finish', () => {
+    busboy.on('finish', async () => {
       // when no files are send
       if (!counter) {
-        this.filterFiles(keep);
-        this.getFiles(req, res, next);
+        const files = await this.getFiles(keep);
+        return res.json(files);
       }
     });
 
     req.pipe(busboy);
+  }
+
+  private async getFiles(ids): Promise<Response|void> {
+    const files = await FileModel.find({ _id: { $in: ids.map(id => mongoose.Types.ObjectId(id)) } }).lean();
+    return files;
   }
 
   async filterFiles(keep) {

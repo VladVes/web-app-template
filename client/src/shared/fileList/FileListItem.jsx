@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseButton from 'Shared/styledComponents/CloseModalButton';
+import CloseButton from 'Shared/styled/CloseModalButton';
 import { FileListItemWraper, FileListItemImage } from './styled/FileListItem';
 
 const FileListItem = ({ file: { url, title, uploaded }, onRemove, ...props }) => (

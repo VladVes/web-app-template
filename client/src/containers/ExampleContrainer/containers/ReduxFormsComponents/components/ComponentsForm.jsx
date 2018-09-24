@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import { FormProps } from 'PropTypes';
 import { Form, Button } from 'reactstrap';
@@ -8,14 +9,25 @@ import {
   Captcha,
   Select,
   DatePicker,
+  FileInputOutdated,
   FileInput,
 } from 'Shared/redux-form-components';
+import Image from 'Shared/Image';
 
 class ComponentsForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     selectOptions: FormProps.SelectOptions.isRequired,
+  };
+
+  renderImages = ({ value: images, onChange }) => {
+    if (!images) return null;
+    return images.map(image => (
+      <div>
+        <Image image={image} />
+      </div>
+    ));
   };
 
   render() {
@@ -46,25 +58,51 @@ class ComponentsForm extends PureComponent {
         <Field
           id="MyFile"
           name="MyFile"
-          component={FileInput}
-          label="Upload file"
+          component={FileInputOutdated}
+          label="*OUT DATED* Upload file"
         />
         <Field
           id="MyFileList"
           name="MyFileList"
-          component={FileInput}
-          label="Upload files"
+          component={FileInputOutdated}
+          label="*OUT DATED* Upload files"
           multiple
         />
         <Field
           id="MyFileListPreview"
           name="MyFileListPreview"
-          component={FileInput}
-          label="Upload images with preview"
+          component={FileInputOutdated}
+          label="*OUT DATED* Upload images with preview"
           multiple
           preview
           accept="image/*"
         />
+        <span>--------------------------------------------------------------------------------------------------</span>
+        <Field
+          id="FileInput_Image"
+          name="FileInput_Image"
+          component={FileInput}
+          label="Upload images with preview"
+          preview
+          accept="image/*"
+        />
+        <h2>GALLERY IMAGES</h2>
+        <ImagesWrapper>
+          <Field
+            id="FileInput_List"
+            name="FileInput_List"
+            component={this.renderImages}
+          />
+          <ImagePlaceFieldWrap>
+            <Field
+              id="FileInput_List"
+              name="FileInput_List"
+              component={FileInput}
+              multiple
+              preview={false}
+            />
+          </ImagePlaceFieldWrap>
+        </ImagesWrapper>
         <Button
           type="submit"
           className="mr-3"
@@ -75,5 +113,70 @@ class ComponentsForm extends PureComponent {
     );
   }
 }
+
+export const ImagesArea = styled.div`
+  width: 100%;
+  max-width: 240px;
+  margin-right: -16px;
+`;
+
+export const ImagesWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  margin-bottom: 16px;
+`;
+
+export const ImagePlaceFieldWrap = styled.div`
+  width: 104px;
+  min-width: 104px;
+  height: 104px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  
+  svg{
+    position: absolute;
+    fill: #EDAC1A;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  div, label {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  label{
+    display: flex;
+    padding: 0;
+    left: 0;
+    width: 96px;
+    min-width: 96px;
+    height: 96px;
+    background-color: white;
+    border-radius: 4px;
+    border: 2px dashed #B2EAFF;
+    box-shadow: 0 0 0 4px #ffffff;
+    transition: 0.3s;
+    margin: 4px;
+    
+    &[data-preview="true"] {
+      border: solid transparent;
+      box-shadow: none;
+      background: transparent;        
+    }
+    
+    &:hover{
+      border-color: #7BDCFF;
+    }
+  }
+`;
 
 export default ComponentsForm;
