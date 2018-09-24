@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import {NextFunction, Request, Response} from "types/ExpressExtended";
 import passport from '../../middlewares/Passport';
 import BaseController from '../BaseController';
 
@@ -10,7 +10,7 @@ class UserController extends BaseController {
   public getCurrent(req: Request, res: Response, next: NextFunction): Response {
     const { user } = req;
 
-    return res.json(user);
+    return res.responses.json(user);
   }
 }
 

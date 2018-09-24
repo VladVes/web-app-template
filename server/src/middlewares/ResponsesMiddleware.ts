@@ -44,7 +44,7 @@ export class ResponseFactory {
     return this.res.status(code).json(responseMessage) as Response;
   }
 
-  public unauthorized(message: string): Response {
+  public unauthorized(message: string = null): Response {
     const code = 401;
     const responseMessage = {
       message: message || http.STATUS_CODES[code],
@@ -72,7 +72,7 @@ export class ResponseFactory {
   }
 
   public success(message: string): Response {
-    const code = 200;
+    const code = 201;
     const responseMessage = {
       message: message || http.STATUS_CODES[code],
     };
