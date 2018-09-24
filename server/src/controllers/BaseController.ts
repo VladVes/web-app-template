@@ -3,7 +3,7 @@ import { Router } from 'express';
 abstract class BaseController {
   protected router: Router;
 
-  constructor() {
+  protected constructor() {
     this.router = Router();
     const that = this;
     // bind all methods to class (to avoid problems with "this")
