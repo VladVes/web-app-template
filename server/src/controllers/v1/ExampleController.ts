@@ -18,8 +18,8 @@ class ExampleController extends BaseController {
     this.router.get('/', this.get);
     this.router.get('/sum', this.getSum);
     this.router.get('/bitcoin', this.getBitcoinPrice);
-    this.router.post('/files', this.setFiles.bind(this));
-    this.router.get('/files', this.getFileList.bind(this));
+    this.router.post('/files', this.setFiles);
+    this.router.get('/files', this.getFileList);
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
