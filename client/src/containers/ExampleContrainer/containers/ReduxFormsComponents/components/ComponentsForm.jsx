@@ -9,7 +9,6 @@ import {
   Captcha,
   Select,
   DatePicker,
-  FileInputOutdated,
   FileInput,
 } from 'Shared/redux-form-components';
 import Image from 'Shared/Image';
