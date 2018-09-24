@@ -75,8 +75,8 @@ export const uploadFiles = files => async (dispatch) => {
     const formData = new FormData();
 
     Object.values(files).forEach((file) => {
-      if (file.id) {
-        formData.append('keepfiles[]', file.id);
+      if (file._id) {
+        formData.append('keepfiles[]', file._id);
       } else {
         formData.append('uploadfiles[]', file);
       }

@@ -5,7 +5,7 @@ import {
   Form,
 } from 'reactstrap';
 import Field from 'Shared/redux-form-components/CustomField';
-import Button from 'Shared/styledComponents/Button';
+import Button from 'Shared/styled/Button';
 
 class PersonDataForm extends PureComponent {
   static propTypes = {
