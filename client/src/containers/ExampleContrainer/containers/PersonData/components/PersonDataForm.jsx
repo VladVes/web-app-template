@@ -18,7 +18,7 @@ class PersonDataForm extends PureComponent {
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <strong>Form with submit validation</strong>
+        <strong>Form with submit backend-validation</strong>
         <Field
           id="name"
           name="name"
