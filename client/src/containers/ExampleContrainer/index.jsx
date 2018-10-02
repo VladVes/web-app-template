@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
-import { SubmissionError } from 'redux-form';
 import withSpinner from 'Shared/hocs/withSpinner';
 import Links from './containers/Links';
 import PersonData from './containers/PersonData';
@@ -14,6 +13,7 @@ import {
   fetchTest,
   fetchSum,
   fetchFiles,
+  postPersonData,
   uploadFiles,
 } from './redux/actions';
 
@@ -29,6 +29,7 @@ class ExampleComponent extends Component {
     fetchFiles: PropTypes.func.isRequired,
     fetchTest: PropTypes.func.isRequired,
     isBTCtoUSDFetching: PropTypes.bool.isRequired,
+    postPersonData: PropTypes.func.isRequired,
     uploadFiles: PropTypes.func.isRequired,
   };
 
@@ -39,19 +40,11 @@ class ExampleComponent extends Component {
     this.props.fetchFiles();
   }
 
-  handlePersonDataFormSubmit = (formValues) => {
-    const error = {};
-
-    if (!formValues.name) {
-      error.name = 'Name required';
-    }
-
-    if (!formValues.surname) {
-      error.surname = 'Surname required';
-    }
-
-    if (Object.keys(error).length) {
-      throw new SubmissionError(error);
+  handlePersonDataFormSubmit = async (formValues) => {
+    try {
+      await this.props.postPersonData(formValues);
+    } catch (e) {
+      throw e;
     }
   };
 
@@ -108,6 +101,7 @@ const mapDispatchToProps = {
   fetchTest,
   fetchSum,
   fetchFiles,
+  postPersonData,
   uploadFiles,
 };
 

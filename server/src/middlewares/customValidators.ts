@@ -10,6 +10,8 @@ const isNotEmpty = (value: any[]): boolean => {
   return Boolean(value.length);
 };
 
+const textLength = (text: string, min: number, max: number): boolean => Boolean(text) && text.length >= min && text.length <= max;
+
 const isContains = (item: any, targetArray: any[]): boolean => {
   if (!item || !targetArray) { return false; }
 
@@ -57,6 +59,7 @@ export default (): Handler => (
   expressValidator({
     customValidators: {
       isNotEmpty,
+      textLength,
       isContains,
       isCustomEmail,
       isPassword,

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'types/ExpressExtended';
 import * as VError from 'verror';
 import * as fs from 'fs';
+import * as mongoose from "mongoose";
 import * as path from 'path';
 import axios from 'axios';
 import * as Busboy from 'busboy';
@@ -9,7 +10,8 @@ import Logger from '../../Logger';
 import BaseController from '../BaseController';
 import config from '../../config';
 import FileModel from '../../models/FileModel';
-import * as mongoose from "mongoose";
+import validate from '../../middlewares/validate';
+import { postPersonDataSchema } from '../../validationSchemas/example';
 
 const logger = new Logger();
 
@@ -20,6 +22,7 @@ class ExampleController extends BaseController {
     this.router.get('/bitcoin', this.getBitcoinPrice);
     this.router.post('/files', this.setFiles);
     this.router.get('/files', this.getFileList);
+    this.router.post('/personData', validate(postPersonDataSchema), this.postPersonData);
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -106,6 +109,10 @@ class ExampleController extends BaseController {
     const files = await this.getFiles();
 
     return res.responses.json(files);
+  }
+
+  public async postPersonData(req, res, next) : Promise<Response> {
+    return res.responses.json(req.body);
   }
 
   private uploadFile(file, filename) {
