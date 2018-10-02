@@ -46,7 +46,6 @@ class ExampleComponent extends Component {
     } catch (e) {
       throw e;
     }
-    // todo: validation here instead of action (or just move to action -> backend request)
   };
 
   handleSubmit = (formValues) => {
