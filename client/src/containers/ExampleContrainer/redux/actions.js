@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import api from 'Utils/ApiClient';
+import parseValidation from 'Utils/BackEndValidationParser';
 
 export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUEST');
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');
@@ -87,5 +88,17 @@ export const uploadFiles = files => async (dispatch) => {
     dispatch(fetchFilesSuccess(response.data));
   } catch (error) {
     dispatch(fetchFilesFailure(error));
+  }
+};
+
+export const postPersonData = personData => async () => {
+  try {
+    await api.example.postPersonData(personData);
+  } catch (error) {
+    console.log('error', error);
+    if (error.response && error.response.status === 422) {
+      // throws error upper if contains correct validation errors (not just status code)
+      parseValidation(error.response.data.errors);
+    }
   }
 };

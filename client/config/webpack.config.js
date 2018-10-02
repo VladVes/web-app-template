@@ -57,5 +57,6 @@ module.exports = {
       '/api': 'http://aspiritywebtemplate_server:8080',
       '/uploads': 'http://aspiritywebtemplate_server:8080',
     },
+    overlay: true,
   },
 };
