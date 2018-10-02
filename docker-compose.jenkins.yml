@@ -19,6 +19,7 @@ services:
       NODE_ENV: dev
     volumes:
     - /storage/awt/$ENV/server/logs:/server/logs
+    - /storage/awt/$ENV/server/uploads:/server/uploads
     command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
     restart: always
   mongodb:
