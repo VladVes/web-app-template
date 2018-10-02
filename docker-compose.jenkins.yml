@@ -6,11 +6,8 @@ services:
     container_name: aspiritywebtemplate_client
     ports:
       - $PORT1:3000
-    volumes:
-      - ./client/src:/client/src
-      - ./client/public:/client/public
-      - ./client/package.json:/client/package.json
-    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
+    command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
+    restart: always
   server:
     image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/server:$BUILD_NUMBER
     build: ./server
@@ -21,11 +18,9 @@ services:
     environment:
       NODE_ENV: dev
     volumes:
-      - ./server/src:/server/src
-      - ./server/logs:/server/logs
-      - ./server/package.json:/server/package.json
-      - ./server/tsconfig.json:/server/tsconfig.json
-    command: bash -c 'if [ $NODE_ENV = "production" ]; then yarn start; else yarn start:debug; fi'
+    - /storage/awt/$ENV/server/logs:/server/logs
+    command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
+    restart: always
   mongodb:
     image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/mongodb:$BUILD_NUMBER
     build: ./mongodb
@@ -33,8 +28,10 @@ services:
     ports:
       - $PORT4:27017
     volumes:
-          - ./mongodb/db:/data/db
-          - ./mongodb/configdb:/data/configdb
+          - /storage/awt/$ENV/mongodb/db:/data/db
+          - /storage/awt/$ENV/mongodb/configdb:/data/configdb
     environment:
       MONGODB_PASS: "p1230h6t34qd4i7ex"
     command: ["/bin/run.sh"]
+    restart: always
+
