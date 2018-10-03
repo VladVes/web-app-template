@@ -130,10 +130,14 @@ class ExampleController extends BaseController {
     })
   }
 
-  public genError(req: Request, res: Response, next: NextFunction): void {
-    const error = new Error('Test Error');
-    next(error);
-    // throw error; - it works too
+  public genError(req: Request, res: Response, next: NextFunction): Response | void {
+    const emptyObject = null;
+    try {
+      emptyObject.unexistingFunction(emptyObject.unexistingField);
+      return res.responses.serverError('Error not thrown');
+    } catch (err) {
+      return next(err instanceof Error ? err : new VError(err));
+    }
   }
 }
 

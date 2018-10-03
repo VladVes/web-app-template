@@ -69,6 +69,11 @@ const config = convict({
     doc: 'static folder exposed to everyone',
     format: String,
     default: 'uploads',
+  },
+  development: {
+    doc: 'Is used internally or production',
+    format: Boolean,
+    default: true
   }
 });
 
