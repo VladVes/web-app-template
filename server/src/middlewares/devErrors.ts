@@ -7,7 +7,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default (error, req, res, next) => {
-  console.log('show errors?', error);
   if (showErrors) {
     return res.json({ error: error, stack: error.stack, msg: error.message, fullStack: VError.fullStack(error) });
   } else {
