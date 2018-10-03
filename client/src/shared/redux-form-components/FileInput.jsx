@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { ServerFile } from 'Shared/prop-types/FormProps';
-import { RawFileList } from 'Shared/fileList';
+import api from 'Utils/api/fileApi';
+import { LoadIcon } from 'Shared/styled/icons';
 
 class FileInput extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(ServerFile),
+      PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+      }),
+      PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+      })),
     ]).isRequired,
     id: PropTypes.string.isRequired,
     preview: PropTypes.bool,
@@ -25,29 +30,26 @@ class FileInput extends Component {
     this.updateValueFiles(newFiles);
   };
 
-  handleRemoveItem = (e, i) => {
-    e.preventDefault();
-    const { onChange, value } = this.props;
-
-    const files = [...value];
-    files.splice(i, 1);
-
-    onChange(files);
-  };
-
-  updateValueFiles(newFiles) {
-    const { onChange, value } = this.props;
+  async updateValueFiles(newFiles) {
+    // todo: refactor working with multiple
+    const { onChange, value, multiple } = this.props;
 
     let files = value ? [...value] : [];
-    files = files.concat(newFiles);
+    const formData = new FormData();
 
-    onChange(files);
-  }
+    Object.values(newFiles).forEach((file) => {
+      formData.append('uploadfiles[]', file);
+    });
 
-  renderFileNames() {
-    const files = this.props.value || [];
+    const response = await api.setFiles(formData);
+    const uploadedFiles = response.data;
 
-    return files.length ? files.map(file => file.name || file).join(', ') : 'Not selected';
+    if (!multiple) {
+      return onChange(uploadedFiles[0]);
+    }
+
+    files = files.concat(uploadedFiles);
+    return onChange(files);
   }
 
   render() {
@@ -57,19 +59,23 @@ class FileInput extends Component {
 
     return (
       <div>
-        {preview && <RawFileList files={value || []} handleItemRemove={this.handleRemoveItem} />}
-        <label htmlFor={id} className="btn btn-primary">
-          Browses
+        <label htmlFor={id} data-preview={value && preview}>
+          {preview && value && <img alt="Loading..." src={`/uploads/${value._id}`} />}
+          {(!preview || !value) &&
+          <div>
+            <LoadIcon />
+          </div>
+          }
           <input
             {...otherProps}
             type="file"
             id={id}
             onChange={this.handleChangeInput}
             value=""
+            accept=".jpg, .jpeg, .png, .gif"
             hidden
           />
         </label>
-        {!preview && this.renderFileNames()}
       </div>
     );
   }

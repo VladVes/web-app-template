@@ -62,7 +62,7 @@ const config = convict({
     secret: {
       doc: 'Google recaptcha secret key',
       format: String,
-      default: '6LfOZF8UAAAAAJ_I2pg4nIuxnuN2ySz4E8wUvz8X',
+      default: '6LcJAXEUAAAAANCIZ2q6VfqgnDLu0NHE5IgCV7W5',
     }
   },
   staticFolder: {

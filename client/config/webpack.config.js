@@ -25,8 +25,16 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           'babel-loader',
-          'eslint-loader',
         ],
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
       },
       {
         test: /\.css$/,
@@ -40,6 +48,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: './public',
+    disableHostCheck: true,
     historyApiFallback: true,
     hot: true,
     host: '0.0.0.0',
@@ -48,5 +57,6 @@ module.exports = {
       '/api': 'http://aspiritywebtemplate_server:8080',
       '/uploads': 'http://aspiritywebtemplate_server:8080',
     },
+    overlay: true,
   },
 };

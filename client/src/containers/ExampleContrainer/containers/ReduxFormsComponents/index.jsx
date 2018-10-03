@@ -10,7 +10,7 @@ const ReduxForm = ({ initialValues, onSubmit }) =>
 
 ReduxForm.propTypes = {
   initialValues: PropTypes.shape({
-    MyFileListPreview: PropTypes.arrayOf(FormProps.ServerFile),
+    MyFileList: PropTypes.arrayOf(FormProps.ServerFile),
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
@@ -18,7 +18,7 @@ ReduxForm.propTypes = {
 const initialValues = {
   DatePicker: moment(),
   Select: { value: 'DE', label: 'Delaware' },
-  MyFileListPreview: [],
+  MyFileList: [],
 };
 
 const connectedForm = connect(
@@ -27,7 +27,7 @@ const connectedForm = connect(
     initialValues: {
       ...initialValues,
       ...(state.form.componentsForm || {}).values,
-      MyFileListPreview: state.example.files.list,
+      MyFileList: state.example.files.list,
     },
   }),
   {},

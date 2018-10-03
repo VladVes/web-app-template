@@ -5,7 +5,7 @@ import {
   Form,
 } from 'reactstrap';
 import Field from 'Shared/redux-form-components/CustomField';
-import Button from 'Shared/styledComponents/Button';
+import Button from 'Shared/styled/Button';
 
 class PersonDataForm extends PureComponent {
   static propTypes = {
@@ -18,7 +18,7 @@ class PersonDataForm extends PureComponent {
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <strong>Form with submit validation</strong>
+        <strong>Form with submit backend-validation</strong>
         <Field
           id="name"
           name="name"
