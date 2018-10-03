@@ -9,15 +9,21 @@ class MongoDB {
     this.dbUri = uri || config.get('db.uri');
   }
 
-  public connect(): Promise<Mongoose> {
-    return mongoose.connect(this.dbUri);
+  public connect(): Promise<mongoose.Mongoose> {
+    return mongoose.connect(this.dbUri, {
+      server: {
+        auto_reconnect: true,
+        reconnectTries: 5 * 60, // it will reconnect for 5 minutes
+        reconnectInterval: 1000,
+      },
+    });
   }
 
   public disconnect(): Promise<void> {
     return mongoose.disconnect();
   }
 
-  public migrate() : void {
+  public migrate(): void {
     return; // todo: migration example
   }
 }
