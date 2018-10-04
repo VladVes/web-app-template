@@ -23,6 +23,7 @@ class ExampleController extends BaseController {
     this.router.post('/files', this.setFiles);
     this.router.get('/files', this.getFileList);
     this.router.post('/personData', validate(postPersonDataSchema), this.postPersonData);
+    this.router.get('/error', this.genError)
   }
 
   public get(req: Request, res: Response, next: NextFunction): Response {
@@ -127,6 +128,16 @@ class ExampleController extends BaseController {
       file.pipe(fstream);
       fstream.on('close', () => resolve(fileId));
     })
+  }
+
+  public genError(req: Request, res: Response, next: NextFunction): Response | void {
+    const emptyObject = null;
+    try {
+      emptyObject.unexistingFunction(emptyObject.unexistingField);
+      return res.responses.serverError('Error not thrown');
+    } catch (err) {
+      return next(err instanceof Error ? err : new VError(err));
+    }
   }
 }
 

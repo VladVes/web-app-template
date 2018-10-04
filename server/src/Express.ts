@@ -5,6 +5,7 @@ import RequestsLogger from './RequestsLogger';
 import passport from './middlewares/Passport';
 import ResponsesMiddleWare from "./middlewares/ResponsesMiddleware";
 import customValidators from './middlewares/customValidators';
+import devErrors from './middlewares/devErrors';
 import MainController from './controllers/MainController';
 import config from './config';
 
@@ -40,6 +41,7 @@ class Express {
 
   private initPostRoutesMiddlewares() {
     this.app.use(requestsLogger.errors());
+    this.app.use(devErrors);
   }
 }
 
