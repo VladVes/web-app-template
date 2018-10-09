@@ -34,6 +34,7 @@ const isUserNotExistsByEmail = async (email: string): Promise<void> => {
 };
 
 const isCaptchaVerified = async (captchaResponse: string, userIP: string): Promise<void> => {
+  if (config.get('development')) return Promise.resolve();
   if (!captchaResponse) { return Promise.reject('Captcha is required'); }
 
   const captchaUrl = config.get('captcha.url');
