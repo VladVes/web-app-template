@@ -1,36 +1,36 @@
 version: '2'
 services:
   client:
-    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/client:$BUILD_NUMBER
+    container_name: $PROJECT_NAME.$ENV.client
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/client:$DOCKER_TAG
     build: ./client
-    container_name: aspiritywebtemplate_client
     ports:
-      - $PORT1:3000
+    - $PORT1:3000
     command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
     restart: always
   server:
-    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/server:$BUILD_NUMBER
+    container_name: $PROJECT_NAME.$ENV.server
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/server:$DOCKER_TAG
     build: ./server
-    container_name: aspiritywebtemplate_server
     ports:
-      - $PORT2:8080
-      - $PORT3:5858
+    - $PORT2:8080
+    - $PORT3:5858
     environment:
-      NODE_ENV: dev
+      NODE_ENV: $ENV
     volumes:
     - /storage/awt/$ENV/server/logs:/server/logs
     - /storage/awt/$ENV/server/uploads:/server/src/uploads
     command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
     restart: always
   mongodb:
-    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME-$ENV/mongodb:$BUILD_NUMBER
+    container_name: $PROJECT_NAME.$ENV.mongodb
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/mongodb:$DOCKER_TAG
     build: ./mongodb
-    container_name: aspiritywebtemplate_mongodb
     ports:
-      - $PORT4:27017
+    - $PORT4:27017
     volumes:
-          - /storage/awt/$ENV/mongodb/db:/data/db
-          - /storage/awt/$ENV/mongodb/configdb:/data/configdb
+    - /storage/awt/$ENV/mongodb/db:/data/db
+    - /storage/awt/$ENV/mongodb/configdb:/data/configdb
     environment:
       MONGODB_PASS: "p1230h6t34qd4i7ex"
     command: ["/bin/run.sh"]
