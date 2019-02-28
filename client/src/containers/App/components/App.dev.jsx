@@ -1,12 +1,9 @@
 import React from 'react';
 import AppMain from './App';
-import DevTools from './DevTools';
 
 const App = () => (
   <div>
-    <AppMain>
-      <DevTools />
-    </AppMain>
+    <AppMain />
   </div>
 );
 
