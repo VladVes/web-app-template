@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
@@ -11,12 +12,7 @@ const propTypes = {
 };
 
 const ReduxDatePicker = ({ value, onChange, ...other }) => (
-  <DatePicker
-    {...other}
-    onChange={onChange}
-    minDate={moment()}
-    selected={value || moment()}
-  />
+  <span>After update - date picker down. Help wanted.</span>
 );
 
 ReduxDatePicker.propTypes = propTypes;

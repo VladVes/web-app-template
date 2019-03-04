@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { routerMiddleware } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router';
 import devStore from './configureStore.dev';
 import prodStore from './configureStore.prod';
 import rootReducer from './reducers';
@@ -10,8 +10,8 @@ const createStore = process.env.NODE_ENV === 'development' ? devStore : prodStor
 
 export default (history) => {
   const store = createStore(
-    combineReducers(rootReducer),
-    [applyMiddleware(thunk, routerMiddleware(history))],
+    combineReducers({ ...rootReducer, router: connectRouter(history) }),
+    [applyMiddleware(thunk)],
   );
 
   if (module.hot) {
