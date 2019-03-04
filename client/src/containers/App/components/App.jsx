@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { cache } from 'emotion';
+import { CacheProvider } from '@emotion/core';
 import { createBrowserHistory } from 'history';
 import { hot } from 'react-hot-loader';
 import MainModal from 'Shared/modal/MainModal';
@@ -16,15 +18,17 @@ const store = configureStore(history);
 
 const App = ({ children }) => (
   <div className="App">
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Main>
-          <Routes />
-          <MainModal />
-          {children}
-        </Main>
-      </ConnectedRouter>
-    </Provider>
+    <CacheProvider value={cache}>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Main>
+            <Routes />
+            <MainModal />
+            {children}
+          </Main>
+        </ConnectedRouter>
+      </Provider>
+    </CacheProvider>
   </div>
 );
 
