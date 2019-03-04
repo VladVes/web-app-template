@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 
 Modal.setAppElement('#app');
 
