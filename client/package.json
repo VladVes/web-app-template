@@ -9,13 +9,15 @@
     "start:dev": "webpack-dev-server --mode development --config ./config/webpack.config.js",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:all": "eslint ./src/* --quiet --fix",
+    "lint:eslint": "eslint src --ext .js,.jsx --quiet",
+    "lint:stylelint": "stylelint 'src/**/*.{js,jsx}' --quiet",
     "lint": "lint-staged"
   },
   "lint-staged": {
     "linters": {
-      "*.{js,jsx}": [
+      "**/*.{js,jsx}": [
         "eslint --quiet --fix",
+        "stylelint --quiet --fix",
         "git add"
       ]
     }
@@ -44,6 +46,7 @@
     "polished": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
+    "react-color": "^2.17.0",
     "react-datepicker": "^2.1.0",
     "react-dom": "^16.8.3",
     "react-dropzone": "^9.0.0",
