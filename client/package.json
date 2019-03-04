@@ -9,13 +9,15 @@
     "start:dev": "webpack-dev-server --mode development --config ./config/webpack.config.js",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:all": "eslint ./src/* --quiet --fix",
+    "lint:eslint": "eslint src --ext .js,.jsx --quiet",
+    "lint:stylelint": "stylelint 'src/**/*.{js,jsx}' --quiet",
     "lint": "lint-staged"
   },
   "lint-staged": {
     "linters": {
-      "*.{js,jsx}": [
+      "**/*.{js,jsx}": [
         "eslint --quiet --fix",
+        "stylelint --quiet --fix",
         "git add"
       ]
     }
