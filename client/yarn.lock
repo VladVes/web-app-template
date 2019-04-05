@@ -7423,10 +7423,10 @@ react-pure-render@^1.0.2:
   resolved "https://registry.yarnpkg.com/react-pure-render/-/react-pure-render-1.0.2.tgz#9d8a928c7f2c37513c2d064e57b3e3c356e9fabb"
   integrity sha1-nYqSjH8sN1E8LQZOV7Pjw1bp+rs=
 
-react-redux@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-6.0.1.tgz#0d423e2c1cb10ada87293d47e7de7c329623ba4d"
-  integrity sha512-T52I52Kxhbqy/6TEfBv85rQSDz6+Y28V/pf52vDWs1YRXG19mcFOGfHnY2HsNFHyhP+ST34Aih98fvt6tqwVcQ==
+react-redux@7.0.0-beta.0:
+  version "7.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.0.0-beta.0.tgz#46ea289a0b0cf18f864b251a1d2bff4f110b71e0"
+  integrity sha512-vQSWFBeSxXm0RPuUqZMcYyN9CPapFs3cJltgUHQe943joTgcpC/nZAmiBMWLmte6BE7xYeE66diO2Z/87kWarw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     hoist-non-react-statics "^3.3.0"

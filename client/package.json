@@ -10,7 +10,7 @@
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:eslint": "eslint src --ext .js,.jsx --quiet",
-    "lint:stylelint": "stylelint 'src/**/*.{js,jsx}' --quiet",
+    "lint:stylelint": "stylelint 'src/**/*.jsx' --quiet",
     "lint": "lint-staged"
   },
   "lint-staged": {
@@ -53,7 +53,7 @@
     "react-hot-loader": "^4.7.1",
     "react-i18next": "^10.2.0",
     "react-modal": "^3.8.1",
-    "react-redux": "6.0.1",
+    "react-redux": "7.0.0-beta.0",
     "react-router": "4.3.1",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
