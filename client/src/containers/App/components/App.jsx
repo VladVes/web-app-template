@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { cache } from 'emotion';
+import { CacheProvider } from '@emotion/core';
 import { createBrowserHistory } from 'history';
 import { hot } from 'react-hot-loader';
 import Alert from 'react-s-alert';
@@ -23,24 +25,26 @@ const store = configureStore(history);
 
 const App = ({ children }) => (
   <div className="App">
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <I18nextProvider i18n={i18next}>
-          <Main>
-            <Routes />
-            <MainModal />
-            <Alert
-              effect="stackslide"
-              stack={{ limit: 10 }}
-              offset={88}
-              timeout={15 * 1000}
-              contentTemplate={CustomAlertTemplate}
-            />
-            {children}
-          </Main>
-        </I18nextProvider>
-      </ConnectedRouter>
-    </Provider>
+    <CacheProvider value={cache}>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <I18nextProvider i18n={i18next}>
+            <Main>
+              <Routes />
+              <MainModal />
+              <Alert
+                effect="stackslide"
+                stack={{ limit: 10 }}
+                offset={88}
+                timeout={15 * 1000}
+                contentTemplate={CustomAlertTemplate}
+              />
+              {children}
+            </Main>
+          </I18nextProvider>
+        </ConnectedRouter>
+      </Provider>
+    </CacheProvider>
   </div>
 );
 
