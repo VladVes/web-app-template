@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import ExampleContainer from 'Containers/ExampleContrainer/index';
@@ -6,14 +7,24 @@ import SignUpContainer from 'Containers/SignUpContainer/index';
 import SignInContainer from 'Containers/SignInContainer/index';
 import PrivateRoute from './PrivateRoute';
 
-const Routes = () => (
+const Routes = ({ currentUser, isFetching }) => (
   <Switch>
     <Route exact path="/" component={ExampleContainer} />
-    <Route path="/1" component={ExampleContainer} />
-    <PrivateRoute path="/private" component={ExampleContainer} />
-    <Route path="/signup" component={SignUpContainer} />
-    <Route path="/signin" component={SignInContainer} />
+    <Route exact path="/1" component={ExampleContainer} />
+    <PrivateRoute
+      exact
+      path="/private"
+      component={ExampleContainer}
+      currentUSer={currentUser}
+      isFetching={isFetching}
+    />
+    <Route exact path="/signup" component={SignUpContainer} />
+    <Route exact path="/signin" component={SignInContainer} />
   </Switch>
 );
+Routes.propTypes = {
+  currentUser: PropTypes.shape({}).isRequired,
+  isFetching: PropTypes.bool.isRequired,
+};
 
 export default hot(module)(Routes);

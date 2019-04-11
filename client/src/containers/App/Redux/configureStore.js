@@ -4,7 +4,6 @@ import { connectRouter } from 'connected-react-router';
 import devStore from './configureStore.dev';
 import prodStore from './configureStore.prod';
 import rootReducer from './reducers';
-import { fetchCurrentUser } from './actions';
 
 const createStore = process.env.NODE_ENV === 'development' ? devStore : prodStore;
 
@@ -22,8 +21,6 @@ export default (history) => {
       store.replaceReducer(nextRootReducer);
     });
   }
-
-  store.dispatch(fetchCurrentUser());
 
   return store;
 };
