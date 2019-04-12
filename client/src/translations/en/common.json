@@ -1,58 +1,10 @@
 {
   "example": {
-    "with_props": "Passed \"{{property}}\" as value",
-    "myShops":  "My Shops"
+    "AWT": "Aspirity Web Template",
+    "themeProp":  "Theme-{{name}}"
   },
-
-  "product": {
-    "dimensions": "Dimensions",
-    "weight": "Weight",
-    "outOfStock": "Out of stock",
-    "outOfStockCaption": "Oops! We are sorry, but it seems that there are no products in our stock. Try to visit the shop later.",
-    "amount": "Amount",
-    "includingVat": "including {{tax}} VAT",
-    "productsAvailable": "{{amount}} products available",
-    "returnLimit": "return limit: \n you can return from {{minQuantity}} to {{maxQuantity}} items at a time"
-  },
-  "customerProduct": {
-    "deleteItem": "Delete item",
-    "itemName": "Item name",
-    "wantToReturn": "I want to return one more item",
-    "addItem": "ADD ONE MORE ITEM",
-    "description": "Description",
-    "reason": "Reason",
-    "atleastOneImage": "Add one image at least"
-  },
-  "orderInformation": "Order information",
-  "shippingInfo": {
-    "shipping": "Shipping",
-    "phoneNumber": "Phone number *",
-    "phoneCaption": "Free SMS about delivery status",
-    "email": "Email *",
-    "emailCaption": "Receive a receipt for purchase",
-    "name": "Name *",
-    "co": "C / O",
-    "streetName": "Street name *",
-    "buildingNumber": "Building number *",
-    "floor": "Floor",
-    "flatNumber": "Flat number",
-    "zip": "zip",
-    "city": "City"
-  },
-  "paymentInfo": {
-    "payment": "Payment",
-    "product": "Product",
-    "price": "Price",
-    "qty": "Qty.",
-    "lineTotal": "Line total",
-    "subtotal": "Subtotal",
-    "productsTax": "Products tax",
-    "shipping": "Shipping",
-    "shippingTax": "Shipping tax",
-    "tax": "Tax",
-    "total": "Total",
-    "cardDetails": "Card details",
-    "cardCaptionStart": "Payment is made via",
-    "cardCaptionEnd": "Cardnumber is not stored with us"
+  "language": {
+    "ru": "Russian",
+    "en": "English"
   }
 }

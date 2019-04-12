@@ -1,0 +1,10 @@
+{
+  "example": {
+    "AWT": "Веб-шаблон Aspirity",
+    "themeProp":  "Тема-{{name}}"
+  },
+  "language": {
+    "ru": "Русский",
+    "en": "Английский"
+  }
+}

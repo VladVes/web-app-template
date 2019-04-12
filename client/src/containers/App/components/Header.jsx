@@ -8,6 +8,7 @@ import {
   Nav,
 } from 'reactstrap';
 import styled from '@emotion/styled';
+import { withTranslation } from 'react-i18next';
 import withSpinner from 'Shared/hocs/withSpinner';
 import HeaderItems from './HeaderItems';
 
@@ -18,17 +19,19 @@ export const ThemedButton = styled.button`
 `;
 
 const Header = ({
-  isFetching, isLogged, onLogout, themes, setTheme,
+  isFetching, isLogged, onLogout, themes, setTheme, t,
 }) => (
   <Navbar expand dark color="dark">
     <Container>
       <Collapse navbar className="w-100">
-        <NavLink className="navbar-brand" to="/">Aspirity Web Template</NavLink>
+        <NavLink className="navbar-brand" to="/">{t('example.AWT')}</NavLink>
         {themes.map(theme => (
           <ThemedButton id={`theme-${theme._id}`} type="button" onClick={() => setTheme(theme)}>
-            {theme.name}
+            {t('example.themeProp', { name: theme.name })}
           </ThemedButton>
         ))}
+        <button type="button">{t('language.en')}</button>
+        <button type="button">{t('language.ru')}</button>
         <Nav navbar className="ml-auto">
           <HeaderItemsWithSpinner isFetching={isFetching} isLogged={isLogged} onLogout={onLogout} />
         </Nav>
@@ -49,6 +52,8 @@ Header.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
-
-export default Header;
+// old API via HOCs, consider using new one via react-hooks
+// see example here https://github.com/i18next/react-i18next/blob/master/example/react/src/App.js
+export default withTranslation('common')(Header);
