@@ -40,9 +40,3 @@ export const changeTheme = theme => (dispatch) => {
   dispatch(changeCurrentTheme({ newTheme }));
   localStorage.setItem('currentTheme', newTheme.name);
 };
-
-// eslint-disable-next-line no-unused-vars
-export const changeLanguage = language => (dispatch) => {
-  localStorage.setItem('currentLanguage', language);
-  // todo: after i18n addition
-};

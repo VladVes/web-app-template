@@ -8,7 +8,6 @@ import { fetchCurrentUser, clearCurrentUser, changeTheme } from '../Redux/app/ac
 import Footer from './Footer';
 import Header from './Header';
 
-
 class Main extends Component {
   static propTypes = {
     user: PropTypes.shape({}).isRequired, // todo: add correct typezation
@@ -17,9 +16,7 @@ class Main extends Component {
     theme: PropTypes.shape({}).isRequired,
     themes: PropTypes.arrayOf(PropTypes.string).isRequired,
     setTheme: PropTypes.func.isRequired,
-    language: PropTypes.shape({}).isRequired, // todo: add changeLanguage (pass to action?)
-    languages: PropTypes.arrayOf(PropTypes.string).isRequired,
-    setLanguage: PropTypes.func.isRequired,
+    languages: PropTypes.arrayOf(PropTypes.string).isRequired, // todo: connect with i18n somehow and pass to header
   };
 
   componentDidMount() {
@@ -35,11 +32,10 @@ class Main extends Component {
 
   render() {
     const {
-      user, theme, language, setTheme, setLanguage,
+      user, theme, setTheme,
     } = this.props;
     const { currentUser, isFetching, isError } = user; // todo: consider move all that stuff to mapStateToProps
     const { availableThemes } = theme;
-    const { languages } = language;
     const isLogged = !!user.currentUser;
     return (
       <main>
@@ -49,9 +45,6 @@ class Main extends Component {
             isFetching={isFetching}
             isLogged={isLogged}
             onLogout={this.handleLogout}
-            languages={languages}
-            language={language}
-            setLangeage={setLanguage}
             theme={theme}
             themes={availableThemes}
             setTheme={setTheme}
@@ -66,10 +59,11 @@ class Main extends Component {
   }
 }
 
+// keep in mind that user and theme - are reducers, not actual object
+// (for values use user.currentUser and same for theme)
 const mapStateToProps = state => ({
   user: state.app.user,
   theme: state.app.theme,
-  language: state.app.language,
 });
 const mapDispatchToProps = {
   fetchCurrentUser,
