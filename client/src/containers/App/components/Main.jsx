@@ -68,7 +68,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchCurrentUser,
   clearCurrentUser,
-  setTheme: changeTheme, // todo: what do we do with this shadow prop? Appears only if used with spread
+  setTheme: changeTheme, // in order to avoid shadowing - we use different name, alternative - call via this.props
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

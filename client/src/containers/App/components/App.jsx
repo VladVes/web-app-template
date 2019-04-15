@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { cache } from 'emotion';
 import { CacheProvider } from '@emotion/core';
 import { createBrowserHistory } from 'history';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import Alert from 'react-s-alert';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
@@ -43,4 +43,5 @@ const App = () => (
   </div>
 );
 
-export default hot(module)(App);
+// todo: hot should not wrap Providers
+export default hot(App);

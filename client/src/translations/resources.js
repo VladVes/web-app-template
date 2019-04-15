@@ -2,7 +2,7 @@
 import common_ru from './ru/common.json';
 import common_en from './en/common.json';
 
-export default {
+const resources = {
   en: {
     common: common_en,
   },
@@ -10,3 +10,7 @@ export default {
     common: common_ru,
   },
 };
+
+export const languages = Object.keys(resources);
+
+export default resources;
