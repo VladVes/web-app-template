@@ -10,7 +10,7 @@ import Header from './Header';
 
 class Main extends Component {
   static propTypes = {
-    user: PropTypes.shape({}).isRequired, // todo: add correct typezation
+    user: PropTypes.shape({}).isRequired, // todo: add correct typization
     fetchCurrentUser: PropTypes.func.isRequired,
     clearCurrentUser: PropTypes.func.isRequired,
     theme: PropTypes.shape({}).isRequired,

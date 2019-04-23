@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import { injectGlobal } from 'emotion';
 
 // eslint-disable-next-line no-unused-expressions
