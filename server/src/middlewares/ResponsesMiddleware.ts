@@ -1,6 +1,6 @@
-import * as http from "http";
-import {ResponseMessage} from "types/ResponseTypes";
-import {Request, Response, NextFunction, RequestHandler} from "types/ExpressExtended";
+import * as http from 'http';
+import { ResponseMessage } from '../types/ResponseTypes';
+import { Request, Response, NextFunction, RequestHandler } from '../types/ExpressExtended';
 
 export class ResponseFactory {
   private res: Response;
@@ -10,7 +10,7 @@ export class ResponseFactory {
     return this.res.json(body) as Response;
   }
 
-  public notFoundResource(message : string): Response {
+  public notFoundResource(message? : string): Response {
     const code = 404;
     const responseMessage = {
       message: message || http.STATUS_CODES[code],
@@ -18,7 +18,7 @@ export class ResponseFactory {
     return this.res.status(code).json(responseMessage) as Response;
   }
 
-  public requestError(message: string, options): Response {
+  public requestError(message: string, options?): Response {
     const code = 400;
     const responseMessage: ResponseMessage = {
       message: message || http.STATUS_CODES[code],
@@ -31,14 +31,14 @@ export class ResponseFactory {
     return this.res.status(code).json(responseMessage) as Response;
   }
 
-  public validationError(message: string, options): Response {
+  public validationError(message: string, options?): Response {
     const code = 422;
     if (options && options.errors) {
       delete options.errors.isOperational;
     }
     const responseMessage = {
       message: message || http.STATUS_CODES[code],
-      errors: options.errors || "Validation error",
+      errors: options.errors || 'Validation error',
     };
 
     return this.res.status(code).json(responseMessage) as Response;
@@ -62,9 +62,10 @@ export class ResponseFactory {
     return this.res.status(code).json(responseMessage) as Response;
   }
 
-  public serverError(message: string): Response {
+  public serverError(message: string, data?: object): Response {
     const code = 500;
     const responseMessage = {
+      ...data,
       message: message || http.STATUS_CODES[code],
     };
 

@@ -26,4 +26,4 @@ class Logger extends winston.Logger {
   }
 }
 
-export default Logger;
+export default new Logger();

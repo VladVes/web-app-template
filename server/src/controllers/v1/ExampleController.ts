@@ -6,14 +6,12 @@ import * as path from 'path';
 import axios from 'axios';
 import * as Busboy from 'busboy';
 import { ExampleService } from '../../services';
-import Logger from '../../Logger';
+import logger from '../../Logger';
 import BaseController from '../BaseController';
 import config from '../../config';
 import FileModel from '../../models/FileModel';
 import validate from '../../middlewares/validate';
 import { postPersonDataSchema } from '../../validationSchemas/example';
-
-const logger = new Logger();
 
 class ExampleController extends BaseController {
   public init(): void {
