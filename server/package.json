@@ -6,7 +6,8 @@
   "author": "Aspirity LTD",
   "scripts": {
     "start": "ts-node ./src/server.ts",
-    "start:debug": "concurrently 'yarn run server:debug' 'yarn run dependencies'",
+    "start:debug": "NODE_ENV=dev ts-node-dev ./src/server.ts",
+    "start:debug:old": "concurrently 'yarn run server:debug' 'yarn run dependencies'",
     "server:debug": "nodemon --exec node --inspect=0.0.0.0:5858 -r ts-node/register ./src/server.ts",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "test": "mocha -R nyan -r ts-node/register ./tests/unit/**/*.ts",
@@ -27,6 +28,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.12",
+    "ts-node-dev": "1.0.0-pre.32",
     "typegoose": "^5.2.1",
     "verror": "^1.10.0",
     "winston": "^2.4.2",
@@ -55,6 +57,6 @@
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.9.2",
-    "typescript": "^2.8.3"
+    "typescript": "3.3"
   }
 }

@@ -21,7 +21,7 @@ class Main extends Component {
 
   componentDidMount() {
     // user stored in localStorage, but on first run - we need to make sure,
-    // that he still logged in (token not expired or damaged)
+    // that he still logged in (token is not expired or damaged)
     this.props.fetchCurrentUser();
   }
 
@@ -59,6 +59,7 @@ class Main extends Component {
   }
 }
 
+// todo: less confusing naming
 // keep in mind that user and theme - are reducers, not actual object
 // (for values use user.currentUser and same for theme)
 const mapStateToProps = state => ({
