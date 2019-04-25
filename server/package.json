@@ -11,7 +11,8 @@
     "server:debug": "nodemon --exec node --inspect=0.0.0.0:5858 -r ts-node/register ./src/server.ts",
     "dependencies": "nodemon --config nodemon-dependencies.json --exec yarn install",
     "test": "mocha -R nyan -r ts-node/register ./tests/unit/**/*.ts",
-    "test:all": "mocha -R nyan -r ts-node/register ./tests/**/*.ts"
+    "test:all": "mocha -R nyan -r ts-node/register ./tests/**/*.ts",
+    "lint": "echo \"Not implemented\""
   },
   "dependencies": {
     "@types/connect-busboy": "^0.0.0",
