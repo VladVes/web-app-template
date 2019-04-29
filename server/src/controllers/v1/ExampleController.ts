@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from 'types/ExpressExtended';
 import * as VError from 'verror';
-import * as fs from 'fs';
 import * as mongoose from "mongoose";
-import * as path from 'path';
 import axios from 'axios';
 import * as Busboy from 'busboy';
+import uploadFile from '../../utils/uploadFile';
 import { ExampleService } from '../../services';
 import logger from '../../Logger';
 import BaseController from '../BaseController';
@@ -51,7 +50,7 @@ class ExampleController extends BaseController {
       return next(err instanceof Error ? err : new VError(err));
     }
   }
-
+  // todo: refactor to utils (already got an good start, now - extract busboy and validation stuff)
   public async setFiles(req: Request, res: Response, next: NextFunction): Promise<Response|void> {
     const busboy = new Busboy({ headers: req.headers });
 
@@ -68,8 +67,7 @@ class ExampleController extends BaseController {
 
       counter ++;
 
-      const fileId = await this.uploadFile(file, filename);
-      console.log('fieldId', fileId);
+      const fileId = await uploadFile(file, filename);
       keep.push(fileId);
 
       counter--;
@@ -112,20 +110,6 @@ class ExampleController extends BaseController {
 
   public async postPersonData(req, res, next) : Promise<Response> {
     return res.responses.json(req.body);
-  }
-
-  private uploadFile(file, filename) {
-    const folder = config.get('staticFolder');
-    return new Promise(async resolve => {
-
-      const dbFile = await FileModel.create({ name: filename });
-      const fileId = dbFile._id;
-
-      const savePath = path.resolve(__dirname + `/../../${folder}/${fileId}`);
-      const fstream = fs.createWriteStream(savePath);
-      file.pipe(fstream);
-      fstream.on('close', () => resolve(fileId));
-    })
   }
 
   public genError(req: Request, res: Response, next: NextFunction): Response | void {

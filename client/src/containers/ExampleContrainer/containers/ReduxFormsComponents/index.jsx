@@ -21,6 +21,7 @@ const initialValues = {
   MyFileList: [],
 };
 
+// todo: clean this useless mess
 const connectedForm = connect(
   (state, ownProps) => ({
     ...ownProps,
