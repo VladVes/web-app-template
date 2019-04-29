@@ -5,8 +5,12 @@ import moment from 'moment/moment';
 import { FormProps } from 'Shared/prop-types';
 import ReduxFormsComponents from './ReduxFormsComponents';
 
-const ReduxForm = ({ initialValues, onSubmit }) =>
-  <ReduxFormsComponents initialValues={initialValues} onSubmit={onSubmit} />;
+const ReduxForm = ({ initialValues, onSubmit }) => (
+  <ReduxFormsComponents
+    initialValues={initialValues}
+    onSubmit={onSubmit}
+  />
+);
 
 ReduxForm.propTypes = {
   initialValues: PropTypes.shape({

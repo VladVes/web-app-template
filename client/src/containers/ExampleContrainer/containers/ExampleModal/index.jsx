@@ -29,8 +29,8 @@ class ExampleModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.showSimpleExampleModal}>SHOW SIMPLE MODAL</button>
-        <button onClick={this.showCustomExampleModal}>SHOW CUSTOM MODAL</button>
+        <button type="button" onClick={this.showSimpleExampleModal}>SHOW SIMPLE MODAL</button>
+        <button type="button" onClick={this.showCustomExampleModal}>SHOW CUSTOM MODAL</button>
       </div>
     );
   }

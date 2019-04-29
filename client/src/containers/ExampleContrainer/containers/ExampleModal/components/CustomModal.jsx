@@ -28,9 +28,14 @@ class CustomExampleModal extends Component {
         <StyledClose onClick={this.closeModal}>
           <CloseIcon />
         </StyledClose>
-        title: {title}
-        content: {content}
-      </StyledModalContent>);
+        title:
+        {' '}
+        {title}
+        content:
+        {' '}
+        {content}
+      </StyledModalContent>
+    );
   }
 }
 

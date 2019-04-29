@@ -19,13 +19,14 @@ class SignUpContainer extends Component {
     return (
       <Row className="justify-content-center">
         <Col xs={6}>
-          {isSigned ?
-            <SignUpSuccess checkEmail={false} />
-          :
-            <SignUp
-              isSigned={isSigned}
-              onSubmit={this.handleSignUpFormSubmit}
-            />
+          {isSigned
+            ? <SignUpSuccess checkEmail={false} />
+            : (
+              <SignUp
+                isSigned={isSigned}
+                onSubmit={this.handleSignUpFormSubmit}
+              />
+            )
           }
         </Col>
       </Row>

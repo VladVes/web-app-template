@@ -1,5 +1,4 @@
 import styled from 'react-emotion';
-import { AccentColor, LabelColor, MainTextColor } from '../styles';
 
 export const ColorPickerWrapper = styled.div`
   padding: 8px 16px;
@@ -43,7 +42,6 @@ export const HueWrapper = styled.div`
 export const InputCaption = styled.div`
   font-size: 12px;
   line-height: 17px;
-  color: ${LabelColor};
   font-weight: normal;
   text-transform: none;
 `;
@@ -54,7 +52,6 @@ export const EditableInputWrapper = styled.div`
     background-color: transparent;
     height: 40px;
     width: 96px;
-    border: 2px solid ${MainTextColor};
     border-radius: 4px;
     color: white !important;
     font-size: 14px;
@@ -65,7 +62,6 @@ export const EditableInputWrapper = styled.div`
     &:focus {
       box-shadow: none;
       outline: none;
-      border: 2px solid ${AccentColor};
     }
   }
 `;

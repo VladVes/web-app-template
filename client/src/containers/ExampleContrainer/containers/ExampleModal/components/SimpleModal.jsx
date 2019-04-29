@@ -25,7 +25,8 @@ class SimpleExampleModal extends Component {
           <CloseIcon />
         </StyledClose>
         MODAL CONTENT
-      </StyledModalContent>);
+      </StyledModalContent>
+    );
   }
 }
 

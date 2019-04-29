@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 
 const BtcToUsd = props => (
   <div className="mb-3">
-    <span className="mr-3">BTC to USD: {props.price}$</span>
-    <button onClick={props.handleRefresh}>
+    <span className="mr-3">
+BTC to USD:
+      {props.price}
+$
+    </span>
+    <button type="button" onClick={props.handleRefresh}>
       Refetch
     </button>
   </div>

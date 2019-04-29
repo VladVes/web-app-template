@@ -19,10 +19,12 @@ class FileInput extends Component {
     id: PropTypes.string.isRequired,
     preview: PropTypes.bool,
     invalid: PropTypes.bool.isRequired,
+    multiple: PropTypes.bool,
   };
 
   static defaultProps = {
     preview: false,
+    multiple: false,
   };
 
   handleChangeInput = (e) => {
@@ -61,10 +63,12 @@ class FileInput extends Component {
       <div>
         <label htmlFor={id} data-preview={value && preview}>
           {preview && value && <img alt="Loading..." src={`/uploads/${value._id}`} />}
-          {(!preview || !value) &&
+          {(!preview || !value)
+          && (
           <div>
             <LoadIcon />
           </div>
+          )
           }
           <input
             {...otherProps}

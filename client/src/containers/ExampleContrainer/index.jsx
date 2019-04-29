@@ -71,8 +71,14 @@ class ExampleComponent extends Component {
             handleRefresh={this.props.fetchBitcoinPrice}
             isFetching={isBTCtoUSDFetching}
           />
-          <div className="mb-3">Text from server: {testText}</div>
-          <div className="mb-3">Sum from server: {sum}</div>
+          <div className="mb-3">
+Text from server:
+            {testText}
+          </div>
+          <div className="mb-3">
+Sum from server:
+            {sum}
+          </div>
           <ExampleModal />
         </Col>
         <Col xs={12} sm={3} className="d-flex justify-content-center my-5 my-sm-0">
