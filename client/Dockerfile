@@ -6,3 +6,7 @@ WORKDIR /client
 COPY . .
 
 RUN yarn install
+ARG VERSION
+RUN yarn build
+
+CMD ["yarn", "start:server"]

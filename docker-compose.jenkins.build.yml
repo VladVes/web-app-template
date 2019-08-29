@@ -1,0 +1,13 @@
+version: '2'
+services:
+  client:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/client:$DOCKER_TAG
+    build: ./client
+  server:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/server:$DOCKER_TAG
+    build: ./server
+  mongodb:
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/mongodb:$DOCKER_TAG
+    build: ./mongodb
+
+

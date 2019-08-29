@@ -1,0 +1,38 @@
+version: '2'
+services:
+  client:
+    container_name: $PROJECT_NAME.$ENV.client
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/client:$DOCKER_TAG
+    build: ./client
+    ports:
+    - $PORT1:3000
+    command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
+    restart: always
+  server:
+    container_name: $PROJECT_NAME.$ENV.server
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/server:$DOCKER_TAG
+    build: ./server
+    ports:
+    - $PORT2:8080
+    - $PORT3:5858
+    environment:
+      NODE_ENV: $ENV
+    volumes:
+    - /storage/awt/$ENV/server/logs:/server/logs
+    - /storage/awt/$ENV/server/uploads:/server/src/uploads
+    command: bash -c 'if [ -z "$NODE_ENV" ]; then yarn start:debug; else yarn start; fi'
+    restart: always
+  mongodb:
+    container_name: $PROJECT_NAME.$ENV.mongodb
+    image: $DOCKER_ASPIRITY_REGISTRY_URL/$PROJECT_NAME/mongodb:$DOCKER_TAG
+    build: ./mongodb
+    ports:
+    - $PORT4:27017
+    volumes:
+    - /storage/awt/$ENV/mongodb/db:/data/db
+    - /storage/awt/$ENV/mongodb/configdb:/data/configdb
+    environment:
+      MONGODB_PASS: "p1230h6t34qd4i7ex"
+    command: ["/bin/run.sh"]
+    restart: always
+

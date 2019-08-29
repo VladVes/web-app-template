@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import withSpinner from 'Shared/hocs/withSpinner';
 import Links from './components/Links';
 import { fetchLinks } from './redux/actions';
-import withSpinner from '../../../../shared/hocs/withSpinner';
 
 const LinksWithSpinner = withSpinner(Links);
 
@@ -21,7 +21,8 @@ class LinksContainer extends Component {
     this.props.fetchLinks();
   }
 
-  handleLinksFormSubmit = formValues => console.log(formValues);
+  // eslint-disable-next-line no-alert
+  handleLinksFormSubmit = formValues => alert(formValues);
 
   render() {
     return (

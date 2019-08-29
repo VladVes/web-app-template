@@ -3,7 +3,9 @@
   "parser": "babel-eslint",
 
   "plugins": [
-    "react"
+    "react",
+    "eslint-plugin-import",
+    "emotion"
   ],
 
   "env": {
@@ -20,6 +22,16 @@
       "aspects": [ "noHref", "invalidHref", "preferButton" ]
     }],
     "max-len": ["error", {"code": 120, "ignoreRegExpLiterals": true, "tabWidth": 2}],
-    "no-console": [1]
+    "no-console": [1],
+    "no-underscore-dangle": ["error", {"allow": ["_id"]}],
+    "react/destructuring-assignment": [0]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.config.js"
+      }
+    }
   }
 }

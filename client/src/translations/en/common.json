@@ -1,0 +1,10 @@
+{
+  "example": {
+    "AWT": "Aspirity Web Template",
+    "themeProp":  "Theme-{{name}}"
+  },
+  "language": {
+    "ru": "Russian",
+    "en": "English"
+  }
+}

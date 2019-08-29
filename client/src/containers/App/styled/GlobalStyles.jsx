@@ -1,6 +1,8 @@
-import { injectGlobal } from 'react-emotion';
+import 'bootstrap/dist/css/bootstrap.css';
+import { injectGlobal } from 'emotion';
 
-const Global = injectGlobal`
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
   html {
     min-height: 100%;
     position: relative;
@@ -10,5 +12,3 @@ const Global = injectGlobal`
     margin-bottom: 80px;
   }
 `;
-
-export default Global;

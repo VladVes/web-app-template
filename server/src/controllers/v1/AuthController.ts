@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'types/ExpressExtended';
 import * as bcrypt from 'bcryptjs-then';
 import * as VError from 'verror';
 import passport from '../../middlewares/Passport';
@@ -27,14 +27,14 @@ class AuthController extends BaseController {
 
       res.cookie('jwt', token, { httpOnly: true });
 
-      return res.json({ token, message: 'Success', id: req.user._id });
+      return res.responses.json({ token, message: 'Success', id: req.user._id });
     } catch (err) {
       return next(err instanceof Error ? err : new VError(err));
     }
   }
 
   public signInError(err: Error, req: Request, res: Response, next: NextFunction): Response {
-    return res.status(401).send(err);
+    return res.responses.unauthorized();
   }
 
   public async signUp(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
@@ -47,7 +47,7 @@ class AuthController extends BaseController {
 
       await UserModel.create(userDoc);
 
-      return res.status(201).send('Registration completed');
+      return res.responses.success('Registration completed');
     } catch (err) {
       return next(err instanceof Error ? err : new VError(err));
     }

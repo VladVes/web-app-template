@@ -15,7 +15,7 @@ class SignInContainer extends Component {
   render() {
     return (
       <Row className="justify-content-center">
-        <Col xs={4}>
+        <Col xs={6}>
           <SignIn
             onSubmit={this.handleSignInFormSubmit}
           />

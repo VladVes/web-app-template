@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const path = require('path');
+const resolve = require('./webpack.config.resolve');
 
 module.exports = {
   entry: [
@@ -6,13 +8,16 @@ module.exports = {
     './src/index.jsx',
   ],
   output: {
-    path: `${__dirname}public`,
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
     filename: 'bundle.js',
   },
-  resolve: {
-    extensions: ['*', '.js', '.jsx'],
-  },
+
+  /**
+   * Determine the array of extensions that should be used to resolve modules.
+   */
+  resolve,
+
   module: {
     rules: [
       {
@@ -20,9 +25,26 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           'babel-loader',
-          'eslint-loader',
         ],
       },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     fix: true,
+      //   },
+      // },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.jsx?$/,
+      //   loader: 'stylelint-custom-processor-loader',
+      //   exclude: /node_modules/,
+      //   options: {
+      //     fix: true,
+      //   },
+      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -32,15 +54,20 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.VERSION': JSON.stringify(process.env.VERSION),
+    }),
   ],
   devServer: {
     contentBase: './public',
+    disableHostCheck: true,
     historyApiFallback: true,
     hot: true,
     host: '0.0.0.0',
     port: 3000,
     proxy: {
-      '/api': 'http://aspiritywebtemplate_serve:8080',
+      '/api': 'http://aspiritywebtemplate_server:8080',
+      '/uploads': 'http://aspiritywebtemplate_server:8080',
     },
   },
 };

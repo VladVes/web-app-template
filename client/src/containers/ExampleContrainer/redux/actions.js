@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
-import api from '../../../utils/ApiClient';
+import api from 'Utils/ApiClient';
+import parseValidation from 'Utils/BackEndValidationParser';
 
 export const fetchBitcoinPriceRequest = createAction('FETCH_BITCOIN_PRICE_REQUEST');
 export const fetchBitcoinPriceSuccess = createAction('FETCH_BITCOIN_PRICE_SUCCESS');
@@ -49,5 +50,55 @@ export const fetchSum = () => async (dispatch) => {
     dispatch(fetchSumSuccess(value));
   } catch (error) {
     dispatch(fetchSumFailure(error));
+  }
+};
+
+export const fetchFilesRequest = createAction('FETCH_FILES_REQUEST');
+export const fetchFilesSuccess = createAction('FETCH_FILES_SUCCESS');
+export const fetchFilesFailure = createAction('FETCH_FILES_FAILURE');
+
+export const fetchFiles = () => async (dispatch) => {
+  try {
+    dispatch(fetchFilesRequest());
+
+    const response = await api.example.getFiles();
+
+    dispatch(fetchFilesSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchFilesFailure(error));
+  }
+};
+
+export const uploadFiles = files => async (dispatch) => {
+  try {
+    dispatch(fetchFilesRequest());
+
+    const formData = new FormData();
+
+    Object.values(files).forEach((file) => {
+      if (file._id) {
+        formData.append('keepfiles[]', file._id);
+      } else {
+        formData.append('uploadfiles[]', file);
+      }
+    });
+
+    const response = await api.example.setFiles(formData);
+
+    dispatch(fetchFilesSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchFilesFailure(error));
+  }
+};
+
+export const postPersonData = personData => async () => {
+  try {
+    await api.example.postPersonData(personData);
+  } catch (error) {
+    console.log('error', error);
+    if (error.response && error.response.status === 422) {
+      // throws error upper if contains correct validation errors (not just status code)
+      parseValidation(error.response.data.errors);
+    }
   }
 };

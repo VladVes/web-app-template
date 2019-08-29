@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { showModal } from 'Shared/modal/redux/actions';
 import { customModalStyle, customOverlayStyle } from './styled/overridedStylesExample';
-import { showModal } from '../../../../shared/modal/redux/actions';
 
 class ExampleModal extends Component {
   static propTypes = {
@@ -29,8 +29,8 @@ class ExampleModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.showSimpleExampleModal}>SHOW SIMPLE MODAL</button>
-        <button onClick={this.showCustomExampleModal}>SHOW CUSTOM MODAL</button>
+        <button type="button" onClick={this.showSimpleExampleModal}>SHOW SIMPLE MODAL</button>
+        <button type="button" onClick={this.showCustomExampleModal}>SHOW CUSTOM MODAL</button>
       </div>
     );
   }

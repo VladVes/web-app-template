@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { darken } from 'polished';
 
 const primaryButtonColor = '#5FA1DB';
@@ -11,7 +11,7 @@ const PrimaryButton = styled.button`
   border-radius: 4px;
   padding: 7px 12px;
   transition: 0.3s;
-  width: ${props => (props.fullWidth ? '100%' : 'initial')};
+  width: initial;
   
   &:not([disabled]) {
     cursor: pointer;

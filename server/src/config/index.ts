@@ -1,6 +1,24 @@
 import * as convict from 'convict';
 import * as path from 'path';
 
+function resolveDbUrl(config) {
+  // dont build uri if env variable or env config presented
+  if (process.env.MONGO_URI || config.get('db.uri')) return;
+
+  const base = config.get('db.base');
+  const user = config.get('db.user');
+  const password = config.get('db.password');
+  const url = config.get('db.url');
+  const port = config.get('db.port');
+  const name = config.get('db.name');
+  const authSource = config.get('db.authSource');
+
+  // mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/aspiritytemplate?authSource=admin
+  const newUri = `${base}${user}:${password}@${url}:${port}/${name}?authSource=${authSource}`;
+  console.log('newUri', newUri);
+  config.set('db.uri', newUri);
+}
+
 const config = convict({
   env: {
     doc: 'Application environment',
@@ -29,10 +47,31 @@ const config = convict({
     env: 'APP_VERSION',
   },
   db: {
+    base: {
+      default: 'mongodb://'
+    },
+    user: {
+      default: 'admin'
+    },
+    password: {
+      default: 'p1230h6t34qd4i7ex'
+    },
+    url: {
+      default: 'aspiritywebtemplate_mongodb'
+    },
+    port: {
+      default: '27017'
+    },
+    name: {
+      default: 'aspiritytemplate'
+    },
+    authSource: {
+      default: 'admin'
+    },
     uri: {
-      doc: 'Mongodb connection URI',
+      doc: 'Mongodb connection URI generated from other params if env not presented',
       format: String,
-      default: 'mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/aspiritytemplate?authSource=admin',
+      default: '', // mongodb://admin:p1230h6t34qd4i7ex@aspiritywebtemplate_mongodb:27017/aspiritytemplate?authSource=admin
       env: 'MONGO_URI',
     },
   },
@@ -62,9 +101,19 @@ const config = convict({
     secret: {
       doc: 'Google recaptcha secret key',
       format: String,
-      default: '6LfOZF8UAAAAAJ_I2pg4nIuxnuN2ySz4E8wUvz8X',
+      default: '6LcJAXEUAAAAANCIZ2q6VfqgnDLu0NHE5IgCV7W5',
     }
   },
+  staticFolder: {
+    doc: 'static folder exposed to everyone',
+    format: String,
+    default: 'uploads',
+  },
+  development: {
+    doc: 'Is used internally or production',
+    format: Boolean,
+    default: true
+  }
 });
 
 const env = config.get('env');
@@ -72,5 +121,8 @@ const envFile = path.resolve(__dirname, 'env', `${env}.json`);
 
 config.loadFile(envFile);
 config.validate();
+
+// update db.uri if necessary
+resolveDbUrl(config);
 
 export default config;

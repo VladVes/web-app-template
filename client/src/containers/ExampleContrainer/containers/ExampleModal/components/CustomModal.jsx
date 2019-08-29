@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { hideModal } from 'Shared/modal/redux/actions';
 import {
   StyledModalContent,
   StyledClose,
   CloseIcon,
 } from '../styled';
-import { hideModal } from '../../../../../shared/modal/redux/actions';
 
 class CustomExampleModal extends Component {
   static propTypes = {
@@ -28,9 +28,14 @@ class CustomExampleModal extends Component {
         <StyledClose onClick={this.closeModal}>
           <CloseIcon />
         </StyledClose>
-        title: {title}
-        content: {content}
-      </StyledModalContent>);
+        title:
+        {' '}
+        {title}
+        content:
+        {' '}
+        {content}
+      </StyledModalContent>
+    );
   }
 }
 

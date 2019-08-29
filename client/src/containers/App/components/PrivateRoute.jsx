@@ -1,18 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import withSpinner from '../../../shared/hocs/withSpinner';
+import withSpinner from 'Shared/hocs/withSpinner';
 
 const PrivateRoute = ({
   path,
   component,
   isFetching,
-  isLogged,
+  currentUser,
 }) => {
   const WithSpinner = withSpinner(component);
 
-  if (!isFetching && !isLogged) {
+  if (!isFetching && !currentUser) {
     return <Redirect from={path} to="/" />;
   }
 
@@ -23,12 +22,7 @@ PrivateRoute.propTypes = {
   path: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  currentUser: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = state => ({
-  isLogged: !!state.currentUser.data,
-  isFetching: state.currentUser.isFetching,
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;

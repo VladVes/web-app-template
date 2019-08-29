@@ -10,6 +10,8 @@ const isNotEmpty = (value: any[]): boolean => {
   return Boolean(value.length);
 };
 
+const textLength = (text: string, min: number, max: number): boolean => Boolean(text) && text.length >= min && text.length <= max;
+
 const isContains = (item: any, targetArray: any[]): boolean => {
   if (!item || !targetArray) { return false; }
 
@@ -32,6 +34,7 @@ const isUserNotExistsByEmail = async (email: string): Promise<void> => {
 };
 
 const isCaptchaVerified = async (captchaResponse: string, userIP: string): Promise<void> => {
+  if (config.get('development')) return Promise.resolve();
   if (!captchaResponse) { return Promise.reject('Captcha is required'); }
 
   const captchaUrl = config.get('captcha.url');
@@ -57,6 +60,7 @@ export default (): Handler => (
   expressValidator({
     customValidators: {
       isNotEmpty,
+      textLength,
       isContains,
       isCustomEmail,
       isPassword,
