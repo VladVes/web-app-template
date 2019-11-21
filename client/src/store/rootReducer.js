@@ -1,15 +1,15 @@
-import { reducer as reduxFormReducer } from 'redux-form';
+import { reducer as form } from 'redux-form';
 import modal from '../common/reducers/mainModal';
-import exampleReducer from '../../ExampleContrainer/redux/reducer';
-import signUpReducer from '../../SignUpContainer/redux/reducer';
-import signInReducer from '../../SignInContainer/redux/reducer';
+import example from '../modules/ExampleModule/reducers';
+// import signUp from '../modules/SignIn';
+import signIn from '../modules/SignIn/reducers';
 import currentUser from '../common/reducers/user';
 
 export default {
-  form: reduxFormReducer,
+  form,
   modal,
-  example: exampleReducer,
-  signUp: signUpReducer,
-  signIn: signInReducer,
+  example,
+  signUp,
+  signIn,
   currentUser,
 };

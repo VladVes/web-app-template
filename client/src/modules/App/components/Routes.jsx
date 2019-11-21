@@ -1,18 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import ExampleContainer from '../../ExampleContrainer/index';
-import SignUpContainer from '../../SignUpContainer/index';
-import SignInContainer from '../../SignInContainer/index';
+import ExampleModule from '../../ExampleModule';
+import SignUp from '../../SignUp';
+import SignIn from '../../SignIn';
 import PrivateRoute from '../containers/PrivateRoute';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={ExampleContainer} />
-    <Route path="/1" component={ExampleContainer} />
-    <PrivateRoute path="/private" component={ExampleContainer} />
-    <Route path="/signup" component={SignUpContainer} />
-    <Route path="/signin" component={SignInContainer} />
+    <Route exact path="/" component={ExampleModule} />
+    <Route path="/1" component={ExampleModule} />
+    <PrivateRoute path="/private" component={ExampleModule} />
+    <Route path="/signup" component={SignUp} />
+    <Route path="/signin" component={SignIn} />
   </Switch>
 );
 
