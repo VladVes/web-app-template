@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { SubmissionError } from 'redux-form';
-import Links from './components/Links';
+import Links from './Links';
 import PersonData from './PersonData';
 import BtcToUsd from './BtcToUsd';
 import ExampleModal from '../containers/exampleModalContainer';
@@ -41,8 +41,6 @@ class ExampleModule extends Component {
     if (Object.keys(error).length) {
       throw new SubmissionError(error);
     }
-
-    console.log(formValues);
   };
 
   render() {

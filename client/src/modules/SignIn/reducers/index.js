@@ -8,7 +8,7 @@ import states from '../../../constants/states';
 
 const defaultState = {
   error: null,
-  isFetching: false,
+  dataState: states.none,
 };
 
 export default handleActions(
@@ -16,20 +16,20 @@ export default handleActions(
     [fetchSignInRequest](state) {
       return {
         ...state,
-        isFetching: true,
+        dataState: states.requested,
       };
     },
     [fetchSignInSuccess](state) {
       return {
         ...state,
-        isFetching: false,
+        dataState: states.successed,
         error: null,
       };
     },
     [fetchSignInFailure](state, { payload }) {
       return {
         ...state,
-        isFetching: false,
+        dataState: states.failed,
         error: payload,
       };
     },

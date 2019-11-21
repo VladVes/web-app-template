@@ -19,6 +19,7 @@ class LinksMain extends Component {
     this.props.fetchLinks();
   }
 
+  // eslint-disable-next-line
   handleLinksFormSubmit = formValues => console.log(formValues);
 
   render() {

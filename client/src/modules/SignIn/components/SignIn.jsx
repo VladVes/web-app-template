@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import SignInForm from './SignInForm';
 
-const SignInMain = ({ handleSubmit, onSubmit }) => (
+const SignIn = ({ handleSubmit, onSubmit }) => (
   <SignInForm
     handleSubmit={handleSubmit}
     onSubmit={onSubmit}
@@ -17,4 +17,4 @@ SignIn.propTypes = {
 
 export default reduxForm({
   form: 'signInForm',
-})(SignInMain);
+})(SignIn);

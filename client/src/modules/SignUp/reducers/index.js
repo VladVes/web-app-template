@@ -3,11 +3,12 @@ import {
   fetchSignUpRequest,
   fetchSignUpSuccess,
   fetchSignUpFailure,
-} from './actions';
+} from '../actions';
+import states from '../../../constants/states';
 
 const defaultState = {
   error: null,
-  isFetching: false,
+  dataState: states.none,
 };
 
 export default handleActions(
@@ -15,20 +16,20 @@ export default handleActions(
     [fetchSignUpRequest](state) {
       return {
         ...state,
-        isFetching: true,
+        dataState: states.requested,
       };
     },
     [fetchSignUpSuccess](state) {
       return {
         ...state,
-        isFetching: false,
+        dataState: states.successed,
         error: null,
       };
     },
     [fetchSignUpFailure](state, { payload }) {
       return {
         ...state,
-        isFetching: false,
+        dataState: states.failed,
         error: payload,
       };
     },

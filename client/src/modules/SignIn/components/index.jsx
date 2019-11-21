@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Proptypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import SignInMain from './SignInMain';
+import SignIn from './SignIn';
 
-class SignIn extends Component {
+class SignInMain extends Component {
   static propTypes = {
     fetchSignIn: Proptypes.func.isRequired,
   };
@@ -14,7 +14,7 @@ class SignIn extends Component {
     return (
       <Row className="justify-content-center">
         <Col xs={4}>
-          <SignInMain
+          <SignIn
             onSubmit={this.handleSignInFormSubmit}
           />
         </Col>
@@ -23,4 +23,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default SignInMain;

@@ -1,6 +1,6 @@
 import React from 'react';
 import AppMain from './App';
-import DevTools from './DevTools';
+import DevTools from '../../../common/componetns/DevTools';
 
 const App = () => (
   <div>

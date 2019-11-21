@@ -4,8 +4,8 @@ import CustomModal from '../../styles/styledComponents/MainModalStyled';
 import withSpinner from '../../decorators/withSpinner';
 
 // TODO: refactor this:
-import SimpleExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/SimpleModal';
-import CustomExampleModal from '../../containers/ExampleContrainer/containers/ExampleModal/components/CustomModal';
+import SimpleExampleModal from '../../modules/ExampleModule/containers/SimpleModalContainer';
+import CustomExampleModal from '../../modules/ExampleModule/containers/CustomModalContainer';
 
 // Array contains all custom modals from app
 // To successfully open modal, type prop in "showModal" action should match name from this array

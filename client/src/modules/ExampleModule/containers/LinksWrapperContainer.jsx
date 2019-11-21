@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LinksWrapper from '../components/LinksWrapper';
+import LinksWrapper from '../components/Links/LinksWrapper';
 import { fetchLinks } from '../actions/linksActions';
 import states from '../../../constants/states';
 

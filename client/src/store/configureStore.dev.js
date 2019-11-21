@@ -1,5 +1,5 @@
 import prodStore from './configureStore.prod';
-import DevTools from '../components/DevTools';
+import DevTools from '../common/componetns/DevTools';
 
 export default (combinedReducer, middlewares) => prodStore(
   combinedReducer,

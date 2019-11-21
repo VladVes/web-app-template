@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
-import SignUp from './components/SignUp';
-import { fetchSignUp } from './redux/actions';
+import SignUp from './SignUp';
 
-class SignUpContainer extends Component {
+class SignUpMain extends Component {
   static propTypes = {
     fetchSignUp: PropTypes.func.isRequired,
   };
@@ -25,4 +23,4 @@ class SignUpContainer extends Component {
   }
 }
 
-export default connect(null, { fetchSignUp })(SignUpContainer);
+export default SignUpMain;

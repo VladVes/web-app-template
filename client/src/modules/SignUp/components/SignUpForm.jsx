@@ -5,8 +5,8 @@ import {
   Input,
   Button,
 } from 'reactstrap';
-import Field from '../../../shared/redux-form-components/CustomField';
-import Captcha from '../../../shared/redux-form-components/Captcha';
+import Field from '../../../common/componetns/redux-form-components/CustomField';
+import Captcha from '../../../common/componetns/redux-form-components/Captcha';
 
 const SignUpForm = ({ handleSubmit, onSubmit }) => (
   <Form onSubmit={handleSubmit(onSubmit)}>

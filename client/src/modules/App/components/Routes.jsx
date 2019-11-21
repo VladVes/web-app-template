@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader';
 import ExampleModule from '../../ExampleModule';
 import SignUp from '../../SignUp';
 import SignIn from '../../SignIn';
-import PrivateRoute from '../containers/PrivateRoute';
+import PrivateRoute from '../containers/PrivateRouteContainer';
 
 const Routes = () => (
   <Switch>

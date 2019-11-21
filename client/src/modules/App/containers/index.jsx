@@ -3,11 +3,11 @@ import Main from '../components';
 import { fetchCurrentUser } from '../../../common/actions/user';
 import states from '../../../constants/states';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isUserDataLoaded: state.currentUser.dataState === states.successed,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchCurrentUser: () => dispatch(fetchCurrentUser()),
 });
 

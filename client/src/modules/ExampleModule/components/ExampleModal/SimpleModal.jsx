@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import {
   StyledModalContent,
   StyledClose,
   CloseIcon,
-} from '../../containersOld/ExampleModal/styled';
-import { hideModal } from '../../../../../shared/modal/redux/actions';
+} from '../../../../styles/styledComponents/ExampleModal';
 
 class SimpleExampleModal extends Component {
   static propTypes = {
@@ -29,8 +27,4 @@ class SimpleExampleModal extends Component {
   }
 }
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = { hideModal };
-
-export default connect(mapStateToProps, mapDispatchToProps)(SimpleExampleModal);
+export default SimpleExampleModal;

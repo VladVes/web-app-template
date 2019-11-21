@@ -14,7 +14,7 @@ const MainWrapper = ({ children }) => (
   </main>
 );
 
-Main.propTypes = {
+MainWrapper.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
