@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Main from '../components';
+import MainWrapper from '../components/MainWrapper';
 import { fetchCurrentUser } from '../../../common/actions/user';
 import states from '../../../constants/states';
 
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(MainWrapper);

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LinksWrapper from '../components/Links/LinksWrapper';
+import LinksMain from '../components/Links';
 import { fetchLinks } from '../actions/linksActions';
 import states from '../../../constants/states';
 
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { fetchLinks };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LinksWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(LinksMain);

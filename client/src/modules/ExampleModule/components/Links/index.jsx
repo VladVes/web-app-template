@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LinksWrapper from '../../containers/LinksWrapperContainer';
+import LinksWrapper from './LinksWrapper';
 import withSpinner from '../../../../decorators/withSpinner';
 
 const LinksWithSpinner = withSpinner(LinksWrapper);

@@ -1,3 +1,3 @@
-import Component from './containers';
+import Component from './components';
 
 export default Component;

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import store from '../../../store';
 import Routes from './Routes';
-import MainWrapper from './MainWrapper';
+import MainWrapper from '../containers/MainWrapper';
 
 import MainModal from '../../../common/containers/MainModalContainer';
 

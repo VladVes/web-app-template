@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { SubmissionError } from 'redux-form';
-import Links from './Links';
+import Links from '../containers/LinksContainer';
 import PersonData from './PersonData';
 import BtcToUsd from './BtcToUsd';
 import ExampleModal from '../containers/exampleModalContainer';

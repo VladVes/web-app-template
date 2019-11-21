@@ -4,18 +4,31 @@ import { Container } from 'reactstrap';
 import Footer from './Footer';
 import Header from './Header';
 
-const MainWrapper = ({ children }) => (
-  <main>
-    <Header />
-    <Container className="mt-3">
-      {children}
-    </Container>
-    <Footer />
-  </main>
-);
+class MainWrapper extends React.Component {
+  static propTypes = {
+    isUserDataLoaded: PropTypes.bool.isRequired,
+    children: PropTypes.arrayOf(PropTypes.element).isRequired,
 
-MainWrapper.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
-};
+    fetchCurrentUser: PropTypes.func.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    if (!props.isUserDataLoaded) {
+      props.fetchCurrentUser();
+    }
+  }
+  render() {
+    return (
+      <main>
+        <Header />
+        <Container className="mt-3">
+          {this.props.children}
+        </Container>
+        <Footer />
+      </main>
+    );
+  }
+}
 
 export default MainWrapper;
