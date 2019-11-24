@@ -1,3 +1,4 @@
+node_modules
 server/node_modules
 server/package-lock.json
 server/build
@@ -9,3 +10,4 @@ server/build
 
 .idea
 *.log
+node_modules
