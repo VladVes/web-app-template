@@ -1,12 +1,7 @@
-##Aspirity Web Template
 
-[Development solutions and decisions](https://confluence.aspirity.com/display/DI/Development+solutions+and+decisions)
 
 ### Development
-* Install docker with [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)
-* Setup development environment: [WebStorm instructions](https://confluence.aspirity.com/display/DI/Preparation+for+work)
-* Setup debugger: [Instructions](https://confluence.aspirity.com/display/DI/Debugging)
-* cd project root (~/.../AspirityWebTemplate)
+* Install docker
 * yarn install:all - installs packages both for server and client
 * yarn start - would run docker-compose and dependencies watcher
 #### Server
