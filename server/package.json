@@ -16,7 +16,7 @@
     "axios": "^0.18.0",
     "bcryptjs-then": "^1.0.1",
     "body-parser": "^1.18.2",
-    "convict": "^4.2.0",
+    "convict": "^6.2.3",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
     "express-winston": "^2.5.1",
